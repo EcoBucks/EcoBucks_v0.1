@@ -1,113 +1,206 @@
-import Image from 'next/image'
+import Caraousel from "@/components/Caraousel";
+import Card from "@/components/Card";
+import { OptionMT, SelectMT } from "@/components/MaterialTailwind";
+import NavbarComponent from "@/components/Navbar";
+import { LocationType } from "@/types";
+import Image from "next/image";
+import React from "react";
 
-export default function Home() {
+const fetchData = async () => {
+  try {
+    const response = await fetch("http://localhost:3001/location", {
+      cache: "no-store",
+    });
+    const responseJson: LocationType[] = await response.json();
+    return responseJson;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const fetchProvince = async () => {
+  try {
+    const response = await fetch("http://localhost:3001/provinces", {
+      cache: "no-store",
+    });
+    const responseJson: string[] = await response.json();
+    return responseJson;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export default async function Home() {
+  const slides = [
+    "https://source.unsplash.com/random/900x700/?person",
+    "https://source.unsplash.com/random/900x700/?person+2",
+    "https://source.unsplash.com/random/900x700/?person+3",
+    "https://source.unsplash.com/random/900x700/?person+4",
+  ];
+
+  const data = await fetchData();
+  const provinces = await fetchProvince();
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <>
+      <NavbarComponent />
+
+      <div className="flex w-screen h-[600px] items-center justify-center px-[8%] mt-[8%]">
+        <div className="bg-white w-full h-full flex flex-row gap-x-4">
+          {/* Left Component */}
+          <div className="flex flex-row justify-end items-center w-[70%] h-full rounded-[20px] overflow-hidden shadow-md">
+            <div className="w-full h-full flex flex-row relative">
+              <Caraousel autoSlide={true}>
+                {slides.map((s) => (
+                  <img
+                    key={s + "id"}
+                    src={s}
+                    className="w-full h-full object-contain"
+                    alt="image"
+                  />
+                ))}
+              </Caraousel>
+            </div>
+          </div>
+
+          {/* Right Component */}
+          <div className="flex flex-col justify-start items-center w-[30%] h-full gap-y-4">
+            {/* Form Component */}
+            <div className="flex flex-col w-full h-[80%] bg-eb-40 rounded-[20px] py-[7%] px-[4%] gap-y-4 items-start">
+              <div className="flex flex-col w-full justify-between px-[5%] text-white items-center h-[11%]">
+                <div className="flex flex-row w-full justify-between items-center">
+                  <p className="text-[25px] raleway font-bold">
+                    Calculate Your UCO
+                  </p>
+                  <span className="material-symbols-outlined">help</span>
+                </div>
+                <div className="flex w-full justify-start mt-2">
+                  <div className="bg-[#ffffff] w-[20%] h-[2px] rounded-[20px] flex"></div>
+                </div>
+              </div>
+
+              <div className="flex flex-col w-full h-[90%] gap-y-4 mt-[10%] items-center ">
+                <div className="flex flex-col w-full h-[23%] items-center justify-center px-[5%] gap-y-1">
+                  <p className="flex w-full justify-start items-start text-[12px] text-white inter">
+                    Your UCO in Liter
+                  </p>
+                  <input
+                    type="text"
+                    className="w-full bg-[#ffffff20] rounded-[15px] h-24 text-white px-5 placeholder:text-[#ffffff30]"
+                    placeholder="ex: 250 liter"
+                  />
+                </div>
+
+                <div className="flex flex-col w-full h-[23%] items-center justify-center px-[5%] gap-y-1">
+                  <p className="flex w-full justify-start items-start text-[12px] text-white inter">
+                    Prediction in Rupiah
+                  </p>
+                  <div className="w-full bg-[#ffffff20] rounded-[15px] h-24 text-white px-5 placeholder:text-[#ffffff30] justify-center items-center">
+                    <p className="flex w-full h-full justify-start items-center">
+                      Rp 250.000
+                    </p>
+                  </div>
+                </div>
+                <div className="bg-[#ffffff60] w-[90%] h-[2px] rounded-[20px]"></div>
+                <div className="w-[90%] flex flex-row gap-x-3 justify-center items-center bg-eb-30 text-white rounded-xl h-12">
+                  <p className="font-bold raleway ">Submit</p>
+                  <span className="material-symbols-outlined">
+                    arrow_forward
+                  </span>
+                </div>
+                <div className="text-white text-[12px] mt-2 flex flex-row gap-x-1">
+                  <p className="font-bold text-white">+50%</p>
+                  <p>Contribution for Emition Gas Carbon</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Button Component */}
+            <div className="flex flex-row w-full h-[20%] bg-eb-40 rounded-[20px] text-white justify-center items-center px-[8%]">
+              <div className="flex flex-col w-full justify-center items-start">
+                <p className="text-[25px] raleway font-bold">Free Pickup UCO</p>
+                <p className="text-[10px]">
+                  Lorem Ipsum has been the industry's{" "}
+                </p>
+              </div>
+
+              <div className="bg-eb-20 rounded-[100px] w-[55px] h-[50px] flex justify-center items-center">
+                <span className="material-symbols-outlined">arrow_forward</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      <div className="w-screen h-[730px] items-center justify-start px-[8%] flex-col flex mt-[5%]">
+        <div className="flex flex-col w-full">
+          <p className="text-eb-30 text-[14px]">Location EcoBucks</p>
+          <p className="text-[50px] raleway font-medium -mt-2">
+            Store UCO to nearest location
+          </p>
+        </div>
+
+        <div className="flex flex-col w-screen items-center h-[660px] py-12 px-[8%]">
+          {/* Search Bar */}
+          <div className="flex w-full justify-start items-start -mt-4">
+            <form className="flex flex-row bg-white shadow-md w-[35%] h-[96px] ml-2 rounded-xl justify-between px-[2%]">
+              <div className="flex flex-col justify-center gap-y-2 items-start w-[30%]">
+                <div className="flex flex-row gap-x-2 items-center">
+                  <span
+                    className="material-symbols-outlined text-gray-700"
+                    style={{ fontSize: 30 }}
+                  >
+                    location_on
+                  </span>
+                  <SelectMT
+                    placeholder={""}
+                    variant="standard"
+                    label="Select Province"
+                    name="province"
+                  >
+                    {provinces?.map((province, index) => (
+                      <OptionMT key={index}>{province}</OptionMT>
+                    ))}
+                  </SelectMT>
+                </div>
+              </div>
+              <div className="flex flex-col justify-center items-center w-[38%]">
+                <div className="flex flex-row gap-x-2 bg-eb-10 px-4 py-3 rounded-[15px] text-white">
+                  <span className="material-symbols-outlined">search</span>
+                  <p>Search</p>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          {/* Card Bar */}
+          <div className="overflow-x-auto flex flex-row w-full h-[80%] items-start justify-start pl-1 py-5 gap-x-5">
+            {data?.map((location, index) => (
+              <Card key={location + "id"} location={location} />
+            ))}
+          </div>
+        </div>
       </div>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+      {/* Education */}
+      <div className="flex w-screen flex-col h-[450px] justify-start items-center mb-[5%]">
+        <h1 className="text-sm text-eb-30">EcoBucks Education</h1>
+        <h1 className="text-[50px] raleway font-medium text-gray-900 -mt-2">
+          Education
+        </h1>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+        <div className="flex flex-row w-screen px-[5%] bg-red-400 h-[70%] justify-center items-center gap-x-4">
+          <div className="bg-gray-900 w-[359px] h-[243px] rounded-[20px]"></div>
+          <div className="bg-gray-900 w-[359px] h-[243px] rounded-[20px]"></div>
+          <div className="bg-gray-900 w-[359px] h-[243px] rounded-[20px]"></div>
+        </div>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+        <div className="w-full justify-center items-center h-[20%] flex">
+          <div className="flex flex-row gap-x-2 bg-eb-10 py-3 rounded-[20px] text-white w-[10%] items-center justify-center">
+            <p>See All</p>
+          </div>
+        </div>
       </div>
-    </main>
-  )
+    </>
+  );
 }

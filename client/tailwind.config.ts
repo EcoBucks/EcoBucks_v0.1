@@ -9,16 +9,14 @@ const config: Config = withMT({
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      colors: {
+        "eb-10": "#3B976D",
+        "eb-20": "#76B57A",
+        "eb-30": "#AA16CE",
+        "eb-40": "#052E1B",
       },
     },
   },
-  plugins: [require("daisyui")],
-  daisyui: {
-    logs: false,
-  },
+  plugins: [],
 });
 export default config;
