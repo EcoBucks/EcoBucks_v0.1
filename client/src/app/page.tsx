@@ -1,9 +1,10 @@
 import Caraousel from "@/components/Caraousel";
 import Card from "@/components/Card";
+import CardEducation from "@/components/CardEducation";
+import Footer from "@/components/Footer";
 import { OptionMT, SelectMT } from "@/components/MaterialTailwind";
 import NavbarComponent from "@/components/Navbar";
 import { LocationType } from "@/types";
-import Image from "next/image";
 import React from "react";
 
 const fetchData = async () => {
@@ -45,6 +46,7 @@ export default async function Home() {
     <>
       <NavbarComponent />
 
+      {/* Hero Section */}
       <div className="flex w-screen h-[600px] items-center justify-center px-[8%] mt-[8%]">
         <div className="bg-white w-full h-full flex flex-row gap-x-4">
           {/* Left Component */}
@@ -132,6 +134,7 @@ export default async function Home() {
         </div>
       </div>
 
+      {/* LocationSearch */}
       <div className="w-screen h-[730px] items-center justify-start px-[8%] flex-col flex mt-[5%]">
         <div className="flex flex-col w-full">
           <p className="text-eb-30 text-[14px]">Location EcoBucks</p>
@@ -189,10 +192,11 @@ export default async function Home() {
           Education
         </h1>
 
-        <div className="flex flex-row w-screen px-[5%] bg-red-400 h-[70%] justify-center items-center gap-x-4">
-          <div className="bg-gray-900 w-[359px] h-[243px] rounded-[20px]"></div>
-          <div className="bg-gray-900 w-[359px] h-[243px] rounded-[20px]"></div>
-          <div className="bg-gray-900 w-[359px] h-[243px] rounded-[20px]"></div>
+        {/* Card Section */}
+        <div className="flex flex-row w-screen px-[5%] h-[70%] justify-center items-center gap-x-4">
+          <CardEducation />
+          <CardEducation />
+          <CardEducation />
         </div>
 
         <div className="w-full justify-center items-center h-[20%] flex">
@@ -201,6 +205,8 @@ export default async function Home() {
           </div>
         </div>
       </div>
+
+      <Footer />
     </>
   );
 }
