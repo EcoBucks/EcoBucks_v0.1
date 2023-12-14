@@ -33,7 +33,7 @@
 //   // }, [setRupiah]);
 //   const debounceOnChange = debounce(updateQuery, 300);
 //   return (
-  
+
 import Caraousel from "@/components/Caraousel";
 import Card from "@/components/Card";
 import CardEducation from "@/components/CardEducation";
