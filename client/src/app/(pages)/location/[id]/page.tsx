@@ -1,24 +1,21 @@
+import { fetchDataId } from "@/app/(action)/actionFetchLocationById";
 import CardEducation from "@/components/CardEducation";
 import CardLocation from "@/components/CardLocation";
 import Footer from "@/components/Footer";
+import Map2 from "@/components/Map";
 import NavbarComponent from "@/components/Navbar";
 import { LocationType } from "@/types";
 import React from "react";
 
-const fetchData = async () => {
-  try {
-    const response = await fetch("http://localhost:3001/location", {
-      cache: "no-store",
-    });
-    const responseJson: LocationType[] = await response.json();
-    return responseJson;
-  } catch (error) {
-    console.log(error);
-  }
-};
+const LocationDetailPage = async ({ params }: { params: { id: string } }) => {
+  // console.log(params.id);
+  const data = await fetchDataId(params.id);
+  // console.log(data, "<<<<<<<<<");
 
-const LocationDetailPage = async () => {
-  const data = await fetchData();
+  const latLng = {
+    lat: data?.lat || 0,
+    lng: data?.lng || 0,
+  };
 
   return (
     <>
@@ -49,7 +46,7 @@ const LocationDetailPage = async () => {
         <div className="flex flex-row w-[55%] justify-end items-start gap-x-2">
           <div className="flex bg-black w-[75%] h-[90%] rounded-[20px]">
             <img
-              src="https://source.unsplash.com/random/900x700/?indonesia"
+              src={data?.picture}
               className="object-cover rounded-lg w-full h-full"
             />
           </div>
@@ -98,12 +95,11 @@ const LocationDetailPage = async () => {
           <div className="flex flex-col w-full h-full justify-between items-center gap-y-4">
             <div className="flex flex-col h-[60%] gap-y-1">
               <div className="flex flex-row w-full justify-start items-center gap-x-4">
-                <h1 className="raleway font-bold text-[35px]">Hacktiv8</h1>
-                <h1 className="raleway text-[18px]">BSD, Tangerang Selatan</h1>
+                <h1 className="raleway font-bold text-[35px]">{data?.name}</h1>
+                <h1 className="raleway text-[18px]">{data?.province}</h1>
               </div>
               <p className="text-gray-500 text-[14px] pr-[4%] leading-7">
-                South Tower, Green Office Park 1, Jl. BSD Green Office Park,
-                Sampora, Kec. Cisauk, Kabupaten Tangerang, Banten 15345
+                {data?.address}
               </p>
             </div>
             <div className="flex flex-col justify-start items-start w-full text-[16px] gap-y-2 py-4 text-gray-600">
@@ -133,10 +129,11 @@ const LocationDetailPage = async () => {
                   </span>
                 </div>
               </div>
-              <img
+              {/* <img
                 src="https://source.unsplash.com/random/900x700/?indonesia+6"
                 className="object-cover rounded-lg w-full h-full"
-              />
+              /> */}
+              <Map2 location={latLng} />
             </div>
           </div>
         </div>

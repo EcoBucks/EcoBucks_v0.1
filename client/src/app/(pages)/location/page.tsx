@@ -1,21 +1,10 @@
+import { fetchData } from "@/app/(action)/fetchDataHome";
 import CardEducation from "@/components/CardEducation";
 import CardLocation from "@/components/CardLocation";
 import Footer from "@/components/Footer";
 import NavbarComponent from "@/components/Navbar";
 import { LocationType } from "@/types";
 import React from "react";
-
-const fetchData = async () => {
-  try {
-    const response = await fetch("http://localhost:3001/location", {
-      cache: "no-store",
-    });
-    const responseJson: LocationType[] = await response.json();
-    return responseJson;
-  } catch (error) {
-    console.log(error);
-  }
-};
 
 const LocationPage = async () => {
   const data = await fetchData();
