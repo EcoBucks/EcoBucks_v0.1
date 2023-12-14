@@ -1,28 +1,235 @@
 {
-  "pokemon": [
+  "user": [
     {
-      "id": 1,
-      "name": "Bulbasaur",
-      "type": "grass",
-      "description": "Bulbasaur can be seen napping in bright sunlight. There is a seed on its back. By soaking up the sun's rays, the seed grows progressively larger.",
-      "weight": "15.2 lbs",
-      "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png"
+      "name": "Aletha Gerry",
+      "password": "123456",
+      "email": "aletha@mail.com",
+      "job": "employee",
+      "dateOfBirth": "1976/07/26",
+      "walletBalance": 0,
+      "profilePicture": "https://source.unsplash.com/random/900x700/?female",
+      "role": "User",
+      "ucoBalance": 0
     },
     {
-      "id": 2,
-      "name": "Wartortle",
-      "type": "water",
-      "description": "Its tail is large and covered with a rich, thick fur. The tail becomes increasingly deeper in color as Wartortle ages. The scratches on its shell are evidence of this Pokémon's toughness as a battler.",
-      "weight": "49.6 lbs",
-      "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/008.png"
+      "name": "Monroe Gibson",
+      "password": "123456",
+      "email": "monroe@mail.com",
+      "job": "employee",
+      "dateOfBirth": "1980/08/16",
+      "walletBalance": 0,
+      "profilePicture": "https://source.unsplash.com/random/900x700/?female",
+      "role": "User",
+      "ucoBalnce": 0
     },
     {
-      "id": 3,
-      "name": "Charizard",
-      "type": "fire",
-      "description": "Charizard flies around the sky in search of powerful opponents. It breathes fire of such great heat that it melts anything. However, it never turns its fiery breath on any opponent weaker than itself.",
-      "weight": "199.5 lbs",
-      "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/006.png"
+      "name": "Melysaa Macy",
+      "password": "123456",
+      "email": "melysaa@mail.com",
+      "job": "employee",
+      "dateOfBirth": "1979/02/01",
+      "walletBalance": 0,
+      "profilePicture": "https://source.unsplash.com/random/900x700/?female",
+      "role": "User",
+      "ucoBalnce": 0
+    },
+    {
+      "name": "Dex Cocks",
+      "password": "123456",
+      "email": "dex@mail.com",
+      "job": "other",
+      "dateOfBirth": "1999/07/01",
+      "walletBalance": 0,
+      "profilePicture": "https://source.unsplash.com/random/900x700/?male",
+      "role": "Driver",
+      "ucoBalnce": 0
+    },
+    {
+      "name": "Jhon Doe",
+      "password": "123456",
+      "email": "jhon@mail.com",
+      "job": "other",
+      "dateOfBirth": "1997/10/10",
+      "walletBalance": 0,
+      "profilePicture": "https://source.unsplash.com/random/900x700/?male",
+      "role": "Driver",
+      "ucoBalnce": 0
     }
+  ],
+  "uco-balance": [
+    {
+      "userId": "1",
+      "ucoBalance": 0,
+      "status": "unpaid"
+    },
+    {
+      "userId": "2",
+      "ucoBalance": 0,
+      "status": "unpaid"
+    },
+    {
+      "userId": "3",
+      "ucoBalance": 0,
+      "status": "unpaid"
+    }
+  ],
+  "location": [
+    {
+      "name": "Champion Cafe Medan",
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGxDLgd2EZmjdZiaAejbsPLgZJwso4ZI8Fwg&usqp=CAU",
+      "lat": 3.5675618,
+      "lng": 98.6465939,
+      "operationalHour": 480,
+      "province": "Sumatera Utara",
+      "address": "Jl. Dr. Mansyur No.134, Padang Bulan Selayang I, Kec. Medan Selayang, Kota Medan"
+    },
+    {
+      "name": "Bakso Granat Cak Ri",
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIrxcHp_KJiXyRGOGgbyC5tpqN_tE-fJ9WtA&usqp=CAU",
+      "lat": -7.3101653,
+      "lng": 112.7301682,
+      "operationalHour": 480,
+      "province": "Jawa Timur",
+      "address": "Jl. Ketintang No.199, Wonokromo, Kec. Wonokromo, Surabaya"
+    },
+    {
+      "name": "Kopi Patlapan",
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuWbn53bmztLopVy-SBCF1hzVR8haOxoedRg&usqp=CAU",
+      "lat": -6.2455727,
+      "lng": 106.8291992,
+      "operationalHour": 400,
+      "province": "DKI Jakarta",
+      "address": "Jl. Mampang Prapatan 4 No: 48, Jl. Mampang Prapatan IV No.1, RT.7/RW.2, Tegal Parang, Kec. Mampang Prpt., Kota Jakarta Selatan"
+    },
+    {
+      "name": "Bakso Kuta Radja",
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIrxcHp_KJiXyRGOGgbyC5tpqN_tE-fJ9WtA&usqp=CAU",
+      "lat": 5.5572762,
+      "lng": 95.3102063,
+      "operationalHour": 480,
+      "province": "Aceh",
+      "address": "Merduati, Kec. Kuta Raja, Kota Banda Aceh"
+    },
+    {
+      "name": "Mexico Cell",
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVktmEwwy0nQDjKeiYhio8RjnoMDgfWcmEMw&usqp=CAU",
+      "lat": -2.9684166,
+      "lng": 104.7818195,
+      "operationalHour": 400,
+      "province": "Sumatera Selatan",
+      "address": "Jl. Pendawa No.508, 2 Ilir, Kec. Ilir Tim. II, Kota Palembang"
+    },
+    {
+      "name": "MM Dzaki",
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRffSvke1PqoU2NVp-WpRrSk6bxJGZMpsMysA&usqp=CAU",
+      "lat": -0.9265594,
+      "lng": 100.4064506,
+      "operationalHour": 400,
+      "province": "Sumatera Barat",
+      "address": "Jl. Durian Tarung, Ps. Ambacang, Kec. Kuranji, Kota Padang"
+    },
+    {
+      "name": "Rajau Petinggi",
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKiaK3K-FW227qt7Fa4w_pw0xn3HSzaxidOg&usqp=CAU",
+      "lat": -3.7952089,
+      "lng": 102.2682409,
+      "operationalHour": 480,
+      "province": "Bengkulu",
+      "address": "Jl. Basuki Rahmat, Suka Merindu, Kec. Ratu Samban, Kota Bengkulu"
+    },
+    {
+      "name": "Khun Aroy Thai Cuisine Resto",
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_sukvxqdRoZBvyNSrsU5X8IgH9FZNi4uzCg&usqp=CAU",
+      "lat": 0.5122404,
+      "lng": 101.4484477,
+      "operationalHour": 480,
+      "province": "Riau",
+      "address": "Jl. Jend. Sudirman No.389 A, Simpang Empat, Kec. Pekanbaru Kota, Kota Pekanbaru"
+    },
+    {
+      "name": "Gudeg Bu Ratna",
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2KbYThREDmqrglwIgU6FzLemQ2s3NjcPR7A&usqp=CAU",
+      "lat": -6.9035003,
+      "lng": 107.615212,
+      "operationalHour": 480,
+      "province": "Jawa Barat",
+      "address": "Jl. Sultan Tirtayasa No.15-19, Citarum, Kec. Bandung Wetan, Kota Bandung"
+    },
+    {
+      "name": "Bebek Ireng Mak Peng",
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSiMX4K-5pjKHNeu7a8r-i0qpILRoZYt-eBQ&usqp=CAU",
+      "lat": -6.9855207,
+      "lng": 110.4172424,
+      "operationalHour": 400,
+      "province": "Jawa Tengah",
+      "address": "Jl. Batan Selatan, Miroto, Kec. Semarang Tengah, Kota Semarang"
+    },
+    {
+      "name": "Rumah Makan Andalas",
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaJxbeHm04lsqbnHe-vP1p5nLB2upyAavESw&usqp=CAU",
+      "lat": -7.7962342,
+      "lng": 110.3690418,
+      "operationalHour": 480,
+      "province": "Daerah Istimewa Yogyakarta",
+      "address": "Jl. Mataram No.8, Suryatmajan, Kec. Danurejan, Kota Yogyakarta"
+    },
+    {
+      "name": "Kios Wenang",
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHaRnDDb_Q3-pJ0LLQvhDWVgGoaIXuXum4SA&usqp=CAU",
+      "lat": 1.4814622,
+      "lng": 124.8388493,
+      "operationalHour": 540,
+      "province": "Sulawesi Utara",
+      "address": "Jl. Ch. Taulu, Wenang Sel., Kec. Wenang, Kota Manado"
+    }
+  ],
+  "transaction": [
+    {
+      "userId": 2,
+      "locationId": 1
+    },
+    {
+      "userId": 1,
+      "locationId": 3
+    },
+    {
+      "userId": 3,
+      "locationId": 1
+    }
+  ],
+  "provinces": [
+    "Aceh",
+    "Bali",
+    "Bangka Belitung",
+    "Banten",
+    "Bengkulu",
+    "Gorontalo",
+    "Jakarta",
+    "Jambi",
+    "Jawa Barat",
+    "Jawa Tengah",
+    "Jawa Timur",
+    "Kalimantan Barat",
+    "Kalimantan Selatan",
+    "Kalimantan Tengah",
+    "Kalimantan Timur",
+    "Kalimantan Utara",
+    "Kepulauan Riau",
+    "Lampung",
+    "Maluku",
+    "Maluku Utara",
+    "Nusa Tenggara Barat",
+    "Nusa Tenggara Timur",
+    "Papua",
+    "Papua Barat",
+    "Riau",
+    "Sulawesi Barat",
+    "Sulawesi Selatan",
+    "Sulawesi Tengah",
+    "Sulawesi Tenggara",
+    "Sulawesi Utara",
+    "Sumatera Barat",
+    "Sumatera Selatan",
+    "Sumatera Utara"
   ]
 }

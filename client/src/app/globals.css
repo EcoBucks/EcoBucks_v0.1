@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.inter {
+  font-family: var(--font-inter);
+}
+
+.raleway {
+  font-family: var(--font-raleway);
+}
+
+.dm-sans {
+  font-family: var(--font-dm-sans);
+}
