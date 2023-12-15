@@ -1,4 +1,5 @@
 import { LocationType } from "@/types";
+import Link from "next/link";
 import React from "react";
 
 const Card = ({ location }: { location: LocationType }) => {
@@ -39,13 +40,14 @@ const Card = ({ location }: { location: LocationType }) => {
                 09:00 - {changeClock(location.operationalHour)}:00
               </p>
             </div>
-
-            <span
-              className="material-symbols-outlined p-2 bg-eb-30 text-white rounded-lg"
-              style={{ fontSize: 18 }}
-            >
-              arrow_forward
-            </span>
+            <Link href={`/location/${location._id}`}>
+              <span
+                className="material-symbols-outlined p-2 bg-eb-30 text-white rounded-lg"
+                style={{ fontSize: 18 }}
+              >
+                arrow_forward
+              </span>
+            </Link>
           </div>
         </div>
       </div>
