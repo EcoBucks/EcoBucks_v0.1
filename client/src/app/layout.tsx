@@ -1,21 +1,11 @@
 import type { Metadata } from "next";
+
 import "./globals.css";
 import { Inter, Raleway, DM_Sans } from "next/font/google";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
-
-const raleway = Raleway({
-  subsets: ["latin"],
-  variable: "--font-raleway",
-});
-
-const dm_sans = DM_Sans({
-  subsets: ["latin"],
-  variable: "--font-dm-sans",
-});
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const raleway = Raleway({ subsets: ["latin"], variable: "--font-raleway" });
+const dm_sans = DM_Sans({ subsets: ["latin"], variable: "--font-dm-sans" });
 
 export const metadata: Metadata = {
   title: "EcoBucks",
@@ -39,7 +29,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${raleway.variable} ${dm_sans.variable} `}
+        className={`${inter.variable} ${raleway.variable} ${dm_sans.variable}`}
       >
         <div className={inter.className}>{children}</div>
       </body>
