@@ -2,54 +2,64 @@ import { Db, ObjectId } from "mongodb";
 import { getMongoClientInstance } from "../config";
 import { hashPw } from "../lib";
 
-const DATABASE_NAME = "Eco_Bucks"
-const COLLECTION_NAME = "user"
+const DATABASE_NAME = "Eco_Bucks";
+const COLLECTION_NAME = "user";
 
 export type userModel = {
-    name:string,
-    password: string,
-    email:string,
-    job: string,
-    dateOfBirth: string,
-    walletBallance?: number,
-    profilePicture?: string,
-    role?: string,
-}
+  _id: ObjectId;
+  name: string;
+  password: string;
+  email: string;
+  job: string;
+  dateOfBirth: string;
+  walletBalance?: number;
+  profilePicture?: string;
+  role?: string;
+};
 
-export const getDb = async() => {
-    const client = await getMongoClientInstance()
-    const db: Db = client.db(DATABASE_NAME)
+export type UserModelCreateInput = Omit<userModel, "_id">;
 
-    return db
-}
+export const getDb = async () => {
+  const client = await getMongoClientInstance();
+  const db: Db = client.db(DATABASE_NAME);
 
-export const createUser = async(user: userModel) => {
-    // console.log(user, '<<<<<<<<<<<');
+  return db;
+};
 
-    //! buat route sendiri buat google auth
+export const createUser = async (user: UserModelCreateInput) => {
+  // console.log(user, '<<<<<<<<<<<');
 
-    let data ;
-    if(user.role == "driver") {
-        data = {
-            ...user,
-        password: hashPw(user.password),
-        walletBallance: 0,
-        profilePicture: "",
-        role: "drivers"
-        }
-    }
+  //! buat route sendiri buat google auth
 
-     data = {
-        ...user,
-        password: hashPw(user.password),
-        walletBallance: 0,
-        profilePicture: "",
-        role: "user"
-    }
+  let data;
+  if (user.role == "driver") {
+    data = {
+      ...user,
+      password: hashPw(user.password),
+      walletBalance: 0,
+      profilePicture: "",
+      role: "drivers",
+    };
+  }
 
-    const db = await getDb()
-    const result = await db.collection(COLLECTION_NAME).insertOne(data)
+  data = {
+    ...user,
+    password: hashPw(user.password),
+    walletBallance: 0,
+    profilePicture: "",
+    role: "user",
+  };
 
-    return result
+  const db = await getDb();
+  const result = await db.collection(COLLECTION_NAME).insertOne(data);
 
-} 
+  return result;
+};
+
+export const getUserByEmail = async (
+  email: string
+): Promise<userModel | null> => {
+  const db = await getDb();
+  const result = await db.collection(COLLECTION_NAME).findOne({ email });
+  return result as userModel | null;
+};

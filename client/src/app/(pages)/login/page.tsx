@@ -3,33 +3,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import React from "react";
+import { cookies } from "next/headers";
+import { handleLogin } from "./action";
 
 // API untuk loginnya diselesaikan dulu
 // Get The Token
 // Then Middleware Authentication
+const token = cookies().get("access_token");
+console.log(token);
 
 const LoginPage = () => {
-  const onSubmitLogin = async (formData: FormData) => {
-    "use server";
-
-    // const response = await fetch("http://localhost:3001/jokes", {
-    //   method: "POST",
-    //   body: JSON.stringify({
-    //     setup: formData.get("setup"),
-    //     delivery: formData.get("delivery"),
-    //   }),
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // });
-    // const responseJson = await response.json();
-
-    console.log(formData.get("email"), "<<< email");
-    console.log(formData.get("password"), "<<< password");
-
-    // revalidatePath("/dashboard/jokes");
-    // redirect("/dashboard/jokes");
-  };
   return (
     <>
       <div className="h-screen w-screen items-center flex justify-center bg-gray-100">
@@ -60,7 +43,7 @@ const LoginPage = () => {
               />
               <p className="text-sm -mt-2">Login to Your Account</p>
             </div>
-            <form className="flex flex-col gap-4 p-6" action={onSubmitLogin}>
+            <form className="flex flex-col gap-4 p-6" action={handleLogin}>
               <div className="relative h-11 w-full min-w-[200px]">
                 <input
                   autoComplete="off"
