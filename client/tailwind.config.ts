@@ -14,6 +14,7 @@ const config: Config = withMT({
         "eb-20": "#76B57A",
         "eb-30": "#AA16CE",
         "eb-40": "#052E1B",
+        "eb-50": "#F7F7F7",
       },
     },
   },

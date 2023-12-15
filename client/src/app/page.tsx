@@ -33,7 +33,7 @@
 //   // }, [setRupiah]);
 //   const debounceOnChange = debounce(updateQuery, 300);
 //   return (
-  
+
 import Caraousel from "@/components/Caraousel";
 import Card from "@/components/Card";
 import CardEducation from "@/components/CardEducation";
@@ -117,7 +117,7 @@ export default async function Home() {
                 </div>
               </div>
 
-              <div className="flex flex-col w-full h-[90%] gap-y-4 mt-[10%] items-center ">
+              <div className="flex flex-col w-full h-[90%] gap-y-5 mt-[10%] items-center ">
                 <div className="flex flex-col w-full h-[23%] items-center justify-center px-[5%] gap-y-1">
                   <p className="flex w-full justify-start items-start text-[12px] text-white inter">
                     Your UCO in Liter
@@ -133,12 +133,13 @@ export default async function Home() {
                   <p className="flex w-full justify-start items-start text-[12px] text-white inter">
                     Prediction in Rupiah
                   </p>
-                  <div className="w-full bg-[#ffffff20] rounded-[15px] h-24 text-white px-5 placeholder:text-[#ffffff30] justify-center items-center">
+                  <div className="w-full bg-[#ffffff20] rounded-[15px] h-full text-white px-5 placeholder:text-[#ffffff30] justify-center items-center">
                     <p className="flex w-full h-full justify-start items-center">
                       Rp 250.000
                     </p>
                   </div>
                 </div>
+                {/* Divider */}
                 <div className="bg-[#ffffff60] w-[90%] h-[2px] rounded-[20px]"></div>
                 <div className="w-[90%] flex flex-row gap-x-3 justify-center items-center bg-eb-30 text-white rounded-xl h-12">
                   <p className="font-bold raleway ">Submit</p>
@@ -175,7 +176,7 @@ export default async function Home() {
         <div className="flex flex-col w-full">
           <p className="text-eb-30 text-[14px]">Location EcoBucks</p>
           <p className="text-[50px] raleway font-medium -mt-2">
-            Store UCO to nearest location
+            Store UCO to Nearest Location
           </p>
         </div>
 

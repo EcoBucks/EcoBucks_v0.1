@@ -13,3 +13,12 @@
 .dm-sans {
   font-family: var(--font-dm-sans);
 }
+
+select {
+  appearance: none;
+  text-indent: 1px;
+  text-overflow: "";
+  background-image: url("/caret-down-solid.svg");
+  background-repeat: no-repeat;
+  background-position: right;
+}

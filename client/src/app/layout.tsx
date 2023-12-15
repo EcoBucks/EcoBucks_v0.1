@@ -39,7 +39,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${raleway.variable} ${dm_sans.variable} `}
+        className={`${inter.variable} ${raleway.variable} ${dm_sans.variable} bg-eb-50`}
       >
         <div className={inter.className}>{children}</div>
       </body>
