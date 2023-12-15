@@ -9,11 +9,10 @@ export const GET =  async (request: NextRequest,  { params }: { params: { id: st
     const data = await getLocationById(id)
 
     return NextResponse.json(
-        data
-        // {
-        //     statusCode: 200,
-        //     message: "successfully get data by id",
-        //     data: data
-        // }
+        {
+            statusCode: 200,
+            message: "successfully get data by id",
+            data: data
+        }
     )
 }
