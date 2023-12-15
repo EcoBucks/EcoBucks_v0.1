@@ -1,10 +1,13 @@
+"use client";
 import Footer from "@/components/Footer";
+import Modal from "@/components/Modal";
 import NavbarComponent from "@/components/Navbar";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 
 const UserPage = () => {
+  const [open, setOpen] = useState(false);
   return (
     <>
       <NavbarComponent />
@@ -122,7 +125,7 @@ const UserPage = () => {
                   <h1 className="text-white">Settings</h1>
                 </div>
               </Link>
-              <Link href="/user-page">
+              <button onClick={() => setOpen(true)}>
                 <div className="flex my-2 md:my-4">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -156,7 +159,25 @@ const UserPage = () => {
                   </svg>
                   <h1 className="text-white">Logout</h1>
                 </div>
-              </Link>
+              </button>
+              <Modal open={open} onClose={() => setOpen(false)}>
+                <div className="text-center w-56">
+                  <div className="mx-auto my-4 w-48">
+                    <h3 className="text-lg font-black text-gray-800">
+                      Logout Account?
+                    </h3>
+                    <p className="text-sm text-gray-500">
+                      Are you sure you want to logout?
+                    </p>
+                  </div>
+                  <div className="flex gap-4">
+                    <button className=" w-full">Logout</button>
+                    <button className=" w-full" onClick={() => setOpen(false)}>
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              </Modal>
             </div>
           </div>
           <div className="rounded-[10px] bg-[#FCFCFC] shadow-[0_10px_29px_0px_rgba(0,0,0,0.1)] h-[500px] w-full md:w-[875px] md:h-[650px] mt-4 md:mt-0 p-3 md:p-10 overflow-auto">
