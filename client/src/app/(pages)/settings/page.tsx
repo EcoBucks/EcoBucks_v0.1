@@ -6,8 +6,9 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 
-const UserPage = () => {
+const SettingsPage = () => {
   const [open, setOpen] = useState(false);
+  const [pressChangePicture, setPressChangePicture] = useState(false);
   return (
     <>
       <NavbarComponent />
@@ -180,125 +181,139 @@ const UserPage = () => {
               </Modal>
             </div>
           </div>
-          <div className="rounded-[10px] bg-[#FCFCFC] shadow-[0_10px_29px_0px_rgba(0,0,0,0.1)] h-[500px] w-full md:w-[875px] md:h-[650px] mt-4 md:mt-0 p-3 md:p-10 overflow-auto">
-            <h1 className="mb-4">Your Transaction Pending</h1>
-            <div className="px-4 md:px-10">
-              <div className="flex flex-row justify-between text-[10px] md:text-[1rem]">
-                <h1>No</h1>
-                <h1>Order Number</h1>
-                <h1>Amount Balance</h1>
-                <h1>Status</h1>
-              </div>
-              <hr className="my-2 " />
-              {/* Ini yg nanti di map */}
-              <div className="flex flex-row justify-between text-[10px] md:text-[1rem] my-3">
-                <p>1</p>
-                <p>#3DE7GH</p>
-                <p>Rp250,000</p>
-                <p>Pending</p>
-              </div>
-              {/* ^^^^^^^^^^^^^^ */}
-              <div className="flex flex-row justify-between text-[10px] md:text-[1rem] my-3">
-                <p>2</p>
-                <p>#3DE7GH</p>
-                <p>Rp250,000</p>
-                <p>Pending</p>
-              </div>
-              <div className="flex flex-row justify-between text-[10px] md:text-[1rem] my-3">
-                <p>3</p>
-                <p>#3DE7GH</p>
-                <p>Rp250,000</p>
-                <p>Pending</p>
-              </div>
-              <div className="flex flex-row justify-between text-[10px] md:text-[1rem] my-3">
-                <p>3</p>
-                <p>#3DE7GH</p>
-                <p>Rp250,000</p>
-                <p>Pending</p>
-              </div>
-              <div className="flex flex-row justify-between text-[10px] md:text-[1rem] my-3">
-                <p>3</p>
-                <p>#3DE7GH</p>
-                <p>Rp250,000</p>
-                <p>Pending</p>
-              </div>
-              <div className="flex flex-row justify-between text-[10px] md:text-[1rem] my-3">
-                <p>3</p>
-                <p>#3DE7GH</p>
-                <p>Rp250,000</p>
-                <p>Pending</p>
-              </div>
-              <div className="flex flex-row justify-between text-[10px] md:text-[1rem] my-3">
-                <p>3</p>
-                <p>#3DE7GH</p>
-                <p>Rp250,000</p>
-                <p>Pending</p>
-              </div>
-              <div className="flex flex-row justify-between text-[10px] md:text-[1rem] my-3">
-                <p>3</p>
-                <p>#3DE7GH</p>
-                <p>Rp250,000</p>
-                <p>Pending</p>
-              </div>
-              <div className="flex flex-row justify-between text-[10px] md:text-[1rem] my-3">
-                <p>3</p>
-                <p>#3DE7GH</p>
-                <p>Rp250,000</p>
-                <p>Pending</p>
-              </div>
-              <div className="flex flex-row justify-between text-[10px] md:text-[1rem] my-3">
-                <p>3</p>
-                <p>#3DE7GH</p>
-                <p>Rp250,000</p>
-                <p>Pending</p>
-              </div>
-              <div className="flex flex-row justify-between text-[10px] md:text-[1rem] my-3">
-                <p>3</p>
-                <p>#3DE7GH</p>
-                <p>Rp250,000</p>
-                <p>Pending</p>
-              </div>
-              <div className="flex flex-row justify-between text-[10px] md:text-[1rem] my-3">
-                <p>3</p>
-                <p>#3DE7GH</p>
-                <p>Rp250,000</p>
-                <p>Pending</p>
-              </div>
-              <div className="flex flex-row justify-between text-[10px] md:text-[1rem] my-3">
-                <p>3</p>
-                <p>#3DE7GH</p>
-                <p>Rp250,000</p>
-                <p>Pending</p>
-              </div>
-              <div className="flex flex-row justify-between text-[10px] md:text-[1rem] my-3">
-                <p>3</p>
-                <p>#3DE7GH</p>
-                <p>Rp250,000</p>
-                <p>Pending</p>
-              </div>
-              <div className="flex flex-row justify-between text-[10px] md:text-[1rem] my-3">
-                <p>3</p>
-                <p>#3DE7GH</p>
-                <p>Rp250,000</p>
-                <p>Pending</p>
-              </div>
-              <div className="flex flex-row justify-between text-[10px] md:text-[1rem] my-3">
-                <p>3</p>
-                <p>#3DE7GH</p>
-                <p>Rp250,000</p>
-                <p>Pending</p>
-              </div>
-              <div className="flex flex-row justify-between text-[10px] md:text-[1rem] my-3">
-                <p>3</p>
-                <p>#3DE7GH</p>
-                <p>Rp250,000</p>
-                <p>Pending</p>
-              </div>
-              <div className="flex flex-row justify-between text-[10px] md:text-[1rem] my-3">
-                <p>3</p>
-                <p>#3DE7GH</p>
-                <p>Rp250,000</p>
-                <p>Pending</p>
+          {/* Mulai Profile Settings Section  */}
+          <div className="rounded-[10px] bg-[#FCFCFC] shadow-[0_10px_29px_0px_rgba(0,0,0,0.1)] h-auto w-full md:w-[875px] md:h-auto mt-4 md:mt-0 p-3 md:p-10 overflow-auto">
+            <div className="flex flex-col">
+              <div className="flex justify-center">
+                <div className="w-full sm:max-w-xl sm:rounded-lg">
+                  <h2 className="pl-6 text-2xl font-bold sm:text-xl">
+                    Profile Settings
+                  </h2>
+                  <div className="grid max-w-2xl mx-auto mt-8">
+                    <div className="flex flex-col items-center space-y-5 sm:flex-row sm:space-y-0">
+                      <img
+                        className="object-cover w-40 h-40 p-1 rounded-full ring-2 ring-indigo-300 dark:ring-indigo-500"
+                        src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGZhY2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+                        alt="Bordered avatar"
+                      />
+                      <div className="flex flex-col space-y-5 sm:ml-8">
+                        <button
+                          type="button"
+                          onClick={() => setPressChangePicture(true)}
+                          className="py-3.5 px-7 text-base font-medium text-white focus:outline-none bg-eb-10 rounded-lg border border-indigo-200 hover:bg-indigo-900 focus:z-10 focus:ring-4 focus:ring-indigo-200 "
+                        >
+                          Change picture
+                        </button>
+                        {pressChangePicture && (
+                          <Modal
+                            open={pressChangePicture}
+                            onClose={() => setPressChangePicture(false)}
+                          >
+                            <div className="p-8 rounded-lg  max-w-md w-full">
+                              <h1 className="text-xl font-semibold mb-4">
+                                Update your profile picture
+                              </h1>
+
+                              <div className="mb-4">
+                                <input
+                                  type="text"
+                                  placeholder="https://yourimage.com"
+                                  className=" w-full px-4 py-2 border rounded-lg text-gray-700 focus:border-blue-500"
+                                />
+                              </div>
+                              <button className="w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none">
+                                Save
+                              </button>
+                            </div>
+                          </Modal>
+                        )}
+                      </div>
+                    </div>
+                    <div className="items-center mt-8 sm:mt-14 text-[#202142]">
+                      <div className="flex flex-col items-center w-full mb-2 space-x-0 space-y-2 sm:flex-row sm:space-x-4 sm:space-y-0 sm:mb-6">
+                        <div className="w-full">
+                          <label
+                            htmlFor="first_name"
+                            className="block mb-2 text-sm font-medium text-indigo-900 dark:text-white"
+                          >
+                            Name
+                          </label>
+                          <input
+                            type="text"
+                            id="first_name"
+                            className="bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 "
+                            placeholder="Your first name"
+                            defaultValue="Jane"
+                          />
+                        </div>
+                        <div className="w-full">
+                          <label
+                            htmlFor="last_name"
+                            className="block mb-2 text-sm font-medium text-indigo-900 dark:text-white"
+                          >
+                            Date
+                          </label>
+                          <input
+                            type="date"
+                            id="last_name"
+                            className="bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 "
+                          />
+                        </div>
+                      </div>
+                      {/* <div className="mb-2 sm:mb-6">
+                        <label
+                          htmlFor="email"
+                          className="block mb-2 text-sm font-medium text-indigo-900 dark:text-white"
+                        >
+                          Your email
+                        </label>
+                        <input
+                          type="email"
+                          id="email"
+                          className="bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 "
+                          placeholder="your.email@mail.com"
+                        />
+                      </div>
+                      <div className="mb-2 sm:mb-6">
+                        <label
+                          htmlFor="profession"
+                          className="block mb-2 text-sm font-medium text-indigo-900 dark:text-white"
+                        >
+                          Profession
+                        </label>
+                        <input
+                          type="text"
+                          id="profession"
+                          className="bg-indigo-50 border border-indigo-300 text-indigo-900 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 "
+                          placeholder="your profession"
+                        />
+                      </div>
+                      <div className="mb-6">
+                        <label
+                          htmlFor="message"
+                          className="block mb-2 text-sm font-medium text-indigo-900 dark:text-white"
+                        >
+                          Bio
+                        </label>
+                        <textarea
+                          id="message"
+                          rows={4}
+                          className="block p-2.5 w-full text-sm text-indigo-900 bg-indigo-50 rounded-lg border border-indigo-300 focus:ring-indigo-500 focus:border-indigo-500 "
+                          placeholder="Write your bio here..."
+                          defaultValue={""}
+                        />
+                      </div> */}
+                      <div className="flex justify-end">
+                        <button
+                          type="submit"
+                          className="text-white bg-indigo-700  hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800"
+                        >
+                          Save
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -309,4 +324,4 @@ const UserPage = () => {
   );
 };
 
-export default UserPage;
+export default SettingsPage;
