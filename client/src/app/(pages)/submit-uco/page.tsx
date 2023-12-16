@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import NavbarComponent from "@/components/Navbar";
 import { LocationType } from "@/types";
 import React from "react";
+import MapSubmitUCO from "@/components/Map";
 
 const fetchData = async () => {
   try {
@@ -47,30 +48,7 @@ const SubmitUcoPage = async () => {
       <div className="flex flex-row w-screen h-[720px] px-[8.5%] pb-[3%] gap-x-5">
         {/* Left Component */}
         <div className="flex flex-row w-[55%] justify-end items-start gap-x-2 h-[90%] shadow-xl rounded-[20px] overflow-hidden relative">
-          {/* Div For Maps */}
-          <img
-            src="https://source.unsplash.com/random/900x700/?maps"
-            className="object-cover rounded-lg w-full h-full"
-          />
-          {/* Input Maps */}
-          <div className="absolute w-[30%] h-[30%] left-0 m-[4%]">
-            <div className="flex flex-col w-full h-full items-start justify-start gap-y-2">
-              <input
-                type="text"
-                placeholder="Enter Location"
-                className="w-full bg-gray-200 h-[35px] text-gray-800 rounded-lg px-4 text-[14px]"
-              />
-              <input
-                placeholder="Enter Destination"
-                type="text"
-                className="w-full bg-gray-200 h-[35px] text-gray-800 rounded-lg px-4 text-[14px]"
-              />
-              {/* Button Search Place */}
-              <div className="flex justify-center px-4 text-white bg-eb-30 py-1 rounded-md text-[14px]">
-                See Prices
-              </div>
-            </div>
-          </div>
+          <MapSubmitUCO />
         </div>
 
         {/* Right Component */}
