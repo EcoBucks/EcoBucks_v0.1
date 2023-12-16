@@ -5,7 +5,10 @@ export type MyResponse<T> = {
 };
 
 export type LocationType = {
+  _id: string
   name: string;
+  lat: number
+  lng: number
   picture: string;
   coordinate: string;
   operationalHour: number;

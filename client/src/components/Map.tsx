@@ -6,10 +6,15 @@ import {
   Autocomplete,
   DirectionsRenderer,
 } from "@react-google-maps/api";
-import { useRef, useState } from "react";
-const center = { lat: -6.3019909302304615, lng: 106.65029591756523 };
+import { useEffect, useRef, useState } from "react";
 
-const MabSubmitUCO = ({ children }: { children?: React.ReactNode }) => {
+type loc = {
+  lat: number;
+  lng: number;
+};
+
+const MapSubmitUCO = ({ location, children }: { location: loc, children?:React.ReactNode }) => {
+    
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: "AIzaSyCXK97myyLm_Wd3-arEaT39nPdjzCtOshU",
     libraries: ["places"],
@@ -101,7 +106,7 @@ const MabSubmitUCO = ({ children }: { children?: React.ReactNode }) => {
         <div className="absolute left-0 top-0 h-[100%] w-[100%] z-0">
           {/* Google Map Component */}
           <GoogleMap
-            center={center}
+            center={location}
             zoom={15}
             mapContainerStyle={{ width: "100%", height: "100%" }}
             options={{
@@ -113,7 +118,7 @@ const MabSubmitUCO = ({ children }: { children?: React.ReactNode }) => {
             onLoad={(map) => setMap(map)}
           >
             {/* Marker and DirectionsRenderer components */}
-            <Marker position={center} />
+            <Marker position={location} />
             {directionsResponse && (
               <DirectionsRenderer directions={directionsResponse} />
             )}
@@ -187,4 +192,4 @@ const MabSubmitUCO = ({ children }: { children?: React.ReactNode }) => {
   );
 };
 
-export default MabSubmitUCO;
+export default MapSubmitUCO;
