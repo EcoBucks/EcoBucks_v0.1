@@ -7,14 +7,14 @@ import {
   DirectionsRenderer,
 } from "@react-google-maps/api";
 import { useEffect, useRef, useState } from "react";
-// let center = { lat: 3.5675618, lng: 98.6465939 };
 
 type loc = {
   lat: number;
   lng: number;
 };
 
-const Map2 = ({ location }: { location: loc }) => {
+const MapSubmitUCO = ({ location, children }: { location: loc, children?:React.ReactNode }) => {
+    
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: "AIzaSyCXK97myyLm_Wd3-arEaT39nPdjzCtOshU",
     libraries: ["places"],
@@ -83,6 +83,7 @@ const Map2 = ({ location }: { location: loc }) => {
       }
     }
   };
+
   function clearRoute() {
     setDirectionsResponse(null);
     setDistance("");
@@ -100,9 +101,9 @@ const Map2 = ({ location }: { location: loc }) => {
   }
   return (
     <>
-      <div className=" z-0">
+      <div className="w-full h-full z-0 relative">
         {/* Google Map */}
-        <div className="absolute left-0 top-0 h-[100%] w-[100%] z-0 pt-10">
+        <div className="absolute left-0 top-0 h-[100%] w-[100%] z-0">
           {/* Google Map Component */}
           <GoogleMap
             center={location}
@@ -124,65 +125,71 @@ const Map2 = ({ location }: { location: loc }) => {
           </GoogleMap>
         </div>
 
-        {/* Other Components */}
-        {/* <div className="relative z-10">
-          <div className="flex flex-row justify-between space-x-2">
-            <div className="flex-grow">
-              <Autocomplete>
-                <input
-                  type="text"
-                  placeholder="Origin"
-                  ref={originRef}
-                  className="w-full border rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-pink-500"
-                />
-              </Autocomplete>
-            </div>
-            <div className="flex-grow">
-              <Autocomplete>
-                <input
-                  type="text"
-                  placeholder="Destination"
-                  ref={destinationRef}
-                  className="w-full border rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-pink-500"
-                />
-              </Autocomplete>
-            </div>
-            <div className="flex">
-              <button
-                className="bg-pink-500 text-white px-4 py-2 rounded-l hover:bg-pink-600"
-                type="submit"
-                onClick={calculateRoute}
-              >
-                Calculate Route
-              </button>
-              <button
-                className="bg-gray-300 text-gray-700 px-4 py-2 rounded-r hover:bg-gray-400"
-                aria-label="Clear"
-                onClick={clearRoute}
-              >
-                Clear
-              </button>
-            </div>
+        {/* Input Field */}
+        <div className="absolute flex flex-col left-0 justify-start items-start space-x-2 h-[30%] w-[35%] m-[3%] gap-y-2">
+          <div className="flex flex-col w-full gap-y-2 ml-2">
+            {/* Origin Input */}
+            <Autocomplete>
+              <input
+                type="text"
+                placeholder="Origin"
+                ref={originRef}
+                className="w-full bg-white h-[35px] text-gray-900 rounded-lg px-4 text-[14px] focus:outline-none"
+              />
+            </Autocomplete>
+            {/* Destination Input */}
+            <Autocomplete>
+              <input
+                type="text"
+                placeholder="Destination"
+                ref={destinationRef}
+                className="w-full bg-white h-[35px] text-gray-900 rounded-lg px-4 text-[14px] focus:outline-none"
+              />
+            </Autocomplete>
           </div>
 
-          <div className="flex justify-between mt-4 space-x-4">
-            <p>Distance: {distance}</p>
-            <p>Duration: {duration}</p>
+          {/* Calculate Route Button */}
+
+          <div className="flex flex-row w-full gap-x-2">
             <button
-              className="bg-gray-200 hover:bg-gray-300 p-2 rounded-full"
-              aria-label="Center Back"
-              onClick={() => {
-                map?.panTo(center);
-                map?.setZoom(15);
-              }}
+              className="px-5 text-white bg-eb-30 py-1 rounded-md text-[14px]"
+              type="submit"
+              onClick={calculateRoute}
             >
-              Center Back
+              See Prices
+            </button>
+            <button
+              className="bg-gray-300 text-gray-700 px-4 py-1 rounded-md text-[14px]"
+              onClick={clearRoute}
+            >
+              Clear
             </button>
           </div>
-        </div> */}
+        </div>
+
+        {/* Distance, Duration, and Center Back Button */}
+
+        <div className="absolute flex flex-row items-center mt-4 space-x-4 bottom-0 w-full bg-eb-20 text-white px-[5%] h-[35px] transition-all">
+          <p>Distance: {distance}</p>
+          <p>Duration: {duration}</p>
+        </div>
+
+        {/* Back Center */}
+        <div className="absolute space-x-4 top-0 right-0 text-white m-[3%]">
+          <button
+            className="bg-gray-900 hover:bg-eb-30 rounded-md px-2 py-1 mx-auto"
+            aria-label="Center Back"
+            onClick={() => {
+              map?.panTo(center);
+              map?.setZoom(15);
+            }}
+          >
+            <span className="material-symbols-outlined">distance</span>
+          </button>
+        </div>
       </div>
     </>
   );
 };
 
-export default Map2;
+export default MapSubmitUCO;
