@@ -3,14 +3,13 @@ import CardEducation from "@/components/CardEducation";
 import CardLocation from "@/components/CardLocation";
 import Footer from "@/components/Footer";
 import Map2 from "@/components/Map";
+import MapDetails from "@/components/MapDetails";
 import NavbarComponent from "@/components/Navbar";
 import { LocationType } from "@/types";
 import React from "react";
 
 const LocationDetailPage = async ({ params }: { params: { id: string } }) => {
-  // console.log(params.id);
   const data = await fetchDataId(params.id);
-  // console.log(data, "<<<<<<<<<");
 
   const latLng = {
     lat: data?.lat || 0,
@@ -133,7 +132,7 @@ const LocationDetailPage = async ({ params }: { params: { id: string } }) => {
                 src="https://source.unsplash.com/random/900x700/?indonesia+6"
                 className="object-cover rounded-lg w-full h-full"
               /> */}
-              <Map2 location={latLng} />
+              <MapDetails location={latLng} />
             </div>
           </div>
         </div>

@@ -8,13 +8,9 @@ import {
 } from "@react-google-maps/api";
 import { useEffect, useRef, useState } from "react";
 
-type loc = {
-  lat: number;
-  lng: number;
-};
+let center = { lat: 3.5675618, lng: 98.6465939 };
 
-const MapSubmitUCO = ({ location, children }: { location: loc, children?:React.ReactNode }) => {
-    
+const MapSubmitUCO = ({ children }: { children?: React.ReactNode }) => {
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: "AIzaSyCXK97myyLm_Wd3-arEaT39nPdjzCtOshU",
     libraries: ["places"],
@@ -106,7 +102,7 @@ const MapSubmitUCO = ({ location, children }: { location: loc, children?:React.R
         <div className="absolute left-0 top-0 h-[100%] w-[100%] z-0">
           {/* Google Map Component */}
           <GoogleMap
-            center={location}
+            center={center}
             zoom={15}
             mapContainerStyle={{ width: "100%", height: "100%" }}
             options={{
@@ -118,7 +114,7 @@ const MapSubmitUCO = ({ location, children }: { location: loc, children?:React.R
             onLoad={(map) => setMap(map)}
           >
             {/* Marker and DirectionsRenderer components */}
-            <Marker position={location} />
+            <Marker position={center} />
             {directionsResponse && (
               <DirectionsRenderer directions={directionsResponse} />
             )}
