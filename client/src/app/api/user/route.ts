@@ -11,9 +11,9 @@ const userInput = z.object({
   email: z.string().email(),
   job: z.string(),
   dateOfBirth: z.string(),
-  walletBalance: z.number().optional(),
-  profilePicture: z.string().optional(),
-  role: z.string().optional(),
+  walletBalance: z.number().optional().nullable(),
+  profilePicture: z.string().optional().nullable(),
+  role: z.string().optional().nullable(),
 });
 
 export const userLogin = z.object({
@@ -22,25 +22,30 @@ export const userLogin = z.object({
 });
 
 export const POST = async (request: Request) => {
-  const data = await request.json();
-  const parsedData = userInput.safeParse(data);
-
-  if (!parsedData.success) {
-    throw parsedData.error;
-  }
-
-  const user = await createUser(parsedData.data);
-
-  return NextResponse.json(
-    {
-      statusCode: 201,
-      message: "succcessfully create user",
-      data: user,
-    },
-    {
-      status: 201,
+  try {
+    
+    const data = await request.json();
+    const parsedData = userInput.safeParse(data);
+  
+    if (!parsedData.success) {
+      throw parsedData.error;
     }
-  );
+  
+    const user = await createUser(parsedData.data);
+  
+    return NextResponse.json(
+      {
+        statusCode: 201,
+        message: "succcessfully create user",
+        data: user,
+      },
+      {
+        status: 201,
+      }
+    );
+  } catch (error) {
+    console.log(error);
+  }
   // console.log(data, 'ini dari route');
 };
 

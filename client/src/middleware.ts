@@ -12,7 +12,7 @@ const middleware = async (request: NextRequest) => {
     console.log(request.method, request.url);
   }
 
-  if (request.url.includes("/api")) {
+  if (request.url.includes("/api/location" && "/api/uco")) {
     console.log("API", request.method, request.url);
 
     const cookiesStore = cookies();

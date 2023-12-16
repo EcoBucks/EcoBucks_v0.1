@@ -1,3 +1,4 @@
+import { onSubmitRegister } from "@/app/(action)/actionRegister";
 import { ButtonMT } from "@/components/MaterialTailwind";
 import { MyResponse } from "@/types";
 import { revalidatePath } from "next/cache";
@@ -7,34 +8,8 @@ import { redirect } from "next/navigation";
 import React from "react";
 
 // API Register diselesaikan dulu
-const url = "http://localhost:3000/";
+
 const RegisterPage = () => {
-  const onSubmitRegister = async (formData: FormData) => {
-    "use server";
-
-    const response = await fetch(`${url}api/user`, {
-      method: "POST",
-      body: JSON.stringify({
-        name: formData.get("name"),
-        password: formData.get("password"),
-        email: formData.get("email"),
-        job: formData.get("job"),
-        dateOfBirth: formData.get("dateOfBirth"),
-        walletBalance: formData.get("walletBalance"),
-        profilPicture: formData.get("profilePicture"),
-        role: formData.get("role"),
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    const responseJson: MyResponse<unknown> = await response.json();
-
-    console.log(responseJson);
-    // revalidatePath("/login");
-    redirect("/login");
-  };
   return (
     <>
       <div className="h-screen w-screen items-center flex justify-center bg-gray-100">
