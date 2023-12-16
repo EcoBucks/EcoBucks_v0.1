@@ -8,6 +8,7 @@ import { LocationType } from "@/types";
 import { fetchData } from "./(action)/fetchDataHome";
 import { fetchProvince } from "./(action)/fetchProvince";
 import UcoForm from "@/components/UcoForm";
+import { redirect } from "next/navigation";
 
 export default async function Home() {
   const slides = [
@@ -17,7 +18,18 @@ export default async function Home() {
     "https://source.unsplash.com/random/900x700/?person+4",
   ];
 
-  const data = await fetchData();
+  type res = {
+    statusCode: 200;
+    message: "successfully read Location";
+    data: LocationType[];
+  };
+
+  const data: res = await fetchData();
+  // console.log(data, "=========");
+
+  if (!data) {
+    redirect("http://localhost:3000/login");
+  }
   const provinces = await fetchProvince();
 
   return (
@@ -92,7 +104,7 @@ export default async function Home() {
 
           {/* Card Bar */}
           <div className="overflow-x-auto flex flex-row w-full h-[80%] items-start justify-start pl-1 py-5 gap-x-5">
-            {data?.map((location, index) => (
+            {data?.data?.map((location) => (
               <Card key={location + "id"} location={location} />
             ))}
           </div>

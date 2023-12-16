@@ -6,15 +6,15 @@ const DATABASE_NAME = "Eco_Bucks";
 const COLLECTION_NAME = "user";
 
 export type userModel = {
-  _id: ObjectId;
+  _id: string
   name: string;
-  password: string;
-  email: string;
-  job: string;
-  dateOfBirth: string;
-  walletBalance?: number;
-  profilePicture?: string;
-  role?: string;
+    password: string;
+    email: string;
+    job: string;
+    dateOfBirth: string;
+    walletBalance?: number | null | undefined;
+    profilePicture?: string | null | undefined;
+    role?: string | undefined | null;
 };
 
 export type UserModelCreateInput = Omit<userModel, "_id">;
@@ -27,22 +27,22 @@ export const getDb = async () => {
 };
 
 export const createUser = async (user: UserModelCreateInput) => {
-  // console.log(user, '<<<<<<<<<<<');
+  console.log(user, '<<<<<<<<<<<');
 
   //! buat route sendiri buat google auth
 
-  let data;
-  if (user.role == "driver") {
-    data = {
-      ...user,
-      password: hashPw(user.password),
-      walletBalance: 0,
-      profilePicture: "",
-      role: "drivers",
-    };
-  }
+  // let data;
+  // if (user.role == "driver") {
+  //   data = {
+  //     ...user,
+  //     password: hashPw(user.password),
+  //     walletBalance: 0,
+  //     profilePicture: "",
+  //     role: "drivers",
+  //   };
+  // }
 
-  data = {
+  let data = {
     ...user,
     password: hashPw(user.password),
     walletBallance: 0,
@@ -52,7 +52,7 @@ export const createUser = async (user: UserModelCreateInput) => {
 
   const db = await getDb();
   const result = await db.collection(COLLECTION_NAME).insertOne(data);
-
+  // console.log(result, '<<<<<<<<<<<<<< user ni bost');
   return result;
 };
 

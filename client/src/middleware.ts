@@ -12,11 +12,12 @@ const middleware = async (request: NextRequest) => {
     console.log(request.method, request.url);
   }
 
-  if (request.url.includes("/api")) {
+  if (request.url.includes("/api/location" && "/api/uco")) {
     console.log("API", request.method, request.url);
 
     const cookiesStore = cookies();
-    const token = cookiesStore.get("access_token");
+    const token = cookiesStore.get("token");
+    // console.log(token, '<<<<<<');
     // const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NzA0NGQyOTQwMjM2MmJiODBkMGM0OCIsImVtYWlsIjoiYW1hbmdAbWFpbC5jb20iLCJpYXQiOjE3MDIwMDk3MjZ9.HEtPv7r9jxra3zMGxXDr66dGL61wG9oCwJFOQt2v1xc"
     if (!token) {
       return NextResponse.json({
@@ -39,7 +40,7 @@ const middleware = async (request: NextRequest) => {
       headers: requestHeaders,
     });
   }
-  console.log(NextResponse);
+  // console.log(NextResponse, '=============');
   return NextResponse.next();
 };
 

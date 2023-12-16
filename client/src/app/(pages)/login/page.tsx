@@ -4,13 +4,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import React from "react";
 import { cookies } from "next/headers";
-import { handleLogin } from "./action";
-
-// API untuk loginnya diselesaikan dulu
-// Get The Token
-// Then Middleware Authentication
-const token = cookies().get("access_token");
-console.log(token);
+import { handleLogin } from "@/app/(action)/action";
 
 const LoginPage = () => {
   return (

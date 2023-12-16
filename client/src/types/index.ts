@@ -10,7 +10,6 @@ export type LocationType = {
   lat: number
   lng: number
   picture: string;
-  coordinate: string;
   operationalHour: number;
   province: string;
   address: string;
