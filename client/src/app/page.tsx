@@ -65,7 +65,7 @@ export default async function Home() {
         <div className="flex flex-col w-full">
           <p className="text-eb-30 text-[14px]">Location EcoBucks</p>
           <p className="text-[50px] raleway font-medium -mt-2">
-            Store UCO to nearest location
+            Store UCO to Nearest Location
           </p>
         </div>
 

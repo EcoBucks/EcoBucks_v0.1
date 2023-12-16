@@ -3,6 +3,7 @@ import CardEducation from "@/components/CardEducation";
 import CardLocation from "@/components/CardLocation";
 import Footer from "@/components/Footer";
 import Map2 from "@/components/Map";
+import MapDetails from "@/components/MapDetails";
 import NavbarComponent from "@/components/Navbar";
 import { LocationType } from "@/types";
 import { redirect } from "next/navigation";
@@ -16,7 +17,6 @@ const LocationDetailPage = async ({ params }: { params: { id: string } }) => {
   };
 
   const data = (await fetchDataId(params.id)) as res | undefined;
-  // console.log(data, "<<<<<<<<<");
 
   if (!data) {
     redirect("http://localhost:3000/login");
@@ -145,7 +145,7 @@ const LocationDetailPage = async ({ params }: { params: { id: string } }) => {
                 src="https://source.unsplash.com/random/900x700/?indonesia+6"
                 className="object-cover rounded-lg w-full h-full"
               /> */}
-              <Map2 location={latLng} />
+              <MapDetails location={latLng} />
             </div>
           </div>
         </div>
