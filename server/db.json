@@ -231,5 +231,14 @@
     "Sumatera Barat",
     "Sumatera Selatan",
     "Sumatera Utara"
+  ],
+  "videos": [
+    {
+      "videoUrl": "https://www.youtube.com/embed/JHC8ulRKSMk?si=HtVD8j36K8cQQOMe",
+      "thumbnail": "https://i.imgur.com/LQVC86I.jpeg",
+      "title": "Sisa Minyak Jelantah Bisa Dibuat Jadi Bahan Bakar, Lho!",
+      "author": "Madani Berkelanjutan",
+      "description": "Minyak goreng semakin mahal, tapi sayang banget sisa masak cuma bisa jadi limbah. Kamu tahu gak sih, sob? Kalau Minyak Jelantah bisa diolah jadi Bahan Bakar Nabati, yaitu alternatif bahan bakar fosil yang diproses menggunakan bahan organik. Selain dari minyak jelantah atau sawit, ada banyak bahan baku yang bisa digunakan menjadi Bahan Bakar Nabati lho!"
+    }
   ]
 }
