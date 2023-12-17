@@ -9,7 +9,7 @@
       "walletBalance": 0,
       "profilePicture": "https://source.unsplash.com/random/900x700/?female",
       "role": "User",
-      "ucoBalance": 0
+      "pickupVoucher": 10
     },
     {
       "name": "Monroe Gibson",
@@ -20,7 +20,7 @@
       "walletBalance": 0,
       "profilePicture": "https://source.unsplash.com/random/900x700/?female",
       "role": "User",
-      "ucoBalnce": 0
+      "pickupVoucher": 10
     },
     {
       "name": "Melysaa Macy",
@@ -31,7 +31,7 @@
       "walletBalance": 0,
       "profilePicture": "https://source.unsplash.com/random/900x700/?female",
       "role": "User",
-      "ucoBalnce": 0
+      "pickupVoucher": 10
     },
     {
       "name": "Dex Cocks",
@@ -42,7 +42,7 @@
       "walletBalance": 0,
       "profilePicture": "https://source.unsplash.com/random/900x700/?male",
       "role": "Driver",
-      "ucoBalnce": 0
+      "pickupVoucher": 10
     },
     {
       "name": "Jhon Doe",
@@ -53,7 +53,7 @@
       "walletBalance": 0,
       "profilePicture": "https://source.unsplash.com/random/900x700/?male",
       "role": "Driver",
-      "ucoBalnce": 0
+      "pickupVoucher": 10
     }
   ],
   "uco-balance": [
@@ -78,7 +78,7 @@
       "name": "Champion Cafe Medan",
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGxDLgd2EZmjdZiaAejbsPLgZJwso4ZI8Fwg&usqp=CAU",
       "lat": 3.5675618,
-      "lng": 98.6465939,
+      "long": 98.6465939,
       "operationalHour": 480,
       "province": "Sumatera Utara",
       "address": "Jl. Dr. Mansyur No.134, Padang Bulan Selayang I, Kec. Medan Selayang, Kota Medan"
@@ -87,7 +87,7 @@
       "name": "Bakso Granat Cak Ri",
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIrxcHp_KJiXyRGOGgbyC5tpqN_tE-fJ9WtA&usqp=CAU",
       "lat": -7.3101653,
-      "lng": 112.7301682,
+      "long": 112.7301682,
       "operationalHour": 480,
       "province": "Jawa Timur",
       "address": "Jl. Ketintang No.199, Wonokromo, Kec. Wonokromo, Surabaya"
@@ -96,7 +96,7 @@
       "name": "Kopi Patlapan",
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuWbn53bmztLopVy-SBCF1hzVR8haOxoedRg&usqp=CAU",
       "lat": -6.2455727,
-      "lng": 106.8291992,
+      "long": 106.8291992,
       "operationalHour": 400,
       "province": "DKI Jakarta",
       "address": "Jl. Mampang Prapatan 4 No: 48, Jl. Mampang Prapatan IV No.1, RT.7/RW.2, Tegal Parang, Kec. Mampang Prpt., Kota Jakarta Selatan"
@@ -105,7 +105,7 @@
       "name": "Bakso Kuta Radja",
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIrxcHp_KJiXyRGOGgbyC5tpqN_tE-fJ9WtA&usqp=CAU",
       "lat": 5.5572762,
-      "lng": 95.3102063,
+      "long": 95.3102063,
       "operationalHour": 480,
       "province": "Aceh",
       "address": "Merduati, Kec. Kuta Raja, Kota Banda Aceh"
@@ -114,7 +114,7 @@
       "name": "Mexico Cell",
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVktmEwwy0nQDjKeiYhio8RjnoMDgfWcmEMw&usqp=CAU",
       "lat": -2.9684166,
-      "lng": 104.7818195,
+      "long": 104.7818195,
       "operationalHour": 400,
       "province": "Sumatera Selatan",
       "address": "Jl. Pendawa No.508, 2 Ilir, Kec. Ilir Tim. II, Kota Palembang"
@@ -123,7 +123,7 @@
       "name": "MM Dzaki",
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRffSvke1PqoU2NVp-WpRrSk6bxJGZMpsMysA&usqp=CAU",
       "lat": -0.9265594,
-      "lng": 100.4064506,
+      "long": 100.4064506,
       "operationalHour": 400,
       "province": "Sumatera Barat",
       "address": "Jl. Durian Tarung, Ps. Ambacang, Kec. Kuranji, Kota Padang"
@@ -132,7 +132,7 @@
       "name": "Rajau Petinggi",
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKiaK3K-FW227qt7Fa4w_pw0xn3HSzaxidOg&usqp=CAU",
       "lat": -3.7952089,
-      "lng": 102.2682409,
+      "long": 102.2682409,
       "operationalHour": 480,
       "province": "Bengkulu",
       "address": "Jl. Basuki Rahmat, Suka Merindu, Kec. Ratu Samban, Kota Bengkulu"
@@ -141,7 +141,7 @@
       "name": "Khun Aroy Thai Cuisine Resto",
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_sukvxqdRoZBvyNSrsU5X8IgH9FZNi4uzCg&usqp=CAU",
       "lat": 0.5122404,
-      "lng": 101.4484477,
+      "long": 101.4484477,
       "operationalHour": 480,
       "province": "Riau",
       "address": "Jl. Jend. Sudirman No.389 A, Simpang Empat, Kec. Pekanbaru Kota, Kota Pekanbaru"
@@ -150,7 +150,7 @@
       "name": "Gudeg Bu Ratna",
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2KbYThREDmqrglwIgU6FzLemQ2s3NjcPR7A&usqp=CAU",
       "lat": -6.9035003,
-      "lng": 107.615212,
+      "long": 107.615212,
       "operationalHour": 480,
       "province": "Jawa Barat",
       "address": "Jl. Sultan Tirtayasa No.15-19, Citarum, Kec. Bandung Wetan, Kota Bandung"
@@ -159,7 +159,7 @@
       "name": "Bebek Ireng Mak Peng",
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSiMX4K-5pjKHNeu7a8r-i0qpILRoZYt-eBQ&usqp=CAU",
       "lat": -6.9855207,
-      "lng": 110.4172424,
+      "long": 110.4172424,
       "operationalHour": 400,
       "province": "Jawa Tengah",
       "address": "Jl. Batan Selatan, Miroto, Kec. Semarang Tengah, Kota Semarang"
@@ -168,7 +168,7 @@
       "name": "Rumah Makan Andalas",
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaJxbeHm04lsqbnHe-vP1p5nLB2upyAavESw&usqp=CAU",
       "lat": -7.7962342,
-      "lng": 110.3690418,
+      "long": 110.3690418,
       "operationalHour": 480,
       "province": "Daerah Istimewa Yogyakarta",
       "address": "Jl. Mataram No.8, Suryatmajan, Kec. Danurejan, Kota Yogyakarta"
@@ -177,7 +177,7 @@
       "name": "Kios Wenang",
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHaRnDDb_Q3-pJ0LLQvhDWVgGoaIXuXum4SA&usqp=CAU",
       "lat": 1.4814622,
-      "lng": 124.8388493,
+      "long": 124.8388493,
       "operationalHour": 540,
       "province": "Sulawesi Utara",
       "address": "Jl. Ch. Taulu, Wenang Sel., Kec. Wenang, Kota Manado"
@@ -185,16 +185,30 @@
   ],
   "transaction": [
     {
-      "userId": 2,
-      "locationId": 1
-    },
+      "userId": "ID",
+      "status": "string",
+      "phoneNumbers": "string",
+      "location": "string",
+      "ucoBalance": "number",
+      "ucoCategory": "string",
+      "latLocation": "number",
+      "longLocation": "number",
+      "latDestination": "number",
+      "longDestination": "number",
+      "pickupDate": "date",
+      "pikcupTime": "string",
+      "amountWallet": "number"
+    }
+  ],
+  "education": [
     {
-      "userId": 1,
-      "locationId": 3
-    },
-    {
-      "userId": 3,
-      "locationId": 1
+      "title": "string",
+      "slug": "string",
+      "description": "string",
+      "thumbnail": "string",
+      "videoUrl": "string",
+      "category": "string",
+      "authorName": "string"
     }
   ],
   "provinces": [

@@ -25,7 +25,6 @@ export default async function Home() {
   };
 
   const data: res = await fetchData();
-  // console.log(data, "=========");
 
   if (!data) {
     redirect("http://localhost:3000/login");
