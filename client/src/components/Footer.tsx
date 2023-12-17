@@ -1,3 +1,4 @@
+import { subs } from "@/app/(action)/ACTIONNODEMAILER";
 import Image from "next/image";
 import React from "react";
 
@@ -87,17 +88,25 @@ const Footer = () => {
             <h1 className="text-gray-500 font-light -mt-2 text-[13px]">
               Stay connected to be informed about us
             </h1>
-            <div className="flex flex-row gap-x-2 w-[100%] py-2 h-[35%]">
+            <form
+              action={subs}
+              className="flex flex-row gap-x-2 w-[100%] py-2 h-[35%]"
+            >
+              {/* <div className="flex flex-row gap-x-2 w-[100%] py-2 h-[35%]"> */}
               <input
                 type="text"
+                name="email"
                 placeholder="Tell us your email"
                 className="w-full bg-gray-300 rounded-md px-4 text-gray-800 text-[14px] font-bold dm-sans"
               />
-              <div className="w-[40%] h-full bg-eb-10 justify-center items-center flex flex-row rounded-lg text-white gap-x-1 px-2 pb-1">
+              <button className="w-[40%] h-full bg-eb-10 justify-center items-center flex flex-row rounded-lg text-white gap-x-1 px-2 pb-1">
                 <span className="material-symbols-outlined">mail</span>
                 <p>send</p>
-              </div>
-            </div>
+              </button>
+              {/* <div className="w-[40%] h-full bg-eb-10 justify-center items-center flex flex-row rounded-lg text-white gap-x-1 px-2 pb-1"> */}
+              {/* </div> */}
+              {/* </div> */}
+            </form>
           </div>
         </div>
       </div>
