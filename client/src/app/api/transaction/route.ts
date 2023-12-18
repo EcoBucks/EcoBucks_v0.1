@@ -36,14 +36,19 @@ export const POST = async (request: Request) => {
 export const PUT = async (request: Request) => {
     const userId =  request.headers.get("x-user-id")
 
-    await updateUBallance(userId) 
-
-    return NextResponse.json(
-        {
+    if (userId) {
+        await updateUBallance(userId);
+        return NextResponse.json({
             statusCode: 201,
-            message: "successfully updated sumUco"
-        }
-    )
+            message: "Successfully updated sumUco",
+        });
+    } else {
+        // Handle the case where userId is null (optional)
+        return NextResponse.json({
+            statusCode: 400,
+            message: "User ID not found in headers",
+        });
+    }
 
 
 }
