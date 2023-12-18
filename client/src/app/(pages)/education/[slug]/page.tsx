@@ -93,7 +93,7 @@ const EducationDetail = async ({ params }: { params: { slug: string } }) => {
                   href="whatsapp://send?text=https://youtu.be/RwH53TJ_Sjk?si=B5Ggh3zVzNVndKHD"
                   data-action="share/whatsapp/share"
                   target="_blank"
-                  className="flex items-center bg-[#557f6b] text-white rounded-md p-3"
+                  className="flex items-center bg-[#052E1B] text-white rounded-md p-3"
                 >
                   Share to WhatsApp
                 </Link>

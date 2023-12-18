@@ -7,7 +7,7 @@ const CopyButton = () => {
   };
   return (
     <button onClick={copyToClipboard}>
-      <div className="bg-[#557f6b] rounded-full p-3">
+      <div className="bg-[#052E1B] rounded-full p-3">
         <svg
           width={24}
           height={24}
