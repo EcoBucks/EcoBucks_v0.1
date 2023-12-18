@@ -7,13 +7,7 @@ import { LocationType } from "@/types";
 import React from "react";
 
 const LocationPage = async () => {
-  type res = {
-    statusCode: 200;
-    message: "successfully read Location";
-    data: LocationType[];
-  };
-
-  const data: res = await fetchData();
+  const data = await fetchData();
 
   return (
     <>
@@ -52,7 +46,7 @@ const LocationPage = async () => {
           <div className="flex flex-col w-full h-[85%] mt-[2%] justify-start items-center pt-[2%] gap-y-2">
             <div className="overflow-auto w-full h-full">
               <div className="flex flex-col w-full gap-y-2 items-center justify-center py-4">
-                {data?.data?.map((location, index) => (
+                {data?.map((location, index) => (
                   <CardLocation key={index} location={location} />
                 ))}
               </div>

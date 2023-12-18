@@ -16,15 +16,15 @@ const LocationDetailPage = async ({ params }: { params: { id: string } }) => {
     data: LocationType;
   };
 
-  const data = (await fetchDataId(params.id)) as res | undefined;
+  const data = await fetchDataId(params.id);
 
-  if (!data) {
-    redirect("http://localhost:3000/login");
-  }
+  // if (!data) {
+  //   redirect("http://localhost:3000/login");
+  // }
 
   const latLng = {
-    lat: data?.data.lat || 0,
-    lng: data?.data.lng || 0,
+    lat: data?.lat || 0,
+    lng: data?.lng || 0,
   };
 
   return (
@@ -56,7 +56,7 @@ const LocationDetailPage = async ({ params }: { params: { id: string } }) => {
         <div className="flex flex-row w-[55%] justify-end items-start gap-x-2">
           <div className="flex bg-black w-[75%] h-[90%] rounded-[20px]">
             <img
-              src={data?.data.picture}
+              src={data?.picture}
               className="object-cover rounded-lg w-full h-full"
             />
           </div>
@@ -105,13 +105,11 @@ const LocationDetailPage = async ({ params }: { params: { id: string } }) => {
           <div className="flex flex-col w-full h-full justify-between items-center gap-y-4">
             <div className="flex flex-col h-[60%] gap-y-1">
               <div className="flex flex-row w-full justify-start items-center gap-x-4">
-                <h1 className="raleway font-bold text-[35px]">
-                  {data?.data.name}
-                </h1>
-                <h1 className="raleway text-[18px]">{data?.data.province}</h1>
+                <h1 className="raleway font-bold text-[35px]">{data?.name}</h1>
+                <h1 className="raleway text-[18px]">{data?.province}</h1>
               </div>
               <p className="text-gray-500 text-[14px] pr-[4%] leading-7">
-                {data?.data.address}
+                {data?.address}
               </p>
             </div>
             <div className="flex flex-col justify-start items-start w-full text-[16px] gap-y-2 py-4 text-gray-600">

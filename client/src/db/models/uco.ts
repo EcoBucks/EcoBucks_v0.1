@@ -5,9 +5,19 @@ const DATABASE_NAME = "Eco_Bucks"
 const COLLECTION_NAME = "transaction"
 const COLLECTION_USER = "user"
 
-type ucoModel = {
+export type ucoModels = {
+    _id: string
     userId: string
-    ucoBallance?: number
+    ucoBalance?: number
+    status?: string 
+    phoneNumbers: number
+    locationDetails: string
+    pickUpDate: string
+    pickUpTime: string
+}
+export type ucoModel = {
+    userId: string
+    ucoBalance?: number
     status?: string 
     phoneNumbers: number
     locationDetails: string
@@ -30,48 +40,133 @@ export const createUBallance = async (uco: ucoModel) => {
     const db = await getDb()
 
     // const ucoData = uco
+    const ucoBalance = Number(uco.ucoBalance);
+    let sumUco
+    if(uco.ucoBalance){
+         sumUco = ucoBalance * 3500 
+    }
 
     const data = {
         ...uco,
+        ucoBalance: sumUco,
         userId: new ObjectId(uco.userId),
-        status:"unpayed"
+        status:"pending"
     }
 
     console.log(data, 'MODel <<<<<<<<<<<');
 
-    const result = await db.collection(COLLECTION_NAME).insertOne(data)
+    await db.collection(COLLECTION_NAME).insertOne(data)
 
-    const user = await db.collection(COLLECTION_USER).findOne({_id: new ObjectId(uco.userId)})
-    console.log(user, '+++++++++++');
-
-    const ucoBalance = Number(uco.ucoBallance);
-    const walletBallance = user?.walletBallance;
     
+    
+    
+    
+    
+    //! ini update nanti kalo dah 
+    // const user = await db.collection(COLLECTION_USER).findOne({_id: new ObjectId(uco.userId)})
+    // console.log(user, '+++++++++++');
 
-      const sumUco = ucoBalance * 3500 + walletBallance;
-      console.log(sumUco, '+++++++ user update');
+    // const sumUco = ucoBalance * 3500 + walletBallance;
+    
+    // const walletBallance = user?.walletBallance;
+    //   console.log(sumUco, '+++++++ user update');
 
-     const dataUser = await db.collection(COLLECTION_USER).updateOne(
-        {_id: new ObjectId(uco.userId)},
-        {$set: {walletBallance: sumUco}}
-        )
 
-    console.log(dataUser, '====== data update');
+    //  const dataUser = await db.collection(COLLECTION_USER).updateOne(
+    //     {_id: new ObjectId(uco.userId)},
+    //     {$set: {walletBallance: sumUco}}
+    //     )
+
+    // console.log(dataUser, '====== data update');
 
 
 }
 
-export const updateUBallance = async (userId: string) => {
+export const getTransaction = async (userId: string | null) => {
+
+    // console.log(userId, '=======model');
+
+    const db = await getDb()
+    let data
+    if(userId){
+         data = await db.collection(COLLECTION_NAME).find({userId: new ObjectId(userId)}).toArray() 
+    }else{
+        console.log("wtfff");
+    }
+
+
+    // console.log(data);
+
+    return data 
+
+}
+
+export const allTrans = async () => {
+    const db = await getDb()
+
+    const data = await db.collection(COLLECTION_NAME).find().toArray() 
+
+    console.log(data);
+
+    return data 
+}
+
+
+export const updateUBallance = async (id: string) => {
     const db = await getDb()
 
 
-   const result = await db.collection(COLLECTION_USER).updateOne(
-        {_id: new ObjectId(userId)},
-        {$set: {walletBallance: 0}}
+   const result = await db.collection(COLLECTION_NAME).updateOne(
+        {_id: new ObjectId(id)},
+        {$set: {status: "ongoing"}}
         )
 
 
         
     return result 
 
+}
+
+export const updateUBallanceOnGoing = async (id: string) => {
+    const db = await getDb()
+
+
+   const result = await db.collection(COLLECTION_NAME).updateOne(
+        {_id: new ObjectId(id)},
+        {$set: {status: "ongoing"}}
+        )
+
+
+    console.log(result, '========= model');
+    return result 
+
+}
+
+export const updateUWallet = async (id: string) => {
+    const db = await getDb();
+
+    // Convert id to ObjectId
+    const objectId = new ObjectId(id);
+
+    const uco: ucoModels = await db.collection(COLLECTION_NAME).findOne({ _id: objectId }) as any;
+    const user: userModel = await db.collection(COLLECTION_USER).findOne({ _id: new ObjectId(uco.userId) }) as any;
+
+    console.log(uco.ucoBalance, '+++++ ucoBalance +++++');
+
+    let sumUco = 0;
+    if (uco.ucoBalance) {
+        sumUco = uco.ucoBalance + user.walletBallance;
+    }
+
+    console.log(sumUco, '+++++ sumUco +++++');
+
+    await db.collection(COLLECTION_USER).updateOne(
+        { _id: new ObjectId(uco.userId) },
+        { $set: { walletBallance: sumUco } }
+    );
+
+    await db.collection(COLLECTION_NAME).updateOne(
+        { _id: new ObjectId(uco._id) },
+        { $set: { status: "complete" } }
+    )
 }

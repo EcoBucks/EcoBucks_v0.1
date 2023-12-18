@@ -1,18 +1,19 @@
 import { Db, ObjectId } from "mongodb";
 import { getMongoClientInstance } from "../config";
 
+type Location = {
+    _id: string
+    name: string;
+    picture: string;
+    lat: number
+    lng: number
+    operationalHour: number;
+    province: string;
+    address: string;
+}
 const DATABASE_NAME = "Eco_Bucks"
 const COLLECTION_NAME = "location"
 
-export type locationModel = {
-    _id: ObjectId,
-    name: string,
-    picture: string,
-    coordinate: string,
-    operationalHour: number,
-    province: string,
-    address: string
-}
 
 
 export const getDb = async() => {
@@ -25,15 +26,25 @@ export const getDb = async() => {
 export const getLocation = async () => {
     
     const db = await getDb()
-    const result  = (await db.collection(COLLECTION_NAME).find().toArray()) as locationModel[]
+    let result  = (await db.collection(COLLECTION_NAME).find().toArray()) as Location[]
 
-    return result
+    // const locations: Location[] = result.map((location: any) => ({
+    //     _id: location._id.toHexString(),
+    //     name: location.name,
+    //     lat: location.lat,
+    //     lng: location.lng,
+    //     picture: location.picture,
+    //     // Add other properties as needed
+    // }));
+
+    return result;
+
 }
 
 export const getLocationById = async (id: string) => {
 
     const db = await getDb()
-    const [result]  = (await db.collection(COLLECTION_NAME).find({_id: new ObjectId(id)}).toArray()) as locationModel[]
+    const [result]  = (await db.collection(COLLECTION_NAME).find({_id: new ObjectId(id)}).toArray()) as Location[]
 
     return result
 

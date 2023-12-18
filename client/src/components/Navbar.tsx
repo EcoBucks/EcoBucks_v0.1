@@ -1,10 +1,9 @@
-import { getUser } from "@/app/(action)/actionGetUser";
-import { currencyFormatted } from "@/lib/ConstantFunction";
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import ButtonWallet from "./WalletButton";
-const NavbarComponent = async () => {
+const NavbarComponent = () => {
   // const data = await getUser();
 
   // console.log(data, "======ini navbar");
@@ -43,22 +42,6 @@ const NavbarComponent = async () => {
             Our Partners
           </button>
         </div>
-
-        {/* <button className="flex justify-between px-[1.1%] items-center shadow-md rounded-xl gap-x-4">
-          <div className="flex flex-row justify-center h-full items-center gap-x-2">
-            <span className="material-symbols-outlined text-eb-20">
-              account_balance_wallet
-            </span>
-            <p className="text-sm font-bold">
-              {currencyFormatted(data.data.walletBallance)},-
-            </p>
-          </div>
-          <div className="flex justify-center items-center h-12">
-            <p className="bg-black text-white rounded-lg w-8 h-8 text-center text-[10px] items-center justify-center flex font-semibold">
-              E
-            </p>
-          </div>
-        </button> */}
         <ButtonWallet />
       </div>
     </>

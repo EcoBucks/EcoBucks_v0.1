@@ -5,7 +5,7 @@ import { redirect } from "next/navigation"
 
 export const addUco = async (formData: FormData) => {
 
-    const ucoBallance = formData.get("ucoBallance")
+    const ucoBalance = formData.get("ucoBallance")
     const phoneNumbers = formData.get("phoneNumbers")
     const locationDetails = formData.get("locationDetails")
     const pickUpDate = formData.get("pickUpDate")
@@ -28,7 +28,7 @@ export const addUco = async (formData: FormData) => {
             Cookie: cookies().toString()
           },
           body: JSON.stringify({
-            ucoBallance: ucoBallance,
+            ucoBalance: ucoBalance,
             phoneNumbers: phoneNumbers,
             locationDetails: locationDetails,
             pickUpDate: pickUpDate,

@@ -2,13 +2,10 @@ import Caraousel from "@/components/Caraousel";
 import Card from "@/components/Card";
 import CardEducation from "@/components/CardEducation";
 import Footer from "@/components/Footer";
-import { OptionMT, SelectMT } from "@/components/MaterialTailwind";
 import { LocationType } from "@/types";
 import { fetchData } from "./(action)/fetchDataHome";
 import { fetchProvince } from "./(action)/fetchProvince";
 import UcoForm from "@/components/UcoForm";
-import { redirect } from "next/navigation";
-import { searchProvince } from "./(action)/searchProvince";
 import { cookies } from "next/headers";
 import NavbarComponent from "@/components/Navbar";
 
@@ -26,18 +23,19 @@ export default async function Home() {
     data: LocationType[];
   };
 
-  const data: res = await fetchData();
+  // if(!getProvince(apaaja: res)){
+  // }
 
   const cookie = cookies();
   const token = cookie.get("token");
 
   // console.log(token);
 
-  if (!token) {
-    redirect("http://localhost:3000/login");
-  }
-
   const provinces = await fetchProvince();
+
+  let data = await fetchData();
+
+  // console.log(data, "=========");
 
   return (
     <>
@@ -84,7 +82,7 @@ export default async function Home() {
           <div className="flex w-full justify-start items-start -mt-4">
             <form
               className="flex flex-row bg-white shadow-md w-[35%] h-[96px] ml-2 rounded-xl justify-between px-[2%]"
-              action={searchProvince}
+              action={""}
             >
               <div className="flex flex-col justify-center gap-y-2 items-start w-[30%]">
                 <div className="flex flex-row gap-x-2 items-center">
@@ -129,7 +127,7 @@ export default async function Home() {
 
           {/* Card Bar */}
           <div className="overflow-x-auto flex flex-row w-full h-[80%] items-start justify-start pl-1 py-5 gap-x-5">
-            {data?.data?.map((location) => (
+            {data?.map((location) => (
               <Card key={location + "id"} location={location} />
             ))}
           </div>
