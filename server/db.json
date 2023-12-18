@@ -229,5 +229,74 @@
     "Sumatera Barat",
     "Sumatera Selatan",
     "Sumatera Utara"
+  ],
+  "videos": [
+    {
+      "videoUrl": "https://youtube.com/embed/JHC8ulRKSMk?si=jrfqib_T_2uG1yxX",
+      "thumbnail": "https://i.imgur.com/LQVC86I.jpeg",
+      "title": "Sisa Minyak Jelantah Bisa Dibuat Jadi Bahan Bakar, Lho!",
+      "author": "Madani Berkelanjutan",
+      "description": "Minyak goreng semakin mahal, tapi sayang banget sisa masak cuma bisa jadi limbah. Kamu tahu gak sih, sob? Kalau Minyak Jelantah bisa diolah jadi Bahan Bakar Nabati, yaitu alternatif bahan bakar fosil yang diproses menggunakan bahan organik. Selain dari minyak jelantah atau sawit, ada banyak bahan baku yang bisa digunakan menjadi Bahan Bakar Nabati lho!",
+      "slug": "sisa-minyak-jelantah",
+      "category": "Edukasi",
+      "date": "Mar 13, 2023"
+    },
+    {
+      "videoUrl": "https://youtube.com/embed/8XYqZgntKr0?si=7KSHjbldyUkses5Q",
+      "thumbnail": "https://i.imgur.com/UfgEJNN.jpeg",
+      "title": "Minyak Jelantah Bisa Jadi Biodiesel??",
+      "author": "Pertamina",
+      "description": "Kepikiran nggak kalau minyak jelantah bekas kamu memasak, bisa disulap jadi energi terbarukan yaitu biodiesel?? Keren banget kan! Bahkan bisa ditukar dengan minyak baru, dan juga ditabung! Yuk simak selengkapnya!",
+      "slug": "minyak-jelantah-jadi-biodiesel",
+      "category": "Berita",
+      "date": "Feb 26, 2020"
+    },
+    {
+      "videoUrl": "https://youtube.com/embed/PJPQLHC0MoU?si=5Md0f0MUS1jaA13q",
+      "thumbnail": "https://i.imgur.com/CHBc245.jpeg",
+      "title": "Circular Economy !! Minyak Jelantah / UCO ( Used Cooking Oil ) menjadi Biodiesel",
+      "author": "CIRO WASTE",
+      "description": "Siapa yang sangka sih minyak jelantah atau UCO ( Used Cooking Oil ) itu memiliki potensi yang luar biasa jika dikelola dengan baik. Minyak jelantah dapat diolah kembali menjadi energi terbarukan yaitu FAME ( Fatty Acid Methyl Ester ) atau yang lebih dikenal sebagai Biodiesel. Potensinya setara dengan 32% produksi Biodiesel Nasional. Sejak tahun 2020 Pemerintah Indonesia menerapkan kebijakan penggunaan B30, dan akan terus meningkat kebutuhannya ",
+      "slug": "circular-economy-minyak-jelantah",
+      "category": "Edukasi",
+      "date": "Oct 1, 2022"
+    },
+    {
+      "videoUrl": "https://youtube.com/embed/kPN5FfImE4o?si=Pz0YbNnzy2I8pgyP",
+      "thumbnail": "https://i.imgur.com/se3UHAX.jpeg",
+      "title": "Daur Ulang Minyak Jelantah",
+      "author": "DAAI TV Indonesia",
+      "description": "Banyak orang yang menganggap bahwa minyak jelantah sudah tidak terpakai lagi dan dibuang. Padahal membuang minyak jelantah secara sembarangan hanya akan merusak lingkungan. Jelantah4Change hadir memberikan solusi dalam daur ulang minyak bekas tersebut.",
+      "slug": "daur-Ulang-minyak-jelantah",
+      "category": "Edukasi",
+      "date": "Mar 22, 2020"
+    },
+    {
+      "videoUrl": "https://youtube.com/embed/RwH53TJ_Sjk?si=-ffZrHKIB70Gt1wv",
+      "thumbnail": "https://i.imgur.com/TyOGYhn.jpeg",
+      "title": "Minyak Jelantah Jadi Berkah",
+      "author": "TRACTion Energy Asia",
+      "description": "Bayangkan berapa banyak minyak goreng yang dikonsumsi di Indonesia mengingat masyarakat kita sangat menyukai gorengan. Sekitar 16 juta kiloliter minyak digoreng setiap tahunnya – cukup untuk mengisi 6.400 kolam renang ukuran olimpiade. Tonton video ini untuk mengetahui apa yang bisa Anda sumbangkan kepada lingkungan melalui pengumpulan minyak jelantah.",
+      "category": "Edukasi",
+      "date": "Aug 18, 2021"
+    },
+    {
+      "videoUrl": "https://www.youtube.com/embed/0tgohuxPgDI?si=DkMWn_UCXSH1lOiZ",
+      "thumbnail": "https://i.imgur.com/07v5QSm.jpeg",
+      "title": "Jangan Dibuang, Minyak Jelantah Bisa Jadi Uang",
+      "author": "CNN Indonesia",
+      "description": "Jangan dibuang, ternyata minyak jelantah bisa ditukar jadi uang lho. Lumayan kan bisa jadi pemasukan tambahan keluarga.",
+      "category": "Berita",
+      "date": "Oct 2, 2021"
+    },
+    {
+      "videoUrl": "https://youtube.com/embed/XtvEHwMH86o?si=TKrIwnmdl0DQKiXs",
+      "thumbnail": "https://i.imgur.com/XQfVw56.jpeg",
+      "title": "Cuan Dari Minyak Jelantah",
+      "author": "CNN Indonesia",
+      "description": "Minyak jelantah atau minyak bekas memasak bisa merusak lingkungan jika dibuang sembarangan. Para ibu rumah tangga di Kelurahan Joglo, Jakarta Barat, mengumpulkan minyak jelantah untuk dijual kembali. Selain mendapat pemasukan tambahan, kegiatan ini juga penting untuk mencegah kerusakan lingkungan.",
+      "category": "Berita",
+      "date": "Nov 29, 2021"
+    }
   ]
 }
