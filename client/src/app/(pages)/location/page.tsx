@@ -1,19 +1,41 @@
+"use client";
 import { fetchData } from "@/app/(action)/fetchDataHome";
 import CardEducation from "@/components/CardEducation";
 import CardLocation from "@/components/CardLocation";
 import Footer from "@/components/Footer";
 import NavbarComponent from "@/components/Navbar";
 import { LocationType } from "@/types";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Locations } from "./action";
+import { locationModel } from "@/db/models/location";
+import Search from "@/components/Search";
 
-const LocationPage = async () => {
+const LocationPage = ({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) => {
+  const search =
+    typeof searchParams?.search == "string" ? searchParams.search : undefined;
+
   type res = {
     statusCode: 200;
     message: "successfully read Location";
     data: LocationType[];
   };
-
-  const data: res = await fetchData();
+  const [data, setData] = useState<locationModel[]>();
+  useEffect(() => {
+    const getLocations = async () => {
+      try {
+        const locations = await Locations(search);
+        setData(locations);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getLocations();
+  }, [searchParams]);
+  console.log(data, "<<<");
 
   return (
     <>
@@ -35,24 +57,13 @@ const LocationPage = async () => {
         {/* Right Component */}
         <div className="flex flex-col w-[55%] items-center justify-start px-[4%] pt-[3%]">
           {/* Search Location */}
-          <div className="flex flex-row w-full h-[50px] justify-between items-center">
-            <h1 className="raleway font-bold text-[35px]">Lokasi Kami</h1>
-            <div className="flex flex-row bg-white w-[60%] py-2 px-[4%] rounded-xl shadow-md">
-              <input
-                type="text"
-                className="w-full px-[4%] focus:outline-none"
-              />
-              <span className="material-symbols-outlined text-gray-500">
-                search
-              </span>
-            </div>
-          </div>
+          <Search />
 
           {/* Overflow Location Card */}
           <div className="flex flex-col w-full h-[85%] mt-[2%] justify-start items-center pt-[2%] gap-y-2">
             <div className="overflow-auto w-full h-full">
               <div className="flex flex-col w-full gap-y-2 items-center justify-center py-4">
-                {data?.data?.map((location, index) => (
+                {data?.map((location, index) => (
                   <CardLocation key={index} location={location} />
                 ))}
               </div>

@@ -1,8 +1,9 @@
+import { locationModel } from "@/db/models/location";
 import { LocationType } from "@/types";
 import Link from "next/link";
 import React from "react";
 
-const CardLocation = ({ location }: { location: LocationType }) => {
+const CardLocation = ({ location }: { location: locationModel }) => {
   const changeClock = (number: number) => {
     return Math.ceil(number / 60 + 9);
   };
