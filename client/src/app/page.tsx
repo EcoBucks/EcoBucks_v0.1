@@ -94,7 +94,7 @@ export default async function Home() {
                   >
                     location_on
                   </span>
-                  <SelectMT
+                  {/* <SelectMT
                     placeholder={""}
                     variant="standard"
                     label="Select Province"
@@ -105,7 +105,14 @@ export default async function Home() {
                         {province}
                       </OptionMT>
                     ))}
-                  </SelectMT>
+                  </SelectMT> */}
+                  <select name="province">
+                    {provinces?.map((province, index) => (
+                      <option key={index} value={province}>
+                        {province}
+                      </option>
+                    ))}
+                  </select>
                 </div>
               </div>
               <button
