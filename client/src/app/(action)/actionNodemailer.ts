@@ -86,7 +86,7 @@ const htmlTemplate = `
         be exchanged for real money.
       </li>
     </ul>
-    <p><strong>🌐 Community Collaboration: </strong></p>
+    <p><b>🌐 Community Collaboration: </b></p>
     <p>
       <b>EcoBucks</b> brings people together for a
       common cause. Join a network of environmentally conscious individuals,
