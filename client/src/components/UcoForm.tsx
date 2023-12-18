@@ -27,34 +27,51 @@ const UcoForm: React.FC = () => {
   const debounceOnChange = debounce(updateQuery, 300);
   return (
     <>
-      <div className="flex flex-col justify-start items-center w-[30%] h-full gap-y-4">
+      <div className="flex flex-col justify-start items-center w-full h-full gap-y-4">
         {/* Form Component */}
-        <div className="flex flex-col w-full h-[80%] bg-eb-40 rounded-[20px] py-[7%] px-[4%] gap-y-4 items-start">
-          <div className="flex flex-col w-full justify-between px-[5%] text-white items-center h-[11%]">
-            <div className="flex flex-row w-full justify-between items-center">
-              <p className="text-[25px] raleway font-bold">
-                Calculate Your UCO
-              </p>
-              <span className="material-symbols-outlined">help</span>
+        <div className="flex flex-col w-full h-[80%] bg-eb-40 rounded-[20px] py-[7%] px-[5%] gap-y-4 items-start">
+          <div className="flex flex-col w-full justify-between px-[3%] text-white items-center h-full">
+            <div className="flex flex-col w-full justify-between items-start">
+              <div className="flex flex-row w-full justify-between">
+                <p className="text-[25px] raleway font-bold">
+                  Calculate Your UCO
+                </p>
+                <span className="material-symbols-outlined mt-2">help</span>
+              </div>
+              <div className="bg-[#ffffff] w-[20%] h-[2px] rounded-[20px]"></div>
             </div>
 
             <div className="flex w-full justify-start mt-2">
-              <form className="flex flex-col w-full h-[90%] gap-y-4 mt-[10%] items-center ">
-                <div className="flex flex-col w-full h-[23%] items-center justify-center px-[5%] gap-y-1">
+              <form className="flex flex-col w-full h-full gap-y-4 mt-[10%] items-center">
+                <div className="flex flex-col w-full h-[23%] items-center justify-center gap-y-1">
                   {/* <form> */}
                   <p className="flex w-full justify-start items-start text-[12px] text-white inter">
-                    Your UCO in Liter
+                    Your UCO (Used Cooking Oil)
                   </p>
-                  <input
-                    type="text"
-                    className="w-full bg-[#ffffff20] rounded-[15px] h-24 text-white px-5 placeholder:text-[#ffffff30]"
-                    placeholder="ex: 250 liter"
-                    onChange={(e) => debounceOnChange(e)}
-                  />
+                  <div className="flex flex-row w-full h-full">
+                    <input
+                      type="text"
+                      className="w-[90%] bg-[#ffffff20] rounded-s-[15px] text-white px-5 placeholder:text-[#ffffff30] focus:outline-none"
+                      placeholder="ex: 250 liter"
+                      onChange={(e) => debounceOnChange(e)}
+                    />
+                    <div className="bg-eb-20 px-[1%] w-[50%] h-full flex pl-[2%] items-center rounded-e-[15px] text-[14px] raleway">
+                      <select
+                        name=""
+                        id=""
+                        className=" bg-eb-20 h-[50px] px-4 w-full rounded-lg focus:outline-none appearance-none mr-3"
+                      >
+                        <option value="">Galon</option>
+                        <option value="">Drigen</option>
+                        <option value="">Bottle</option>
+                        <option value="">Liter</option>
+                      </select>
+                    </div>
+                  </div>
                   {/* </form> */}
                 </div>
 
-                <div className="flex flex-col w-full h-[23%] items-center justify-center px-[5%] gap-y-1">
+                <div className="flex flex-col w-full h-[23%] items-center justify-center gap-y-1">
                   <p className="flex w-full justify-start items-start text-[12px] text-white inter">
                     Prediction in Rupiah
                   </p>
@@ -67,7 +84,7 @@ const UcoForm: React.FC = () => {
                   </div>
                 </div>
                 <div className="bg-[#ffffff60] w-[90%] h-[2px] rounded-[20px]"></div>
-                <div className="w-[90%] flex flex-row gap-x-3 justify-center items-center bg-eb-30 text-white rounded-xl h-12">
+                <div className="w-full flex flex-row gap-x-3 justify-center items-center bg-eb-30 text-white rounded-xl h-12">
                   <Link href={"/submit-uco"}>
                     <p className="font-bold raleway ">Submit</p>
                   </Link>
@@ -80,7 +97,6 @@ const UcoForm: React.FC = () => {
                   <p>Contribution for Emition Gas Carbon</p>
                 </div>
               </form>
-              <div className="bg-[#ffffff] w-[20%] h-[2px] rounded-[20px] flex"></div>
             </div>
           </div>
         </div>
