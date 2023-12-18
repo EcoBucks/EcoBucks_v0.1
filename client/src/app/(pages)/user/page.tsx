@@ -334,7 +334,12 @@ const UserPage = () => {
                 >
                   <p>{idx + 1}</p>
                   <p>#3DE7GH</p>
-                  <p>{currencyFormatted(el.ucoBalance)}</p>
+                  <p>
+                    {el.ucoBalance !== undefined
+                      ? currencyFormatted(el.ucoBalance)
+                      : ""}
+                  </p>
+
                   {el.status == "complete" ? (
                     <button onClick={() => handleButtonClick()}>
                       {el.status}
