@@ -2,6 +2,7 @@
 
 import { currencyFormatted } from "@/lib/ConstantFunction";
 import debounce from "lodash.debounce";
+import Link from "next/link";
 import React, { useState, ChangeEvent } from "react";
 
 const UcoForm: React.FC = () => {
@@ -81,7 +82,9 @@ const UcoForm: React.FC = () => {
                 </div>
                 <div className="bg-[#ffffff60] w-[90%] h-[2px] rounded-[20px]"></div>
                 <div className="w-full flex flex-row gap-x-3 justify-center items-center bg-eb-30 text-white rounded-xl h-12">
-                  <p className="font-bold raleway ">Submit</p>
+                  <Link href={"/submit-uco"}>
+                    <p className="font-bold raleway ">Submit</p>
+                  </Link>
                   <span className="material-symbols-outlined">
                     arrow_forward
                   </span>

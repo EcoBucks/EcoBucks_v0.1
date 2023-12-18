@@ -5,6 +5,7 @@ import NavbarComponent from "@/components/Navbar";
 import { LocationType } from "@/types";
 import React from "react";
 import MapSubmitUCO from "@/components/Map";
+import { addUco } from "@/app/(action)/addUcoBallance";
 
 const fetchData = async () => {
   try {
@@ -57,65 +58,75 @@ const SubmitUcoPage = async () => {
             <h1 className="text-[28px] raleway font-bold mb-[4%]">
               Pickup Configuration
             </h1>
-
-            <div className="flex flex-col w-full gap-y-6">
-              <div className="flex flex-col">
-                <p className="text-[14px]">Your UCO Balance</p>
-                <input
-                  type="text"
-                  className="w-full bg-gray-200 h-[50px] text-gray-800 rounded-lg px-4"
-                />
-              </div>
-
-              <div className="flex flex-col">
-                <p className="text-[14px]">Phone Numbers</p>
-                <input
-                  type="text"
-                  className="w-full bg-gray-200 h-[50px] text-gray-800 rounded-lg px-4"
-                />
-              </div>
-
-              <div className="flex flex-col">
-                <p className="text-[14px]">Location Details</p>
-                <input
-                  type="text"
-                  className="w-full bg-gray-200 h-[50px] text-gray-800 rounded-lg px-4"
-                />
-              </div>
-              {/* Pickup Date & Time */}
-              <div className="flex flex-row justify-between gap-x-3">
-                <div className="flex flex-col w-[50%]">
-                  <p className="text-[14px]">Pickup Date</p>
+            <form action={addUco}>
+              <div className="flex flex-col w-full gap-y-6">
+                <div className="flex flex-col">
+                  <p className="text-[14px]">Your UCO Balance</p>
                   <input
-                    type="date"
+                    name="ucoBallance"
+                    type="text"
                     className="w-full bg-gray-200 h-[50px] text-gray-800 rounded-lg px-4"
                   />
                 </div>
-                <div className="flex flex-col w-[50%]">
-                  <p className="text-[14px]">Pickup Time</p>
-                  <div className="flex bg-gray-200 w-full rounded-lg">
-                    <select
-                      name=""
-                      id=""
-                      className=" bg-gray-200 h-[50px] text-gray-800 px-4 w-[90%] rounded-lg focus:outline-none"
-                    >
-                      <option value="">15:00 - 16:00</option>
-                      <option value="">15:00 - 16:00</option>
-                      <option value="">15:00 - 16:00</option>
-                      <option value="">15:00 - 16:00</option>
-                    </select>
+
+                <div className="flex flex-col">
+                  <p className="text-[14px]">Phone Numbers</p>
+                  <input
+                    name="phoneNumbers"
+                    type="text"
+                    className="w-full bg-gray-200 h-[50px] text-gray-800 rounded-lg px-4"
+                  />
+                </div>
+
+                <div className="flex flex-col">
+                  <p className="text-[14px]">Location Details</p>
+                  <input
+                    name="locationDetails"
+                    type="text"
+                    className="w-full bg-gray-200 h-[50px] text-gray-800 rounded-lg px-4"
+                  />
+                </div>
+                {/* Pickup Date & Time */}
+                <div className="flex flex-row justify-between gap-x-3">
+                  <div className="flex flex-col w-[50%]">
+                    <p className="text-[14px]">Pickup Date</p>
+                    <input
+                      name="pickUpDate"
+                      type="date"
+                      className="w-full bg-gray-200 h-[50px] text-gray-800 rounded-lg px-4"
+                    />
+                  </div>
+                  <div className="flex flex-col w-[50%]">
+                    <p className="text-[14px]">Pickup Time</p>
+                    <div className="flex bg-gray-200 w-full rounded-lg">
+                      <select
+                        name="pickUpTime"
+                        id=""
+                        className=" bg-gray-200 h-[50px] text-gray-800 px-4 w-[90%] rounded-lg focus:outline-none"
+                      >
+                        <option value="15:00 - 16:00">15:00 - 16:00</option>
+                        <option value="15:00 - 16:00">15:00 - 16:00</option>
+                        <option value="15:00 - 16:00">15:00 - 16:00</option>
+                        <option value="15:00 - 16:00">15:00 - 16:00</option>
+                      </select>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="bg-gray-600 w-full h-[1px] rounded-[20px] mt-[1%]"></div>
+                <div className="bg-gray-600 w-full h-[1px] rounded-[20px] mt-[1%]"></div>
 
-              {/* Button Submit */}
-              <div className="gap-x-2 flex flex-row justify-center items-center w-full py-3 bg-eb-30 text-white rounded-[10px] mt-[1%]">
-                Create Pickup
-                <span className="material-symbols-outlined">arrow_forward</span>
+                {/* Button Submit */}
+                <button
+                  type="submit"
+                  className="gap-x-2 flex flex-row justify-center items-center w-full py-3 bg-eb-30 text-white rounded-[10px] mt-[1%]"
+                >
+                  Create Pickup
+                  <span className="material-symbols-outlined">
+                    arrow_forward
+                  </span>
+                </button>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
