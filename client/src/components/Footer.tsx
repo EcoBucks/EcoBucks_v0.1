@@ -1,3 +1,5 @@
+// @ts-ignore
+
 import { subs } from "@/app/(action)/ACTIONNODEMAILER";
 import Image from "next/image";
 import React from "react";
