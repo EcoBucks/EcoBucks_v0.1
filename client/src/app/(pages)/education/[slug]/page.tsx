@@ -5,6 +5,7 @@ import CopyButton from "@/components/CopyButton";
 import Footer from "@/components/Footer";
 import { OptionMT, SelectMT } from "@/components/MaterialTailwind";
 import NavbarComponent from "@/components/Navbar";
+import ShareWhatsapp from "@/components/ShareWhatsapp";
 import { LocationType } from "@/types";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -90,19 +91,13 @@ const EducationDetail = async ({ params }: { params: { slug: string } }) => {
             <div className="flex justify-start">
               <ul className="flex justify-center mt-5 space-x-2 items-center">
                 <CopyButton />
-                <Link
-                  href="whatsapp://send?text=https://youtu.be/RwH53TJ_Sjk?si=B5Ggh3zVzNVndKHD"
-                  data-action="share/whatsapp/share"
-                  target="_blank"
-                >
-                  <div className="flex items-center bg-[#052E1B] text-white rounded-full p-3 w-[50px]">
-                    <img
-                      src="/whatsapp-icon.svg"
-                      alt=""
-                      className="w-full h-full"
-                    />
-                  </div>
-                </Link>
+                <ShareWhatsapp>
+                  <img
+                    src="/whatsapp-icon.svg"
+                    alt=""
+                    className="w-full h-full"
+                  />
+                </ShareWhatsapp>
               </ul>
             </div>
           </div>
