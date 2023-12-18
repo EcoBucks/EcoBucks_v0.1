@@ -1,5 +1,6 @@
 "use server"
 import { LocationType, MyResponse } from "@/types";
+import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 export const fetchData = async () => {
@@ -21,6 +22,8 @@ export const fetchData = async () => {
       });
 
       const responseJson = await response.json();
+
+      // revalidatePath("/")
       // console.log(responseJson, '<<<<<<<<<<,');
       return responseJson;
     } catch (error) {

@@ -12,9 +12,10 @@ export type userModel = {
     email: string;
     job: string;
     dateOfBirth: string;
-    walletBalance?: number | null | undefined;
+    walletBallance: number
     profilePicture?: string | null | undefined;
     role?: string | undefined | null;
+    phoneNumber: string
 };
 
 export type UserModelCreateInput = Omit<userModel, "_id">;

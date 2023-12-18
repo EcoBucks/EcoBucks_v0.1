@@ -33,18 +33,17 @@ export const POST = async (request: Request) => {
     )
 }
 
-// export const PUT = async (request: Request) => {
-//     const uco = await request.json()
+export const PUT = async (request: Request) => {
+    const userId =  request.headers.get("x-user-id")
 
-//     console.log(uco, '<<<<<<<<<<<');
-//     await updateUBallance(uco)
+    await updateUBallance(userId) 
 
-//     return NextResponse.json(
-//         {
-//             statusCode: 201,
-//             message: "successfully updated sumUco"
-//         }
-//     )
+    return NextResponse.json(
+        {
+            statusCode: 201,
+            message: "successfully updated sumUco"
+        }
+    )
 
 
-// }
+}

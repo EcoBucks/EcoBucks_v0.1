@@ -11,6 +11,7 @@ const UcoForm: React.FC = () => {
   };
 
   const [query, setQuery] = useState<uco>({ uco: 0 });
+  const [jenis, setJenis] = useState("dirigen");
   const updateQuery = (e: ChangeEvent<HTMLInputElement> | null) => {
     if (e) {
       const data = e?.target?.value;
@@ -59,7 +60,9 @@ const UcoForm: React.FC = () => {
                   </p>
                   <div className="w-full bg-[#ffffff20] rounded-[15px] h-24 text-white px-5 placeholder:text-[#ffffff30] justify-center items-center">
                     <p className="flex w-full h-full justify-start items-center">
-                      {currencyFormatted(query.uco * 3500)}
+                      {jenis == "botol"
+                        ? currencyFormatted(query.uco * 3500)
+                        : currencyFormatted(query.uco * 5000)}
                     </p>
                   </div>
                 </div>

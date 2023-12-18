@@ -61,25 +61,15 @@ export const createUBallance = async (uco: ucoModel) => {
 
 }
 
-export const updateUBallance = async (uco: ucoModel) => {
+export const updateUBallance = async (userId: string) => {
     const db = await getDb()
 
-    const user = await db.collection(COLLECTION_USER).findOne({_id: new ObjectId(uco.userId)})
-    console.log(user, '+++++++++++');
 
-    const sumUco = Number(user?.walletBallance) + Number(uco.ucoBallance)
-
-    let result;
-
-    result = await db.collection(COLLECTION_USER).updateOne(
-        {_id: new ObjectId(uco.userId)},
-        {$set: {walletBallance: sumUco}}
+   const result = await db.collection(COLLECTION_USER).updateOne(
+        {_id: new ObjectId(userId)},
+        {$set: {walletBallance: 0}}
         )
 
-    result = await db.collection(COLLECTION_NAME).updateOne(
-        {userId: new ObjectId(uco.userId)},
-        {$set: {sumUco: sumUco}}
-    )
 
         
     return result 
