@@ -1,10 +1,19 @@
 import CardEducationContent from "@/components/CardEducationContent";
 import Footer from "@/components/Footer";
 import NavbarComponent from "@/components/Navbar";
+import { VideoModel, getVideos } from "@/db/models/videos";
 import Image from "next/image";
 import React from "react";
 
-const EducationPage = () => {
+const EducationPage = async () => {
+  type res = {
+    statusCode: 200;
+    message: "successfully read videos";
+    data: VideoModel[];
+  };
+  const data = await getVideos();
+  // console.log(data);
+
   return (
     <div>
       <NavbarComponent />
@@ -72,12 +81,9 @@ const EducationPage = () => {
 
       {/* Another Article Grid */}
       <div className="w-screen grid grid-cols-3 px-[10%] gap-8 mt-10 mb-[80px]">
-        <CardEducationContent />
-        <CardEducationContent />
-        <CardEducationContent />
-        <CardEducationContent />
-        <CardEducationContent />
-        <CardEducationContent />
+        {data?.map((video, idx) => (
+          <CardEducationContent key={idx} video={video} />
+        ))}
 
         <div className="flex col-span-3 justify-center mt-[40px]">
           <div className="bg-gray-500 px-4 py-2 rounded-lg text-white hover:bg-eb-10 transition-all hover:scale-105">
