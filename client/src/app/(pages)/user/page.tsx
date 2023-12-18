@@ -6,6 +6,7 @@ import { updateOngoing } from "@/app/(action)/updateStatus";
 import Footer from "@/components/Footer";
 import Modal from "@/components/Modal";
 // import Modal from "@/components/Modal";
+import { handleClick } from "@/app/(action)/actionIPaymu";
 import NavbarComponent from "@/components/Navbar"; //! sus bangettt nih componenet aswww
 import { ucoModels, updateUBallanceOnGoing } from "@/db/models/uco";
 import { userModel } from "@/db/models/user";
@@ -18,7 +19,8 @@ const UserPage = () => {
   const [open, setOpen] = useState(false);
   const [user, setUser] = useState<dataUser>();
   const [transaction, setTransaction] = useState<ucoModels[]>();
-  const [statusUser, setStatusUser] = useState("");
+  const [redirectUrl, setRedirectUrl] = useState("");
+
   const searchParams = useSearchParams();
 
   type dataUser = {
@@ -120,6 +122,25 @@ const UserPage = () => {
   };
 
   // console.log(transaction, "<<<<<<< transaction");
+
+  const initiatePayment = async () => {
+    try {
+      const url = await handleClick();
+      setRedirectUrl(url);
+    } catch (error) {
+      console.error("Payment failed:", error);
+    }
+  };
+
+  const handleButtonClick = async () => {
+    await initiatePayment();
+  };
+
+  // Redirect when redirectUrl is set
+  if (redirectUrl) {
+    window.location.href = redirectUrl;
+    return null; // Optionally return null or a loading message while redirecting
+  }
 
   return (
     <>
@@ -314,7 +335,11 @@ const UserPage = () => {
                   <p>{idx + 1}</p>
                   <p>#3DE7GH</p>
                   <p>{currencyFormatted(el.ucoBalance)}</p>
-                  {el.status == "ongoing" ? (
+                  {el.status == "complete" ? (
+                    <button onClick={() => handleButtonClick()}>
+                      {el.status}
+                    </button>
+                  ) : el.status == "ongoing" && user?.data.role == "driver" ? (
                     <button onClick={() => complete(el._id)}>
                       {el.status}
                     </button>
