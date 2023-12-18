@@ -11,6 +11,7 @@ const UserPage = () => {
   return (
     <>
       <NavbarComponent />
+
       <div className="p-10 mt-20">
         <div className="flex flex-col md:flex-row">
           <div className=" bg-eb-10 rounded-[10px] shadow-[0_10px_29px_0px_rgba(0,0,0,0.1)] md:mr-[1.5rem] p-6 md:p-12 w-[75%] h-[200px] md:w-[308px] md:h-[332px] self-center md:self-start">

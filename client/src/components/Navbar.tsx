@@ -23,19 +23,23 @@ const NavbarComponent = async () => {
           </div>
         </Link>
 
-        <div className="flex flex-row items-center justify-center gap-x-4 rounded-xl shadow-md h-12 w-[40%] border px-[1%]">
-          <div className="border-r-2 w-full flex justify-center border-gray-100 text-sm font-medium hover:scale-105 hover:text-eb-10 active:scale-90 transition-all hover:font-bold">
-            Contribution
-          </div>
+        <div className="flex flex-row items-center gap-x-4 rounded-xl shadow-md h-12 w-[40%] border px-[1%] justify-evenly">
+          <Link href={"/contribution"}>
+            <div className=" border-gray-100 text-sm font-medium hover:scale-105 hover:text-eb-10 active:scale-90 transition-all hover:font-bold">
+              Contribution
+            </div>
+          </Link>
           <Link href={"/location"}>
-            <button className="flex border-r-2 w-full border-gray-100 justify-center text-sm font-medium hover:scale-105 hover:text-eb-10 active:scale-90 transition-all hover:font-bold">
+            <button className="flex  border-gray-100 text-sm font-medium hover:scale-105 hover:text-eb-10 active:scale-90 transition-all hover:font-bold">
               Locations
             </button>
           </Link>
-          <button className="flex justify-center border-gray-100 border-r-2 w-full text-sm font-medium hover:scale-105 hover:text-eb-10 active:scale-90 transition-all hover:font-bold">
-            Track UCO
-          </button>
-          <button className="flex justify-center border-gray-100 w-full text-sm font-medium hover:scale-105 hover:text-eb-10 active:scale-90 transition-all hover:font-bold">
+          <Link href={"/education"}>
+            <button className="flex border-gray-100  text-sm font-medium hover:scale-105 hover:text-eb-10 active:scale-90 transition-all hover:font-bold">
+              Education
+            </button>
+          </Link>
+          <button className="flex border-gray-100 text-sm font-medium hover:scale-105 hover:text-eb-10 active:scale-90 transition-all hover:font-bold">
             Our Partners
           </button>
         </div>
