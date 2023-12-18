@@ -5,3 +5,10 @@ export const currencyFormatted = (number: number): string => {
     maximumFractionDigits: 0,
   }).format(number);
 };
+
+export const calculateCarbonEmissions = (usedCookingOil: number): number => {
+  const emissionFactor = 2.5;
+  const carbonEmissions = usedCookingOil * emissionFactor;
+
+  return carbonEmissions;
+};

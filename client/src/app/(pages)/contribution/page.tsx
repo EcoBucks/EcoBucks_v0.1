@@ -7,12 +7,13 @@ const Page = () => {
   return (
     <>
       <NavbarComponent />
-      <div className="h-[340px] flex justify-center items-center bg-sea1 bg-fixed bg-no-repeat bg-cover bg-center mt-20">
-        <h1 className="text-[#304D30] bg-white bg-opacity-50 p-3 rounded-md text-6xl">
+      <div className="h-[340px] flex justify-center items-center bg-sea1 bg-fixed bg-no-repeat bg-cover bg-center mt-20 relative ease-in-out translate-y-5 animate-fade-up">
+        <h1 className="text-[#ffffff] bg-opacity-50 p-3 rounded-md text-6xl raleway font-bold z-20">
           Our Contributions
         </h1>
+        <div className="absolute bg-[#00000040] w-full h-full z-10"></div>
       </div>
-      <div className="p-12">
+      <div className="p-12 animate-fade-up animate-delay-100">
         <h2 className="font-bold text-[#304D30] text-4xl mb-4">
           Sustainable Development Goals
         </h2>
@@ -54,7 +55,7 @@ const Page = () => {
           </div>
         </div>
       </div>
-      <div className="bg-sea2 min-h-screen bg-center bg-no-repeat bg-cover bg-fixed p-6 relative">
+      <div className="bg-sea2 min-h-screen bg-center bg-no-repeat bg-cover bg-fixed p-6 relative animate-fade-up window">
         <div className="w-2/6 flex flex-col absolute bottom-20">
           <h2 className="font-bold text-white text-4xl">Did You Know?</h2>
           <p className="text-white leading-7 tracking-[0.1rem]">

@@ -58,7 +58,9 @@ const ButtonWallet = () => {
             account_balance_wallet
           </span>
           <p className="text-sm font-bold">
-            {currencyFormatted(data?.data.walletBallance)}
+            {!currencyFormatted(data?.data.walletBallance)
+              ? "Empty Wallet"
+              : currencyFormatted(data?.data.walletBallance)}
           </p>
         </div>
         <div className="flex justify-center items-center h-12">

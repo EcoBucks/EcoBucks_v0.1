@@ -45,9 +45,9 @@ export default async function Home() {
 
       {/* Hero Section */}
       <div className="flex w-screen h-[600px] items-center justify-center px-[8%] mt-[8%]">
-        <div className="bg-white w-full h-full flex flex-row gap-x-4">
+        <div className="bg-white w-full h-full flex flex-row gap-x-4 ">
           {/* Left Component */}
-          <div className="flex flex-row justify-end items-center w-[70%] h-full rounded-[20px] overflow-hidden shadow-md">
+          <div className="flex flex-row justify-end items-center w-[70%] h-full rounded-[20px] overflow-hidden shadow-md animate-fade-up">
             <div className="w-full h-full flex flex-row relative">
               <Caraousel autoSlide={true}>
                 {slides.map((s) => (
@@ -62,7 +62,7 @@ export default async function Home() {
             </div>
           </div>
 
-          <div className="flex w-[30%]">
+          <div className="flex w-[30%] animate-fade-up animate-delay-100">
             {/* Right Component */}
             <UcoForm />
           </div>
@@ -79,10 +79,10 @@ export default async function Home() {
         </div>
 
         {/* Search Collecting Point */}
-        <div className="flex flex-col w-screen items-center h-[660px] py-12 px-[8%]">
+        <div className="flex flex-col w-screen items-center h-[450px] px-[8%]">
           {/* Search Bar */}
-          <div className="flex w-full justify-start items-start -mt-4">
-            <form
+          {/*<div className="flex w-full justify-start items-start -mt-4">
+             <form
               className="flex flex-row bg-white shadow-md w-[35%] h-[96px] ml-2 rounded-xl justify-between px-[2%]"
               action={searchProvince}
             >
@@ -117,12 +117,12 @@ export default async function Home() {
                   <p>Search</p>
                 </div>
               </button>
-            </form>
-          </div>
+            </form> 
+          </div>*/}
 
           {/* Card Bar */}
-          <div className="overflow-x-auto flex flex-row w-full h-[80%] items-start justify-start pl-1 py-5 gap-x-5">
-            {data?.data?.map((location) => (
+          <div className="overflow-x-auto flex flex-row w-full h-full items-start justify-start pl-1 py-5 gap-x-5">
+            {data?.data?.slice(1, 6).map((location) => (
               <Card key={location + "id"} location={location} />
             ))}
           </div>

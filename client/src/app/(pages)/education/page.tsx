@@ -10,7 +10,7 @@ const EducationPage = () => {
       <NavbarComponent />
 
       {/* Header Component */}
-      <div className="w-screen h-[180px] justify-center items-center flex relative mt-[100px]">
+      <div className="w-screen h-[180px] justify-center items-center flex relative mt-[100px] animate-fade-up">
         <div className="bg-gray-700 w-[82%] h-full rounded-[30px] justify-center items-center flex overflow-hidden relative">
           <h1 className="absolute text-white raleway text-[50px] font-bold z-20">
             Education
@@ -39,7 +39,7 @@ const EducationPage = () => {
       </div>
 
       {/* Top Article Component */}
-      <div className="w-screen flex flex-row h-[340px] mt-[5%] px-[10%] justify-center items-center gap-x-14">
+      <div className="w-screen flex flex-row h-[340px] mt-[5%] px-[10%] justify-center items-center gap-x-14 animate-fade-up animate-delay-500">
         {/* Left Component */}
         <div className="w-[45%] rounded-[25px] h-[90%] overflow-hidden">
           <img
