@@ -8,6 +8,8 @@ import { fetchData } from "./(action)/fetchDataHome";
 import { fetchProvince } from "./(action)/fetchProvince";
 import UcoForm from "@/components/UcoForm";
 import { redirect } from "next/navigation";
+import { searchProvince } from "./(action)/searchProvince";
+import { cookies } from "next/headers";
 import NavbarComponent from "@/components/Navbar";
 
 export default async function Home() {
@@ -26,9 +28,15 @@ export default async function Home() {
 
   const data: res = await fetchData();
 
-  if (!data) {
+  const cookie = cookies();
+  const token = cookie.get("token");
+
+  // console.log(token);
+
+  if (!token) {
     redirect("http://localhost:3000/login");
   }
+
   const provinces = await fetchProvince();
 
   return (
@@ -74,7 +82,10 @@ export default async function Home() {
         <div className="flex flex-col w-screen items-center h-[660px] py-12 px-[8%]">
           {/* Search Bar */}
           <div className="flex w-full justify-start items-start -mt-4">
-            <form className="flex flex-row bg-white shadow-md w-[35%] h-[96px] ml-2 rounded-xl justify-between px-[2%]">
+            <form
+              className="flex flex-row bg-white shadow-md w-[35%] h-[96px] ml-2 rounded-xl justify-between px-[2%]"
+              action={searchProvince}
+            >
               <div className="flex flex-col justify-center gap-y-2 items-start w-[30%]">
                 <div className="flex flex-row gap-x-2 items-center">
                   <span
@@ -90,17 +101,22 @@ export default async function Home() {
                     name="province"
                   >
                     {provinces?.map((province, index) => (
-                      <OptionMT key={index}>{province}</OptionMT>
+                      <OptionMT key={index} value={province}>
+                        {province}
+                      </OptionMT>
                     ))}
                   </SelectMT>
                 </div>
               </div>
-              <div className="flex flex-col justify-center items-center w-[38%]">
+              <button
+                className="flex flex-col justify-center items-center w-[38%]"
+                type="submit"
+              >
                 <div className="flex flex-row gap-x-2 bg-eb-10 px-4 py-3 rounded-[15px] text-white">
                   <span className="material-symbols-outlined">search</span>
                   <p>Search</p>
                 </div>
-              </div>
+              </button>
             </form>
           </div>
 

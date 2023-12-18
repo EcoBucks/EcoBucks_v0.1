@@ -7,6 +7,14 @@ import { cookies } from "next/headers";
 import { handleLogin } from "@/app/(action)/action";
 
 const LoginPage = () => {
+  const cookie = cookies();
+  const token = cookie.get("token");
+
+  console.log(token);
+
+  if (token) {
+    redirect("http://localhost:3000/");
+  }
   return (
     <>
       <div className="h-screen w-screen items-center flex justify-center bg-gray-100">

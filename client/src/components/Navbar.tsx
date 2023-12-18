@@ -3,9 +3,9 @@ import { currencyFormatted } from "@/lib/ConstantFunction";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-
+import ButtonWallet from "./WalletButton";
 const NavbarComponent = async () => {
-  const data = await getUser();
+  // const data = await getUser();
 
   // console.log(data, "======ini navbar");
 
@@ -44,7 +44,7 @@ const NavbarComponent = async () => {
           </button>
         </div>
 
-        <div className="flex justify-between px-[1.1%] items-center shadow-md rounded-xl gap-x-4">
+        {/* <button className="flex justify-between px-[1.1%] items-center shadow-md rounded-xl gap-x-4">
           <div className="flex flex-row justify-center h-full items-center gap-x-2">
             <span className="material-symbols-outlined text-eb-20">
               account_balance_wallet
@@ -58,7 +58,8 @@ const NavbarComponent = async () => {
               E
             </p>
           </div>
-        </div>
+        </button> */}
+        <ButtonWallet />
       </div>
     </>
   );
