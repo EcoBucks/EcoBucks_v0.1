@@ -130,7 +130,7 @@ const LocationDetailPage = async ({ params }: { params: { id: string } }) => {
 
             {/* Image Maps */}
             <div className="flex flex-row w-full h-[45%] relative">
-              <div className="absolute right-0 bottom-0">
+              <div className="absolute right-0 bottom-0 z-10">
                 <div className="bg-eb-30 w-[180px] h-[40px] m-4 rounded-lg flex justify-center items-center text-white dm-sans flex-row gap-x-1">
                   <p>Go To Location</p>
                   <span
