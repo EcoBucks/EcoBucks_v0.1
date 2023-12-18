@@ -3,12 +3,12 @@ import Card from "@/components/Card";
 import CardEducation from "@/components/CardEducation";
 import Footer from "@/components/Footer";
 import { OptionMT, SelectMT } from "@/components/MaterialTailwind";
-import NavbarComponent from "@/components/Navbar";
 import { LocationType } from "@/types";
 import { fetchData } from "./(action)/fetchDataHome";
 import { fetchProvince } from "./(action)/fetchProvince";
 import UcoForm from "@/components/UcoForm";
 import { redirect } from "next/navigation";
+import NavbarComponent from "@/components/Navbar";
 
 export default async function Home() {
   const slides = [
@@ -54,8 +54,10 @@ export default async function Home() {
             </div>
           </div>
 
-          {/* Right Component */}
-          <UcoForm />
+          <div className="flex w-[30%]">
+            {/* Right Component */}
+            <UcoForm />
+          </div>
         </div>
       </div>
 
@@ -64,10 +66,11 @@ export default async function Home() {
         <div className="flex flex-col w-full">
           <p className="text-eb-30 text-[14px]">Location EcoBucks</p>
           <p className="text-[50px] raleway font-medium -mt-2">
-            Store UCO to Nearest Location
+            Our Nearest Collector Point
           </p>
         </div>
 
+        {/* Search Collecting Point */}
         <div className="flex flex-col w-screen items-center h-[660px] py-12 px-[8%]">
           {/* Search Bar */}
           <div className="flex w-full justify-start items-start -mt-4">

@@ -5,7 +5,7 @@
       "password": "123456",
       "email": "aletha@mail.com",
       "job": "employee",
-      "dateOfBirth": "1976/07/26",
+      "dateOfBirth": "1976-07-26",
       "walletBalance": 0,
       "profilePicture": "https://source.unsplash.com/random/900x700/?female",
       "role": "User",
@@ -16,7 +16,7 @@
       "password": "123456",
       "email": "monroe@mail.com",
       "job": "employee",
-      "dateOfBirth": "1980/08/16",
+      "dateOfBirth": "1976-07-26",
       "walletBalance": 0,
       "profilePicture": "https://source.unsplash.com/random/900x700/?female",
       "role": "User",
@@ -27,7 +27,7 @@
       "password": "123456",
       "email": "melysaa@mail.com",
       "job": "employee",
-      "dateOfBirth": "1979/02/01",
+      "dateOfBirth": "1976-07-26",
       "walletBalance": 0,
       "profilePicture": "https://source.unsplash.com/random/900x700/?female",
       "role": "User",
@@ -38,7 +38,7 @@
       "password": "123456",
       "email": "dex@mail.com",
       "job": "other",
-      "dateOfBirth": "1999/07/01",
+      "dateOfBirth": "1976-07-26",
       "walletBalance": 0,
       "profilePicture": "https://source.unsplash.com/random/900x700/?male",
       "role": "Driver",
@@ -49,28 +49,11 @@
       "password": "123456",
       "email": "jhon@mail.com",
       "job": "other",
-      "dateOfBirth": "1997/10/10",
+      "dateOfBirth": "1976-07-26",
       "walletBalance": 0,
       "profilePicture": "https://source.unsplash.com/random/900x700/?male",
       "role": "Driver",
       "pickupVoucher": 10
-    }
-  ],
-  "uco-balance": [
-    {
-      "userId": "1",
-      "ucoBalance": 0,
-      "status": "unpaid"
-    },
-    {
-      "userId": "2",
-      "ucoBalance": 0,
-      "status": "unpaid"
-    },
-    {
-      "userId": "3",
-      "ucoBalance": 0,
-      "status": "unpaid"
     }
   ],
   "location": [
@@ -191,8 +174,8 @@
       "location": "string",
       "ucoBalance": "number",
       "ucoCategory": "string",
-      "latLocation": "number",
-      "longLocation": "number",
+      "latOrigin": "number",
+      "longOrigin": "number",
       "latDestination": "number",
       "longDestination": "number",
       "pickupDate": "date",
@@ -208,7 +191,8 @@
       "thumbnail": "string",
       "videoUrl": "string",
       "category": "string",
-      "authorName": "string"
+      "authorName": "string",
+      "date": "string"
     }
   ],
   "provinces": [
