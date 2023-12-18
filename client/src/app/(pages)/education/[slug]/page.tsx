@@ -5,12 +5,13 @@ import CopyButton from "@/components/CopyButton";
 import Footer from "@/components/Footer";
 import { OptionMT, SelectMT } from "@/components/MaterialTailwind";
 import NavbarComponent from "@/components/Navbar";
-import ShareWhatsapp from "@/components/ShareWhatsapp";
 import { LocationType } from "@/types";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
 const EducationDetail = async ({ params }: { params: { slug: string } }) => {
+  // console.log(params.slug);
+
   type res = {
     statusCode: 200;
     message: "successfully read Location";
@@ -28,7 +29,7 @@ const EducationDetail = async ({ params }: { params: { slug: string } }) => {
     <>
       <NavbarComponent />
 
-      <div className="mt-20 py-14 px-[6%]">
+      <div className="mt-20 py-14 px-[8%]">
         {/* BreadCrumb */}
         <Link href="/education">
           <div className="flex flex-row">
@@ -54,25 +55,27 @@ const EducationDetail = async ({ params }: { params: { slug: string } }) => {
         {/* Video Section */}
         <div className="flex flex-col lg:flex-row mt-6">
           <iframe
-            className="w-[100%] h-[400px] rounded-xl"
+            className="w-[100%] h-[400px] rounded-xl sticky top-24"
             src="https://www.youtube.com/embed/RwH53TJ_Sjk?si=ISyuWaiXPJlnYYiq?rel=0"
             allowFullScreen
             frameBorder="0"
             rel="0"
           />
 
-          <div className="px-8 w-full flex flex-col justify-between mt-4 lg:mt-0">
-            <div className="flex flex-col ">
+          <div className="px-8 w-full flex flex-col justify-between mt-4 lg:mt-0 gap-y-5">
+            <div className="flex flex-col gap-y-6 w-full">
               <img
                 src="https://i.imgur.com/LQVC86I.jpeg"
                 className="rounded-md h-[150px] w-full object-cover hidden lg:block"
               />
-              <div className="">
-                <h1 className="text-bold text-[1.5rem] lg:text-[2rem] text-[#052E1B]">
+              <div className="gap-y-4">
+                <h1 className="font-bold text-[1.5rem] lg:text-[2rem] text-[#052E1B] raleway">
                   Minyak Jelantah Jadi Berkah
                 </h1>
-                <p className="my-2">By: TRACTion Energy Asia</p>
-                <p className="text-[#052E1B] text-[16px] text-justify  leading-6">
+                <p className="my-4 text-gray-600">
+                  TRACTion Energy Asia | Feb 26, 2020
+                </p>
+                <p className="text-[#052E1B] text-[16px] leading-7 w-[95%]">
                   Bayangkan berapa banyak minyak goreng yang dikonsumsi di
                   Indonesia mengingat masyarakat kita sangat menyukai gorengan.
                   Sekitar 16 juta kiloliter minyak digoreng setiap tahunnya –
@@ -85,9 +88,21 @@ const EducationDetail = async ({ params }: { params: { slug: string } }) => {
             </div>
 
             <div className="flex justify-start">
-              <ul className="flex justify-center mt-5 space-x-5">
+              <ul className="flex justify-center mt-5 space-x-2 items-center">
                 <CopyButton />
-                <ShareWhatsapp />
+                <Link
+                  href="whatsapp://send?text=https://youtu.be/RwH53TJ_Sjk?si=B5Ggh3zVzNVndKHD"
+                  data-action="share/whatsapp/share"
+                  target="_blank"
+                >
+                  <div className="flex items-center bg-[#052E1B] text-white rounded-full p-3 w-[50px]">
+                    <img
+                      src="/whatsapp-icon.svg"
+                      alt=""
+                      className="w-full h-full"
+                    />
+                  </div>
+                </Link>
               </ul>
             </div>
           </div>
@@ -95,16 +110,16 @@ const EducationDetail = async ({ params }: { params: { slug: string } }) => {
       </div>
       {/* End of Video Section */}
 
-      <div className="px-[6%] my-4">
-        <hr className="h-[2px]  bg-[#e2e2e2] rounded-lg border-0" />
+      <div className="px-[8%] my-4 mb-12">
+        <hr className="h-[2px] bg-[#e2e2e2] rounded-lg border-0" />
       </div>
 
       {/* Collection Points */}
       <div className="w-screen h-[730px] items-center justify-start px-[6%] flex-col flex">
-        <div className="flex flex-col w-full">
+        <div className="flex flex-col w-full px-[2%]">
           <p className="text-eb-30 text-[14px]">Location EcoBucks</p>
           <p className="text-[50px] raleway font-medium -mt-2">
-            Store UCO to Nearest Location
+            Our Collecting Points
           </p>
         </div>
 
