@@ -3,7 +3,7 @@ import React from "react";
 
 const CopyButton = () => {
   const copyToClipboard = () => {
-    navigator.clipboard.writeText("Copy berhasil");
+    navigator.clipboard.writeText(window.location.href);
   };
   return (
     <button onClick={copyToClipboard}>

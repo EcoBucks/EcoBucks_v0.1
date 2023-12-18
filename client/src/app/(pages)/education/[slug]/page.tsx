@@ -5,14 +5,12 @@ import CopyButton from "@/components/CopyButton";
 import Footer from "@/components/Footer";
 import { OptionMT, SelectMT } from "@/components/MaterialTailwind";
 import NavbarComponent from "@/components/Navbar";
+import ShareWhatsapp from "@/components/ShareWhatsapp";
 import { LocationType } from "@/types";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import ReactPlayer from "react-player/lazy";
 
 const EducationDetail = async ({ params }: { params: { slug: string } }) => {
-  // console.log(params.slug);
-
   type res = {
     statusCode: 200;
     message: "successfully read Location";
@@ -89,14 +87,7 @@ const EducationDetail = async ({ params }: { params: { slug: string } }) => {
             <div className="flex justify-start">
               <ul className="flex justify-center mt-5 space-x-5">
                 <CopyButton />
-                <Link
-                  href="whatsapp://send?text=https://youtu.be/RwH53TJ_Sjk?si=B5Ggh3zVzNVndKHD"
-                  data-action="share/whatsapp/share"
-                  target="_blank"
-                  className="flex items-center bg-[#052E1B] text-white rounded-md p-3"
-                >
-                  Share to WhatsApp
-                </Link>
+                <ShareWhatsapp />
               </ul>
             </div>
           </div>
