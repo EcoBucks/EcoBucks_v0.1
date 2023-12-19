@@ -109,7 +109,7 @@ const EducationDetail = async ({ params }: { params: { slug: string } }) => {
 
       {/* LocationSearch */}
       <div className="w-screen h-[620px] items-center justify-start px-[8%] flex-col flex mt-[5%] animate-fade-up animate-delay-500">
-        <div className="flex flex-col w-fit">
+        <div className="flex flex-col w-full">
           <p className="text-eb-30 text-[14px]">Location EcoBucks</p>
           <Link href={"/location"}>
             <div className="flex flex-row gap-x-4 items-center group w-fit">

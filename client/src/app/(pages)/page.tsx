@@ -52,7 +52,7 @@ export default async function Home() {
 
       {/* Hero Section */}
       <div className="flex w-screen h-[600px] items-center justify-center px-[8%] mt-[8%]">
-        <div className="bg-white w-full h-full flex flex-row gap-x-4">
+        <div className="bg-white w-full h-full flex flex-row gap-x-4 animate-fade-up animate-delay-150">
           {/* Left Component */}
           <div className="flex flex-row justify-end items-center w-[70%] h-full rounded-[20px] overflow-hidden shadow-md">
             <div className="w-full h-full flex flex-row relative">
@@ -69,7 +69,7 @@ export default async function Home() {
             </div>
           </div>
 
-          <div className="flex w-[30%]">
+          <div className="flex w-[30%] animate-fade-up animate-delay-250">
             {/* Right Component */}
             <UcoForm />
           </div>
@@ -78,7 +78,7 @@ export default async function Home() {
 
       {/* LocationSearch */}
       <div className="w-screen h-[620px] items-center justify-start px-[8%] flex-col flex mt-[5%] animate-fade-up animate-delay-500">
-        <div className="flex flex-col w-fit">
+        <div className="flex flex-col w-full">
           <p className="text-eb-30 text-[14px]">Location EcoBucks</p>
           <Link href={"/location"}>
             <div className="flex flex-row gap-x-4 items-center group w-fit">
@@ -123,10 +123,12 @@ export default async function Home() {
           ))}
         </div>
 
-        <div className="w-full justify-center items-center h-[20%] flex">
-          <div className="flex flex-row gap-x-2 bg-eb-10 py-3 rounded-[20px] text-white w-[10%] items-center justify-center">
-            <p>See All</p>
-          </div>
+        <div className="w-full justify-center items-center h-[20%] flex ">
+          <Link href={"/education"}>
+            <div className="flex flex-row gap-x-2 bg-eb-10 py-3 px-5 rounded-[20px] text-white w-full items-center justify-center hover:bg-eb-30 hover:scale-105 transition-all">
+              <p>Get More Information</p>
+            </div>
+          </Link>
         </div>
       </div>
 
