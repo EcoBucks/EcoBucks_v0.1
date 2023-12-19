@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { OptionMT, SelectMT } from "@/components/MaterialTailwind";
 import NavbarComponent from "@/components/Navbar";
 import ShareWhatsapp from "@/components/ShareWhatsapp";
+import { getVideoBySlug } from "@/db/models/videos";
 import { LocationType } from "@/types";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -25,6 +26,9 @@ const EducationDetail = async ({ params }: { params: { slug: string } }) => {
     redirect("http://localhost:3000/login");
   }
   const provinces = await fetchProvince();
+
+  const video = await getVideoBySlug(params.slug);
+  // console.log(video);
 
   return (
     <>
@@ -57,7 +61,7 @@ const EducationDetail = async ({ params }: { params: { slug: string } }) => {
         <div className="flex flex-col lg:flex-row mt-6">
           <iframe
             className="w-[100%] h-[400px] rounded-xl sticky top-24"
-            src="https://www.youtube.com/embed/RwH53TJ_Sjk?si=ISyuWaiXPJlnYYiq?rel=0"
+            src={video.videoUrl}
             allowFullScreen
             frameBorder="0"
             rel="0"
@@ -66,24 +70,18 @@ const EducationDetail = async ({ params }: { params: { slug: string } }) => {
           <div className="px-8 w-full flex flex-col justify-between mt-4 lg:mt-0 gap-y-5">
             <div className="flex flex-col gap-y-6 w-full">
               <img
-                src="https://i.imgur.com/LQVC86I.jpeg"
+                src={video.thumbnail}
                 className="rounded-md h-[150px] w-full object-cover hidden lg:block"
               />
               <div className="gap-y-4">
                 <h1 className="font-bold text-[1.5rem] lg:text-[2rem] text-[#052E1B] raleway">
-                  Minyak Jelantah Jadi Berkah
+                  {video.title}
                 </h1>
                 <p className="my-4 text-gray-600">
-                  TRACTion Energy Asia | Feb 26, 2020
+                  {video.author} | {video.date}
                 </p>
                 <p className="text-[#052E1B] text-[16px] leading-7 w-[95%]">
-                  Bayangkan berapa banyak minyak goreng yang dikonsumsi di
-                  Indonesia mengingat masyarakat kita sangat menyukai gorengan.
-                  Sekitar 16 juta kiloliter minyak digoreng setiap tahunnya –
-                  cukup untuk mengisi 6.400 kolam renang ukuran olimpiade.
-                  Tonton video ini untuk mengetahui apa yang bisa Anda
-                  sumbangkan kepada lingkungan melalui pengumpulan minyak
-                  jelantah.
+                  {video.description}
                 </p>
               </div>
             </div>

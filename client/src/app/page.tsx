@@ -11,6 +11,8 @@ import { redirect } from "next/navigation";
 import { searchProvince } from "./(action)/searchProvince";
 import { cookies } from "next/headers";
 import NavbarComponent from "@/components/Navbar";
+import { getVideos } from "@/db/models/videos";
+import Link from "next/link";
 
 export default async function Home() {
   const slides = [
@@ -38,6 +40,11 @@ export default async function Home() {
   }
 
   const provinces = await fetchProvince();
+
+  const videos = await getVideos();
+  const randomizedVideos = videos
+    .sort(() => Math.random() - Math.random())
+    .slice(0, 3);
 
   return (
     <>
@@ -138,14 +145,14 @@ export default async function Home() {
 
         {/* Card Section */}
         <div className="flex flex-row w-screen px-[5%] h-[70%] justify-center items-center gap-x-4">
-          <CardEducation />
-          <CardEducation />
-          <CardEducation />
+          {randomizedVideos.map((video, idx) => (
+            <CardEducation key={idx} detail={video} />
+          ))}
         </div>
 
         <div className="w-full justify-center items-center h-[20%] flex">
           <div className="flex flex-row gap-x-2 bg-eb-10 py-3 rounded-[20px] text-white w-[10%] items-center justify-center">
-            <p>See All</p>
+            <Link href="/education">See All</Link>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import CardEducationContent from "@/components/CardEducationContent";
 import Footer from "@/components/Footer";
 import NavbarComponent from "@/components/Navbar";
+import SearchEducation from "@/components/SearchEducation";
 import { VideoModel, getVideos } from "@/db/models/videos";
 import Image from "next/image";
 import React from "react";
@@ -35,16 +36,7 @@ const EducationPage = async () => {
         </div>
 
         {/* Search Bar Input */}
-        <div className="absolute bg-white w-[35%] h-[75px] -bottom-11 rounded-[20px] flex flex-row justify-center items-center px-[4%] shadow-lg z-20">
-          <span className="material-symbols-outlined text-gray-700">
-            search
-          </span>
-          <input
-            type="text"
-            placeholder="Search Article ..."
-            className="rounded-[20px] w-full h-full px-[3%] focus:outline-none"
-          />
-        </div>
+        <SearchEducation />
       </div>
 
       {/* Top Article Component */}
@@ -52,7 +44,7 @@ const EducationPage = async () => {
         {/* Left Component */}
         <div className="w-[45%] rounded-[25px] h-[90%] overflow-hidden">
           <img
-            src="https://source.unsplash.com/random/900x700/?indonesia"
+            src="https://img.antaranews.com/cache/1200x800/2021/06/10/IMG_0608.jpg.webp"
             className="object-cover rounded-lg w-full h-full"
           />
         </div>
@@ -61,19 +53,19 @@ const EducationPage = async () => {
         <div className="w-[55%] rounded-lg h-[90%] flex flex-col ">
           <div className="flex flex-col w-full justify-between h-full">
             <div className="flex flex-col gap-y-4 w-[83%]">
-              <h1 className="text-[13px] text-eb-30">Technolgy</h1>
+              {/* <h1 className="text-[13px] text-eb-30">Technolgy</h1> */}
               <h1 className="text-[40px] raleway font-bold leading-10 text-gray-900">
-                An Extraordinary WebGL Has Been
+                Pengertian Used Cooking Oil
               </h1>
             </div>
             <p className="text-gray-500 leading-7">
-              Lorem ipsum dolor sit amet consectetur. Lectus sed leo in
-              ultricies porttitor aliquam tincidunt gravida eu. A gravida
-              aliquet vel amet. Aliquam turpis nunc interdum posuere
+              Used Cooking Oil yang selanjutnya disingkat UCO adalah minyak
+              limbah hasil dari penggunaan minyak goreng baik penggunaan rumah
+              tangga maupun industri.
             </p>
             <div className="flex flex-col">
-              <p className="font-bold">Brayn Owen</p>
-              <p className="text-gray-600">Jun 27, 2021</p>
+              <p className="font-bold">Brain Owen</p>
+              <p className="text-gray-600">Jun 27, 2023</p>
             </div>
           </div>
         </div>

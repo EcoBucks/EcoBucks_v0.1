@@ -31,3 +31,12 @@ export const getVideos = async () => {
 
   return result;
 };
+
+export const getVideoBySlug = async (slug: string) => {
+  const db = await getDb();
+  const result = (await db
+    .collection(COLLECTION_NAME)
+    .findOne({ slug: slug })) as VideoModel;
+
+  return result;
+};
