@@ -6,16 +6,16 @@ const DATABASE_NAME = "Eco_Bucks";
 const COLLECTION_NAME = "user";
 
 export type userModel = {
-  _id: string
+  _id: string;
   name: string;
-    password: string;
-    email: string;
-    job: string;
-    dateOfBirth: string;
-    walletBallance: number
-    profilePicture?: string | null | undefined;
-    role?: string | undefined | null;
-    phoneNumber: string
+  password: string;
+  email: string;
+  job: string;
+  dateOfBirth: string;
+  walletBallance: number | any;
+  profilePicture?: string | null | undefined;
+  role?: string | undefined | null;
+  phoneNumber: string;
 };
 
 export type UserModelCreateInput = Omit<userModel, "_id">;
@@ -28,7 +28,7 @@ export const getDb = async () => {
 };
 
 export const createUser = async (user: UserModelCreateInput) => {
-  console.log(user, '<<<<<<<<<<<');
+  console.log(user, "<<<<<<<<<<<");
 
   //! buat route sendiri buat google auth
 

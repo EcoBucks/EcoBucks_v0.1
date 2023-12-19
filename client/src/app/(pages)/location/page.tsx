@@ -17,13 +17,13 @@ const LocationPage = async () => {
 
   return (
     <>
-      <NavbarComponent />
+      {/* <NavbarComponent /> */}
 
       {/* LocationSection */}
 
-      <div className="flex flex-row w-screen h-[780px] px-[8.5%] mt-[5.5%] pb-[3%] gap-x-2">
+      <div className="flex flex-row w-screen h-[780px] px-[8.5%] mt-[5.5%] pb-[3%] gap-x-2 ">
         {/* Left Component */}
-        <div className="flex flex-row w-[45%] justify-end items-center">
+        <div className="flex flex-row w-[45%] justify-end items-center animate-fade-up animate-delay-0">
           <div className="flex bg-black w-[85%] h-[90%] rounded-[20px]">
             <img
               src="https://source.unsplash.com/random/900x700/?indonesia"
@@ -33,7 +33,7 @@ const LocationPage = async () => {
         </div>
 
         {/* Right Component */}
-        <div className="flex flex-col w-[55%] items-center justify-start px-[4%] pt-[3%]">
+        <div className="flex flex-col w-[55%] items-center justify-start px-[4%] pt-[3%] animate-fade-up animate-delay-200">
           {/* Search Location */}
           <div className="flex flex-row w-full h-[50px] justify-between items-center">
             <h1 className="raleway font-bold text-[35px]">Lokasi Kami</h1>
@@ -67,7 +67,7 @@ const LocationPage = async () => {
       </div>
 
       {/* Education */}
-      <div className="flex w-screen flex-col h-[450px] justify-start items-center mb-[5%]">
+      <div className="flex w-screen flex-col h-[450px] justify-start items-center mb-[5%] animate-fade-up animate-delay-500">
         <h1 className="text-sm text-eb-30">EcoBucks Education</h1>
         <h1 className="text-[50px] raleway font-medium text-gray-900 -mt-2">
           Education
