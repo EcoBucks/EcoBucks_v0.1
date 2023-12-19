@@ -4,10 +4,10 @@ import CardEducation from "@/components/CardEducation";
 import CardLocation from "@/components/CardLocation";
 import Footer from "@/components/Footer";
 import NavbarComponent from "@/components/Navbar";
-import { getVideos } from "@/db/models/videos";
+import { VideoModel, getVideos } from "@/db/models/videos";
 import { LocationType } from "@/types";
 import React, { useEffect, useState } from "react";
-import { Locations } from "./action";
+import { Locations, Videos } from "./action";
 import { locationModel } from "@/db/models/location";
 import Search from "@/components/Search";
 import Link from "next/link";
@@ -20,12 +20,8 @@ const LocationPage = ({
   const search =
     typeof searchParams?.search == "string" ? searchParams.search : undefined;
 
-  type res = {
-    statusCode: 200;
-    message: "successfully read Location";
-    data: LocationType[];
-  };
   const [data, setData] = useState<locationModel[]>();
+  const [randomVideos, setRandomVideos] = useState<VideoModel[]>();
   useEffect(() => {
     const getLocations = async () => {
       try {
@@ -36,6 +32,15 @@ const LocationPage = ({
       }
     };
     getLocations();
+    const getRandomVideos = async () => {
+      try {
+        const getRandomVideos = await Videos();
+        setRandomVideos(getRandomVideos);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getRandomVideos();
   }, [searchParams]);
   // console.log(data, "<<<");
 
@@ -83,15 +88,15 @@ const LocationPage = ({
             <div className="w-[95%] bg-gray-400 h-[1px] justify-center items-center"></div>
           </div>
           {/* Overflow Location Card */}
-          {/* <div className="flex flex-col w-full h-[82%] justify-start items-center gap-y-3">
+          <div className="flex flex-col w-full h-[82%] justify-start items-center gap-y-3">
             <div className="overflow-auto w-full h-full">
               <div className="flex flex-col w-full gap-y-5 items-center justify-center py-4">
-                {data?.data?.map((location, index) => (
+                {data?.map((location, index) => (
                   <CardLocation key={index} location={location} />
                 ))}
               </div>
             </div>
-          </div> */}
+          </div>
         </div>
       </div>
 
@@ -109,9 +114,9 @@ const LocationPage = ({
 
         {/* Card Section */}
         <div className="flex flex-row w-screen px-[5%] h-[70%] justify-center items-center gap-x-4">
-          {/* {randomizedVideos.map((video, idx) => (
+          {randomVideos?.map((video, idx) => (
             <CardEducation key={idx} detail={video} />
-          ))} */}
+          ))}
         </div>
 
         <div className="w-full justify-center items-center h-[20%] flex ">

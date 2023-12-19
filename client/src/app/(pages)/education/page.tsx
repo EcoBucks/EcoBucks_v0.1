@@ -1,19 +1,34 @@
+"use client";
 import CardEducationContent from "@/components/CardEducationContent";
 import Footer from "@/components/Footer";
-import NavbarComponent from "@/components/Navbar";
-import SearchEducation from "@/components/SearchEducation";
-import { VideoModel, getVideos } from "@/db/models/videos";
-import Image from "next/image";
-import React from "react";
 
-const EducationPage = async () => {
-  type res = {
-    statusCode: 200;
-    message: "successfully read videos";
-    data: VideoModel[];
-  };
-  const data = await getVideos();
-  // console.log(data);
+import SearchEducation from "@/components/SearchEducation";
+import { VideoModel } from "@/db/models/videos";
+import Image from "next/image";
+import React, { useEffect, useState } from "react";
+import { Videos } from "./action";
+
+const EducationPage = ({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) => {
+  const search =
+    typeof searchParams?.search == "string" ? searchParams.search : undefined;
+
+  const [videos, setVideos] = useState<VideoModel[]>();
+
+  useEffect(() => {
+    const fetchVideos = async () => {
+      try {
+        const allVideos = await Videos(search);
+        setVideos(allVideos);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchVideos();
+  }, [searchParams]);
 
   return (
     <div>
@@ -73,7 +88,7 @@ const EducationPage = async () => {
 
       {/* Another Article Grid */}
       <div className="w-screen grid grid-cols-3 px-[10%] gap-8 mt-10 mb-[80px] animate-fade-up animate-delay-700">
-        {data?.map((video, idx) => (
+        {videos?.map((video, idx) => (
           <CardEducationContent key={idx} video={video} />
         ))}
 
