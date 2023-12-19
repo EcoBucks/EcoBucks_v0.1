@@ -6,6 +6,7 @@ import Map2 from "@/components/Map";
 import MapDetails from "@/components/MapDetails";
 import NavbarComponent from "@/components/Navbar";
 import { LocationType } from "@/types";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import React from "react";
 
@@ -29,25 +30,26 @@ const LocationDetailPage = async ({ params }: { params: { id: string } }) => {
 
   return (
     <>
-      <NavbarComponent />
-
+      {console.log(data)}
       {/* BreadCrumb */}
       <div className="flex flex-row w-screen h-[85px] items-center justify-center mt-[6%] px-[7%]">
         <nav
           aria-label="breadcrumb"
           className="w-full p-4 dark:bg-gray-800 dark:text-gray-100"
         >
-          <div className="flex flex-row w-full gap-x-2 items-center">
-            <span
-              className="material-symbols-outlined text-gray-700 rounded-lg"
-              style={{ fontSize: 20 }}
-            >
-              arrow_back
-            </span>
-            <li className=" underline flex items-center text-[14px] text-gray-600">
-              Other Location List
-            </li>
-          </div>
+          <Link href={"/location"}>
+            <div className="flex flex-row w-fit gap-x-2 items-center">
+              <span
+                className="material-symbols-outlined text-gray-700 rounded-lg"
+                style={{ fontSize: 20 }}
+              >
+                arrow_back
+              </span>
+              <li className=" underline flex items-center text-[14px] text-gray-600">
+                Other Location List
+              </li>
+            </div>
+          </Link>
         </nav>
       </div>
 
@@ -114,6 +116,7 @@ const LocationDetailPage = async ({ params }: { params: { id: string } }) => {
                 {data?.data.address}
               </p>
             </div>
+
             <div className="flex flex-col justify-start items-start w-full text-[16px] gap-y-2 py-4 text-gray-600">
               <div className="flex flex-row w-full h-[20px] items-center justify-start gap-x-3">
                 <p>
@@ -129,7 +132,7 @@ const LocationDetailPage = async ({ params }: { params: { id: string } }) => {
             </div>
 
             {/* Image Maps */}
-            <div className="flex flex-row w-full h-[45%] relative">
+            <div className="flex flex-row w-full h-[95%] relative">
               <div className="absolute right-0 bottom-0 z-10">
                 <div className="bg-eb-30 w-[180px] h-[40px] m-4 rounded-lg flex justify-center items-center text-white dm-sans flex-row gap-x-1">
                   <p>Go To Location</p>
@@ -171,9 +174,11 @@ const LocationDetailPage = async ({ params }: { params: { id: string } }) => {
         </div>
 
         <div className="w-full justify-center items-center h-[20%] flex">
-          <div className="flex flex-row gap-x-2 bg-eb-10 py-3 rounded-[20px] text-white w-[10%] items-center justify-center">
-            <p>See All</p>
-          </div>
+          <Link href={"/education"}>
+            <div className="flex flex-row gap-x-2 bg-eb-10 py-3 px-5 rounded-[20px] text-white w-full items-center justify-center hover:bg-eb-30 hover:scale-105 transition-all">
+              <p>Get More Information</p>
+            </div>
+          </Link>
         </div>
       </div>
       <Footer />
