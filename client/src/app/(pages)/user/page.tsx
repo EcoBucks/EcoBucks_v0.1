@@ -1,8 +1,6 @@
 "use client";
 import { Transaction } from "@/app/(action)/actionGetTransaction";
 import { getUser } from "@/app/(action)/actionGetUser";
-import { ClearWallet } from "@/app/(action)/clearWallet";
-import { updateOngoing } from "@/app/(action)/updateStatus";
 import Footer from "@/components/Footer";
 import Modal from "@/components/Modal";
 // import Modal from "@/components/Modal";
@@ -74,22 +72,22 @@ const UserPage = () => {
     }, []);
   }
 
-  const status = searchParams.get("status");
-  if (status === "berhasil") {
-    useEffect(() => {
-      const clearUserWallet = async () => {
-        try {
-          await ClearWallet();
-          // Handle successful wallet clearing if needed
-        } catch (error) {
-          // Handle errors here
-          console.error(error);
-        }
-      };
+  // const status = searchParams.get("status");
+  // if (status === "berhasil") {
+  //   useEffect(() => {
+  //     const clearUserWallet = async () => {
+  //       try {
+  //         await ClearWallet();
+  //         // Handle successful wallet clearing if needed
+  //       } catch (error) {
+  //         // Handle errors here
+  //         console.error(error);
+  //       }
+  //     };
 
-      clearUserWallet();
-    }, []);
-  }
+  //     clearUserWallet();
+  //   }, []);
+  // }
 
   const onLCickHandler = async (id: string) => {
     // console.log(id);
@@ -123,24 +121,24 @@ const UserPage = () => {
 
   // console.log(transaction, "<<<<<<< transaction");
 
-  const initiatePayment = async () => {
-    try {
-      const url = await handleClick();
-      setRedirectUrl(url);
-    } catch (error) {
-      console.error("Payment failed:", error);
-    }
-  };
+  // const initiatePayment = async () => {
+  //   try {
+  //     const url = await handleClick();
+  //     setRedirectUrl(url);
+  //   } catch (error) {
+  //     console.error("Payment failed:", error);
+  //   }
+  // };
 
-  const handleButtonClick = async () => {
-    await initiatePayment();
-  };
+  // const handleButtonClick = async () => {
+  //   await initiatePayment();
+  // };
 
-  // Redirect when redirectUrl is set
-  if (redirectUrl) {
-    window.location.href = redirectUrl;
-    return null; // Optionally return null or a loading message while redirecting
-  }
+  // // Redirect when redirectUrl is set
+  // if (redirectUrl) {
+  //   window.location.href = redirectUrl;
+  //   return null; // Optionally return null or a loading message while redirecting
+  // }
 
   return (
     <>
@@ -341,9 +339,7 @@ const UserPage = () => {
                   </p>
 
                   {el.status == "complete" ? (
-                    <button onClick={() => handleButtonClick()}>
-                      {el.status}
-                    </button>
+                    <p>{el.status}</p>
                   ) : el.status == "ongoing" && user?.data.role == "driver" ? (
                     <button onClick={() => complete(el._id)}>
                       {el.status}

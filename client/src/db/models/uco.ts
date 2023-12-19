@@ -170,3 +170,19 @@ export const updateUWallet = async (id: string) => {
         { $set: { status: "complete" } }
     )
 }
+
+export const deleteWallet = async (
+    email: string
+  )=> {
+    // console.log(email, '========dari uco');
+    const db = await getDb();
+
+    const user: userModel = await db.collection(COLLECTION_USER).findOne( { email: email }) as any;
+
+    // console.log(user);
+
+     await db.collection(COLLECTION_USER).updateOne(
+        { email: user.email },
+        { $set: { walletBallance: 0 } }
+    ) 
+  };

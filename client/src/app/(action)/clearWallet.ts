@@ -1,20 +1,23 @@
 "use server"
-import { cookies } from "next/headers"
+import { deleteWallet } from "@/db/models/uco";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+
+export const ClearWallet = async (formData: FormData) => {
+  const token = cookies().get('token');
+
+  if (!token) {
+    throw new Error("Unauthorized");
+  }
+
+  const email = formData.get("email")
+
+  const data = JSON.stringify(email)
+
+  const data2 = JSON.parse(data)
 
 
-export const ClearWallet = async () => {
-    const cookie = cookies()
+  await deleteWallet(data2)
 
-      const token = cookie.get('token')
-      if(!token){
-        throw new Error("Unauthorized")
-      }
-
-
-    await fetch("http://localhost:3000/api/transaction", {
-        method: "PUT",
-        headers:{
-            Cookie: cookies().toString()
-          }
-    })
-}
+//  redirect("http://localhost:3000/")
+};
