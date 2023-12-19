@@ -64,7 +64,7 @@ const LocationPage = ({
         {/* Right Component */}
         <div className="flex flex-col w-[55%] items-center justify-start px-[4%] pt-[3%] animate-fade-up animate-delay-200">
           {/* Search Location */}
-          // <Search />
+          <Search />
           <div className="flex flex-row w-full h-[50px] justify-between items-center">
             <h1 className="raleway font-bold text-[35px]">Search</h1>
             <div className="flex flex-row bg-white w-[75%] py-2 px-[2%] rounded-xl shadow-md">
