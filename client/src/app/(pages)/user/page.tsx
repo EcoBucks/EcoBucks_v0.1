@@ -1,13 +1,30 @@
 "use client";
+import { ClearWallet } from "@/app/(action)/clearWallet";
 import Footer from "@/components/Footer";
 import Modal from "@/components/Modal";
 import NavbarComponent from "@/components/Navbar";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import { useSearchParams } from "next/navigation";
+import React, { useEffect, useState } from "react";
 
 const UserPage = () => {
   const [open, setOpen] = useState(false);
+  const searchParams = useSearchParams();
+
+  console.log(searchParams.get("status"), "======");
+
+  const status = searchParams.get("status");
+  if (status == "berhasil") {
+    useEffect(() => {
+      const fetch = async () => {
+        await ClearWallet();
+      };
+
+      fetch();
+    }, []);
+  }
+
   return (
     <>
       <NavbarComponent />

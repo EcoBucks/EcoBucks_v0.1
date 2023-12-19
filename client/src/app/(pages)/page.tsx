@@ -4,11 +4,15 @@ import CardEducation from "@/components/CardEducation";
 import Footer from "@/components/Footer";
 import { OptionMT, SelectMT } from "@/components/MaterialTailwind";
 import { LocationType } from "@/types";
-import { fetchData } from "./(action)/fetchDataHome";
-import { fetchProvince } from "./(action)/fetchProvince";
+import { fetchData } from "../(action)/fetchDataHome";
+import { fetchProvince } from "../(action)/fetchProvince";
 import UcoForm from "@/components/UcoForm";
 import { redirect } from "next/navigation";
+import { searchProvince } from "../(action)/searchProvince";
+import { cookies } from "next/headers";
 import NavbarComponent from "@/components/Navbar";
+import { getVideos } from "@/db/models/videos";
+import Link from "next/link";
 
 export default async function Home() {
   const slides = [
@@ -26,10 +30,21 @@ export default async function Home() {
 
   const data: res = await fetchData();
 
-  if (!data) {
+  const cookie = cookies();
+  const token = cookie.get("token");
+
+  // console.log(token);
+
+  if (!token) {
     redirect("http://localhost:3000/login");
   }
+
+  const videos = await getVideos();
+
   const provinces = await fetchProvince();
+  const randomizedVideos = videos
+    .sort(() => Math.random() - Math.random())
+    .slice(0, 3);
 
   return (
     <>
@@ -62,51 +77,32 @@ export default async function Home() {
       </div>
 
       {/* LocationSearch */}
-      <div className="w-screen h-[730px] items-center justify-start px-[8%] flex-col flex mt-[5%]">
-        <div className="flex flex-col w-full">
+      <div className="w-screen h-[620px] items-center justify-start px-[8%] flex-col flex mt-[5%] animate-fade-up animate-delay-500">
+        <div className="flex flex-col w-fit">
           <p className="text-eb-30 text-[14px]">Location EcoBucks</p>
-          <p className="text-[50px] raleway font-medium -mt-2">
-            Our Nearest Collector Point
-          </p>
+          <Link href={"/location"}>
+            <div className="flex flex-row gap-x-4 items-center group w-fit">
+              <p className="text-[50px] raleway font-medium group group-hover:text-eb-10 transition-all">
+                Our Nearest Collecting Point
+              </p>
+              {/* Button Next or See All */}
+              <div className="bg-eb-30 rounded-full w-[50px] h-[50px] flex justify-center items-center transition-all group-hover:animate-shake">
+                <span
+                  className="material-symbols-outlined hover"
+                  style={{ color: "white" }}
+                >
+                  arrow_forward
+                </span>
+              </div>
+            </div>
+          </Link>
         </div>
 
-        {/* Search Collecting Point */}
-        <div className="flex flex-col w-screen items-center h-[660px] py-12 px-[8%]">
-          {/* Search Bar */}
-          <div className="flex w-full justify-start items-start -mt-4">
-            <form className="flex flex-row bg-white shadow-md w-[35%] h-[96px] ml-2 rounded-xl justify-between px-[2%]">
-              <div className="flex flex-col justify-center gap-y-2 items-start w-[30%]">
-                <div className="flex flex-row gap-x-2 items-center">
-                  <span
-                    className="material-symbols-outlined text-gray-700"
-                    style={{ fontSize: 30 }}
-                  >
-                    location_on
-                  </span>
-                  <SelectMT
-                    placeholder={""}
-                    variant="standard"
-                    label="Select Province"
-                    name="province"
-                  >
-                    {provinces?.map((province, index) => (
-                      <OptionMT key={index}>{province}</OptionMT>
-                    ))}
-                  </SelectMT>
-                </div>
-              </div>
-              <div className="flex flex-col justify-center items-center w-[38%]">
-                <div className="flex flex-row gap-x-2 bg-eb-10 px-4 py-3 rounded-[15px] text-white">
-                  <span className="material-symbols-outlined">search</span>
-                  <p>Search</p>
-                </div>
-              </div>
-            </form>
-          </div>
-
+        {/* Collecting Point Section */}
+        <div className="flex flex-col w-screen items-center h-[450px] px-[8%]">
           {/* Card Bar */}
-          <div className="overflow-x-auto flex flex-row w-full h-[80%] items-start justify-start pl-1 py-5 gap-x-5">
-            {data?.data?.map((location) => (
+          <div className="overflow-x-auto flex flex-row w-full h-full items-start justify-start pl-1 py-5 gap-x-5">
+            {data?.data?.slice(1, 6).map((location) => (
               <Card key={location + "id"} location={location} />
             ))}
           </div>
@@ -122,9 +118,9 @@ export default async function Home() {
 
         {/* Card Section */}
         <div className="flex flex-row w-screen px-[5%] h-[70%] justify-center items-center gap-x-4">
-          <CardEducation />
-          <CardEducation />
-          <CardEducation />
+          {randomizedVideos.map((video, idx) => (
+            <CardEducation key={idx} detail={video} />
+          ))}
         </div>
 
         <div className="w-full justify-center items-center h-[20%] flex">

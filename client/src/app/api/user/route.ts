@@ -49,34 +49,17 @@ export const POST = async (request: Request) => {
   // console.log(data, 'ini dari route');
 };
 
-// export const GET = async (request: Request) => {
-//   const data = await request.json();
-//   console.log(data, "ini data lagi ");
-//   const parsedData = userLogin.safeParse(data);
+export const GET = async (request: Request) => {
 
-//   if (!parsedData.success) {
-//     throw parsedData.error;
-//   }
 
-//   const user = await getUserByEmail(parsedData.data.password);
+  const email =  request.headers.get("x-user-email")
 
-//   if (!user || !comparePw(parsedData.data.password, user.password)) {
-//     return redirect(
-//       `http://localhost:3000/login?error='invalid%20email/password'`
-//     );
-//   }
+  const user = await getUserByEmail(email);  
 
-//   const payload = {
-//     id: user._id,
-//     email: user.email,
-//     name: user.name,
-//   };
-
-//   const token = signToken(payload);
-//   cookies().set("access_token", token);
-//   return NextResponse.json({
-//     statusCode: 200,
-//     message: "succcessfully create user",
-//     data: token,
-//   });
-// };
+  
+  return NextResponse.json({
+    statusCode: 200,
+    message: "succcessfully create user",
+    data: user,
+  });
+};

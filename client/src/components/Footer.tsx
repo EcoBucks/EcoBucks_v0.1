@@ -1,3 +1,5 @@
+// @ts-ignore
+
 import { subs } from "@/app/(action)/ACTIONNODEMAILER";
 import Image from "next/image";
 import React from "react";
@@ -11,7 +13,7 @@ const Footer = () => {
           {/* Coloumn 1 */}
           <div className="flex flex-col col-span-2 gap-y-2 w-[50%] h-full -mt-[10%]">
             <Image
-              src={"/EcoBucks_Horizontal_Logo.svg"}
+              src={"/EcoBucks_Horizontal_Logo.png"}
               width={320}
               height={200}
               alt="logo"

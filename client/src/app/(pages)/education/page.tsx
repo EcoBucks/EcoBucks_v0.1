@@ -1,16 +1,26 @@
 import CardEducationContent from "@/components/CardEducationContent";
 import Footer from "@/components/Footer";
 import NavbarComponent from "@/components/Navbar";
+import SearchEducation from "@/components/SearchEducation";
+import { VideoModel, getVideos } from "@/db/models/videos";
 import Image from "next/image";
 import React from "react";
 
-const EducationPage = () => {
+const EducationPage = async () => {
+  type res = {
+    statusCode: 200;
+    message: "successfully read videos";
+    data: VideoModel[];
+  };
+  const data = await getVideos();
+  // console.log(data);
+
   return (
     <div>
-      <NavbarComponent />
+      {/* <NavbarComponent /> */}
 
       {/* Header Component */}
-      <div className="w-screen h-[180px] justify-center items-center flex relative mt-[100px]">
+      <div className="w-screen h-[180px] justify-center items-center flex relative mt-[100px] animate-fade-up">
         <div className="bg-gray-700 w-[82%] h-full rounded-[30px] justify-center items-center flex overflow-hidden relative">
           <h1 className="absolute text-white raleway text-[50px] font-bold z-20">
             Education
@@ -26,24 +36,15 @@ const EducationPage = () => {
         </div>
 
         {/* Search Bar Input */}
-        <div className="absolute bg-white w-[35%] h-[75px] -bottom-11 rounded-[20px] flex flex-row justify-center items-center px-[4%] shadow-lg z-20">
-          <span className="material-symbols-outlined text-gray-700">
-            search
-          </span>
-          <input
-            type="text"
-            placeholder="Search Article ..."
-            className="rounded-[20px] w-full h-full px-[3%] focus:outline-none"
-          />
-        </div>
+        <SearchEducation />
       </div>
 
       {/* Top Article Component */}
-      <div className="w-screen flex flex-row h-[340px] mt-[5%] px-[10%] justify-center items-center gap-x-14">
+      <div className="w-screen flex flex-row h-[340px] mt-[5%] px-[10%] justify-center items-center gap-x-14 animate-fade-up animate-delay-300">
         {/* Left Component */}
         <div className="w-[45%] rounded-[25px] h-[90%] overflow-hidden">
           <img
-            src="https://source.unsplash.com/random/900x700/?indonesia"
+            src="https://img.antaranews.com/cache/1200x800/2021/06/10/IMG_0608.jpg.webp"
             className="object-cover rounded-lg w-full h-full"
           />
         </div>
@@ -52,32 +53,29 @@ const EducationPage = () => {
         <div className="w-[55%] rounded-lg h-[90%] flex flex-col ">
           <div className="flex flex-col w-full justify-between h-full">
             <div className="flex flex-col gap-y-4 w-[83%]">
-              <h1 className="text-[13px] text-eb-30">Technolgy</h1>
+              {/* <h1 className="text-[13px] text-eb-30">Technolgy</h1> */}
               <h1 className="text-[40px] raleway font-bold leading-10 text-gray-900">
-                An Extraordinary WebGL Has Been
+                Pengertian Used Cooking Oil
               </h1>
             </div>
             <p className="text-gray-500 leading-7">
-              Lorem ipsum dolor sit amet consectetur. Lectus sed leo in
-              ultricies porttitor aliquam tincidunt gravida eu. A gravida
-              aliquet vel amet. Aliquam turpis nunc interdum posuere
+              Used Cooking Oil yang selanjutnya disingkat UCO adalah minyak
+              limbah hasil dari penggunaan minyak goreng baik penggunaan rumah
+              tangga maupun industri.
             </p>
             <div className="flex flex-col">
-              <p className="font-bold">Brayn Owen</p>
-              <p className="text-gray-600">Jun 27, 2021</p>
+              <p className="font-bold">Brain Owen</p>
+              <p className="text-gray-600">Jun 27, 2023</p>
             </div>
           </div>
         </div>
       </div>
 
       {/* Another Article Grid */}
-      <div className="w-screen grid grid-cols-3 px-[10%] gap-8 mt-10 mb-[80px]">
-        <CardEducationContent />
-        <CardEducationContent />
-        <CardEducationContent />
-        <CardEducationContent />
-        <CardEducationContent />
-        <CardEducationContent />
+      <div className="w-screen grid grid-cols-3 px-[10%] gap-8 mt-10 mb-[80px] animate-fade-up animate-delay-700">
+        {data?.map((video, idx) => (
+          <CardEducationContent key={idx} video={video} />
+        ))}
 
         <div className="flex col-span-3 justify-center mt-[40px]">
           <div className="bg-gray-500 px-4 py-2 rounded-lg text-white hover:bg-eb-10 transition-all hover:scale-105">

@@ -7,9 +7,17 @@ import { cookies } from "next/headers";
 import { handleLogin } from "@/app/(action)/action";
 
 const LoginPage = () => {
+  const cookie = cookies();
+  const token = cookie.get("token");
+
+  console.log(token);
+
+  if (token) {
+    redirect("http://localhost:3000/");
+  }
   return (
     <>
-      <div className="h-screen w-screen items-center flex justify-center bg-gray-100">
+      <div className="h-screen w-screen items-center flex justify-center bg-gray-100 animate-fade-up">
         <div className="flex flex-row justify-center items-center h-[70%] w-[800px] relative">
           {/* Col Span 1 */}
           <div className="relative h-full flex flex-col text-gray-700 shadow-lg w-96 rounded-l-xl bg-clip-border overflow-hidden">
@@ -27,7 +35,7 @@ const LoginPage = () => {
           <div className="relative flex flex-col text-gray-700 bg-white shadow-lg w-96 rounded-r-xl bg-clip-border h-full justify-center">
             <div className="flex flex-col w-full items-center">
               <Image
-                src="/EcoBucks_Horizontal_Logo.svg"
+                src="/EcoBucks_Horizontal_Logo.png"
                 width={"320"}
                 height={"40"}
                 alt="background-login"

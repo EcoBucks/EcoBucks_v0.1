@@ -1,9 +1,11 @@
 "use client";
 import React from "react";
+import { toast } from "sonner";
 
 const CopyButton = () => {
   const copyToClipboard = () => {
     navigator.clipboard.writeText(window.location.href);
+    toast.success("Copied to clipboard!");
   };
   return (
     <button onClick={copyToClipboard}>
