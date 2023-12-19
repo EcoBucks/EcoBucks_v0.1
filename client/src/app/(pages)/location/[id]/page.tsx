@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import Map2 from "@/components/Map";
 import MapDetails from "@/components/MapDetails";
 import NavbarComponent from "@/components/Navbar";
+import { getVideos } from "@/db/models/videos";
 import { LocationType } from "@/types";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -27,6 +28,11 @@ const LocationDetailPage = async ({ params }: { params: { id: string } }) => {
     lat: data?.data.lat || 0,
     lng: data?.data.lng || 0,
   };
+
+  const videos = await getVideos();
+  const randomizedVideos = videos
+    .sort(() => Math.random() - Math.random())
+    .slice(0, 3);
 
   return (
     <>
@@ -168,9 +174,9 @@ const LocationDetailPage = async ({ params }: { params: { id: string } }) => {
 
         {/* Card Section */}
         <div className="flex flex-row w-screen px-[5%] h-[70%] justify-center items-center gap-x-4">
-          <CardEducation />
-          <CardEducation />
-          <CardEducation />
+          {randomizedVideos.map((video, idx) => (
+            <CardEducation key={idx} detail={video} />
+          ))}
         </div>
 
         <div className="w-full justify-center items-center h-[20%] flex">

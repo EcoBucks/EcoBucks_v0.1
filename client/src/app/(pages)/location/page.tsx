@@ -3,6 +3,7 @@ import CardEducation from "@/components/CardEducation";
 import CardLocation from "@/components/CardLocation";
 import Footer from "@/components/Footer";
 import NavbarComponent from "@/components/Navbar";
+import { getVideos } from "@/db/models/videos";
 import { LocationType } from "@/types";
 import Link from "next/link";
 import React from "react";
@@ -15,6 +16,11 @@ const LocationPage = async () => {
   };
 
   const data: res = await fetchData();
+
+  const videos = await getVideos();
+  const randomizedVideos = videos
+    .sort(() => Math.random() - Math.random())
+    .slice(0, 3);
 
   return (
     <>
@@ -82,9 +88,9 @@ const LocationPage = async () => {
 
         {/* Card Section */}
         <div className="flex flex-row w-screen px-[5%] h-[70%] justify-center items-center gap-x-4">
-          <CardEducation />
-          <CardEducation />
-          <CardEducation />
+          {randomizedVideos.map((video, idx) => (
+            <CardEducation key={idx} detail={video} />
+          ))}
         </div>
 
         <div className="w-full justify-center items-center h-[20%] flex ">

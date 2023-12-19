@@ -5,6 +5,8 @@ import { Inter, Raleway, DM_Sans } from "next/font/google";
 import { UserLocationProvider } from "@/context/GlobalContext";
 import NavbarComponent from "@/components/Navbar";
 
+import { Toaster } from "sonner";
+
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const raleway = Raleway({ subsets: ["latin"], variable: "--font-raleway" });
 const dm_sans = DM_Sans({ subsets: ["latin"], variable: "--font-dm-sans" });
@@ -35,7 +37,10 @@ export default function RootLayout({
       >
         <div className={inter.className}>
           <NavbarComponent />
-          <UserLocationProvider> {children}</UserLocationProvider>
+          <UserLocationProvider>
+            {children}
+            <Toaster expand={false} />
+          </UserLocationProvider>
         </div>
       </body>
     </html>
