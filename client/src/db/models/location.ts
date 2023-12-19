@@ -31,11 +31,19 @@ export const getDb = async () => {
   return db;
 };
 
-export const getLocation = async () => {
+export const getLocation = async (search?: string | undefined) => {
+  let pipeline = [];
+  if (search) {
+    pipeline.push({
+      $match: {
+        name: { $regex: new RegExp(search, "i") },
+      },
+    });
+  }
   const db = await getDb();
   const result = (await db
     .collection(COLLECTION_NAME)
-    .find()
+    .aggregate(pipeline)
     .toArray()) as locationModel[];
 
   return result;
