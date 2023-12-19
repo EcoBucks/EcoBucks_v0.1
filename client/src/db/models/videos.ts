@@ -40,3 +40,22 @@ export const getVideoBySlug = async (slug: string) => {
 
   return result;
 };
+
+export const searchVideos = async (search?: string | undefined) => {
+  let pipeline = [];
+  if (search) {
+    pipeline.push({
+      $match: {
+        title: { $regex: new RegExp(search, "i") },
+      },
+    });
+  }
+
+  const db = await getDb();
+  const result = (await db
+    .collection(COLLECTION_NAME)
+    .aggregate(pipeline)
+    .toArray()) as VideoModel[];
+
+  return result;
+};
