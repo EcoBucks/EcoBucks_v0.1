@@ -12,7 +12,6 @@ const NavbarComponent = () => {
   // console.log(data, "======ini navbar");
 
   const currentRoute = usePathname();
-  console.log(currentRoute, "<<< current");
   const linkStyle = ` text-sm font-medium hover:scale-100 hover:text-eb-10 active:scale-90 transition-all hover:font-bold `;
   const activeStyle =
     linkStyle +
