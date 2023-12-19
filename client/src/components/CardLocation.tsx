@@ -10,11 +10,11 @@ const CardLocation = ({ location }: { location: LocationType }) => {
     <>
       {/* Card */}
       <div className="flex flex-row w-full shadow-lg bg-white h-[190px] rounded-[20px] justify-center items-center px-4 gap-x-2">
-        <div className="flex h-[85%] w-[40%] rounded-2xl overflow-hidden bg-red-500">
+        <div className="flex h-[85%] w-[40%] rounded-2xl overflow-hidden">
           <Link href={`/location/${location._id}`}>
             <img
               src={location.picture}
-              className="object-cover rounded-lg w-full h-full"
+              className="object-cover rounded-lg w-[300px] h-full"
             />
           </Link>
         </div>
