@@ -2,12 +2,10 @@ import Caraousel from "@/components/Caraousel";
 import Card from "@/components/Card";
 import CardEducation from "@/components/CardEducation";
 import Footer from "@/components/Footer";
-import { OptionMT, SelectMT } from "@/components/MaterialTailwind";
 import { LocationType } from "@/types";
 import UcoForm from "@/components/UcoForm";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
-import NavbarComponent from "@/components/Navbar";
 import Link from "next/link";
 import { fetchData } from "../(action)/fetchDataHome";
 import { fetchProvince } from "../(action)/fetchProvince";
@@ -91,46 +89,6 @@ export default async function Home() {
 
         {/* Collecting Point Section */}
         <div className="flex flex-col w-screen items-center h-[450px] px-[8%]">
-          {/* Search Bar */}
-          {/*<div className="flex w-full justify-start items-start -mt-4">
-             <form
-              className="flex flex-row bg-white shadow-md w-[35%] h-[96px] ml-2 rounded-xl justify-between px-[2%]"
-              action={searchProvince}
-            >
-              <div className="flex flex-col justify-center gap-y-2 items-start w-[30%]">
-                <div className="flex flex-row gap-x-2 items-center">
-                  <span
-                    className="material-symbols-outlined text-gray-700"
-                    style={{ fontSize: 30 }}
-                  >
-                    location_on
-                  </span>
-                  <SelectMT
-                    placeholder={""}
-                    variant="standard"
-                    label="Select Province"
-                    name="province"
-                  >
-                    {provinces?.map((province, index) => (
-                      <OptionMT key={index} value={province}>
-                        {province}
-                      </OptionMT>
-                    ))}
-                  </SelectMT>
-                </div>
-              </div>
-              <button
-                className="flex flex-col justify-center items-center w-[38%]"
-                type="submit"
-              >
-                <div className="flex flex-row gap-x-2 bg-eb-10 px-4 py-3 rounded-[15px] text-white">
-                  <span className="material-symbols-outlined">search</span>
-                  <p>Search</p>
-                </div>
-              </button>
-            </form> 
-          </div>*/}
-
           {/* Card Bar */}
           <div className="overflow-x-auto flex flex-row w-full h-full items-start justify-start pl-1 py-5 gap-x-5">
             {data?.data?.slice(1, 6).map((location) => (

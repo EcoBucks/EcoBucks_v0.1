@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 
 import "../globals.css";
 import { Inter, Raleway, DM_Sans } from "next/font/google";
-import { useEffect } from "react";
 import { UserLocationProvider } from "@/context/GlobalContext";
 import NavbarComponent from "@/components/Navbar";
 
