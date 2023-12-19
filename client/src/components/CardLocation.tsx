@@ -1,8 +1,9 @@
+import { locationModel } from "@/db/models/location";
 import { LocationType } from "@/types";
 import Link from "next/link";
 import React from "react";
 
-const CardLocation = ({ location }: { location: LocationType }) => {
+const CardLocation = ({ location }: { location: locationModel }) => {
   const changeClock = (number: number) => {
     return Math.ceil(number / 60 + 9);
   };
@@ -10,11 +11,13 @@ const CardLocation = ({ location }: { location: LocationType }) => {
     <>
       {/* Card */}
       <div className="flex flex-row w-full shadow-lg bg-white h-[190px] rounded-[20px] justify-center items-center px-4 gap-x-2">
-        <div className="flex h-[85%] w-[40%] rounded-2xl">
-          <img
-            src={location.picture}
-            className="object-cover rounded-lg w-full h-full"
-          />
+        <div className="flex h-[85%] w-[40%] rounded-2xl overflow-hidden">
+          <Link href={`/location/${location._id}`}>
+            <img
+              src={location.picture}
+              className="object-cover rounded-lg w-[300px] h-full"
+            />
+          </Link>
         </div>
         <div className="flex flex-col w-[60%] h-[85%] rounded-2xl justify-center items-start px-2 gap-y-2 pr-[1%] relative">
           <h1 className="text-[24px] font-bold text-gray-600">

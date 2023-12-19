@@ -32,9 +32,9 @@ const ButtonWallet = () => {
     data: userModel;
   };
 
-  const [data, setData] = useState<data>();
   const [redirectUrl, setRedirectUrl] = useState("");
   const [userPage, setUserPage] = useState(false);
+  const [data, setData] = useState<data>();
 
   useEffect(() => {
     const fetch = async () => {
