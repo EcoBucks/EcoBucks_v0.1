@@ -1,39 +1,155 @@
 "use client";
-import { ClearWallet } from "@/app/(action)/clearWallet";
+import { Transaction } from "@/app/(action)/actionGetTransaction";
+import { getUser } from "@/app/(action)/actionGetUser";
 import Footer from "@/components/Footer";
 import Modal from "@/components/Modal";
-import NavbarComponent from "@/components/Navbar";
-import Image from "next/image";
+// import Modal from "@/components/Modal";
+import { handleClick } from "@/app/(action)/actionIPaymu";
+import NavbarComponent from "@/components/Navbar"; //! sus bangettt nih componenet aswww
+import { ucoModels, updateUBallanceOnGoing } from "@/db/models/uco";
+import { userModel } from "@/db/models/user";
+import { currencyFormatted } from "@/lib/ConstantFunction";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 const UserPage = () => {
   const [open, setOpen] = useState(false);
+  const [user, setUser] = useState<dataUser>();
+  const [transaction, setTransaction] = useState<ucoModels[]>();
+  const [redirectUrl, setRedirectUrl] = useState("");
+
   const searchParams = useSearchParams();
 
-  console.log(searchParams.get("status"), "======");
+  type dataUser = {
+    statusCode: string;
+    message: string;
+    data: userModel;
+  };
 
-  const status = searchParams.get("status");
-  if (status == "berhasil") {
+  // console.log(searchParams.get("status"), "======");
+
+  const fetchUser = async () => {
+    try {
+      const data = await getUser();
+      setUser(data);
+      // console.log(data, "====user===");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchUser();
+  }, []);
+
+  if (user?.data.role == "user") {
+    const fetch = async () => {
+      try {
+        const data: ucoModels[] = (await Transaction("user")) as any;
+        setTransaction(data);
+        // console.log(data, "=======");
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    useEffect(() => {
+      fetch();
+    }, []);
+  } else {
     useEffect(() => {
       const fetch = async () => {
-        await ClearWallet();
+        try {
+          const data: ucoModels[] = (await Transaction("driver")) as any;
+          // console.log(data, "===driver====");
+          setTransaction(data);
+        } catch (error) {
+          console.log(error);
+        }
       };
-
       fetch();
     }, []);
   }
 
+  // const status = searchParams.get("status");
+  // if (status === "berhasil") {
+  //   useEffect(() => {
+  //     const clearUserWallet = async () => {
+  //       try {
+  //         await ClearWallet();
+  //         // Handle successful wallet clearing if needed
+  //       } catch (error) {
+  //         // Handle errors here
+  //         console.error(error);
+  //       }
+  //     };
+
+  //     clearUserWallet();
+  //   }, []);
+  // }
+
+  const onLCickHandler = async (id: string) => {
+    // console.log(id);
+    try {
+      await fetch(`http://localhost:3000/api/transaction`, {
+        method: "PUT",
+        body: JSON.stringify(id),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const complete = async (id: string) => {
+    console.log(id);
+    try {
+      await fetch("http://localhost:3000/api/pay", {
+        method: "PUT",
+        body: JSON.stringify(id),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // console.log(transaction, "<<<<<<< transaction");
+
+  // const initiatePayment = async () => {
+  //   try {
+  //     const url = await handleClick();
+  //     setRedirectUrl(url);
+  //   } catch (error) {
+  //     console.error("Payment failed:", error);
+  //   }
+  // };
+
+  // const handleButtonClick = async () => {
+  //   await initiatePayment();
+  // };
+
+  // // Redirect when redirectUrl is set
+  // if (redirectUrl) {
+  //   window.location.href = redirectUrl;
+  //   return null; // Optionally return null or a loading message while redirecting
+  // }
+
   return (
     <>
       <NavbarComponent />
-
       <div className="p-10 mt-20">
         <div className="flex flex-col md:flex-row">
           <div className=" bg-eb-10 rounded-[10px] shadow-[0_10px_29px_0px_rgba(0,0,0,0.1)] md:mr-[1.5rem] p-6 md:p-12 w-[75%] h-[200px] md:w-[308px] md:h-[332px] self-center md:self-start">
             <div className="flex flex-col raleway font-bold">
-              <h1 className="text-white text-[20px]">Hola Hacktiv8 User!</h1>
+              <h1 className="text-white text-[20px]">
+                Hola {user?.data.name}!
+              </h1>
               <Link href="/user-page">
                 <div className="flex my-2 md:my-4">
                   <svg
@@ -209,115 +325,35 @@ const UserPage = () => {
               </div>
               <hr className="my-2 " />
               {/* Ini yg nanti di map */}
-              <div className="flex flex-row justify-between text-[10px] md:text-[1rem] my-3">
-                <p>1</p>
-                <p>#3DE7GH</p>
-                <p>Rp250,000</p>
-                <p>Pending</p>
-              </div>
+              {transaction?.map((el, idx) => (
+                <div
+                  key={el._id}
+                  className="flex flex-row justify-between text-[10px] md:text-[1rem] my-3"
+                >
+                  <p>{idx + 1}</p>
+                  <p>#3DE7GH</p>
+                  <p>
+                    {el.ucoBalance !== undefined
+                      ? currencyFormatted(el.ucoBalance)
+                      : ""}
+                  </p>
+
+                  {el.status == "complete" ? (
+                    <p>{el.status}</p>
+                  ) : el.status == "ongoing" && user?.data.role == "driver" ? (
+                    <button onClick={() => complete(el._id)}>
+                      {el.status}
+                    </button>
+                  ) : user?.data.role == "driver" ? (
+                    <button onClick={() => onLCickHandler(el._id)}>
+                      {el.status}
+                    </button>
+                  ) : (
+                    <p>{el.status}</p>
+                  )}
+                </div>
+              ))}
               {/* ^^^^^^^^^^^^^^ */}
-              <div className="flex flex-row justify-between text-[10px] md:text-[1rem] my-3">
-                <p>2</p>
-                <p>#3DE7GH</p>
-                <p>Rp250,000</p>
-                <p>Pending</p>
-              </div>
-              <div className="flex flex-row justify-between text-[10px] md:text-[1rem] my-3">
-                <p>3</p>
-                <p>#3DE7GH</p>
-                <p>Rp250,000</p>
-                <p>Pending</p>
-              </div>
-              <div className="flex flex-row justify-between text-[10px] md:text-[1rem] my-3">
-                <p>3</p>
-                <p>#3DE7GH</p>
-                <p>Rp250,000</p>
-                <p>Pending</p>
-              </div>
-              <div className="flex flex-row justify-between text-[10px] md:text-[1rem] my-3">
-                <p>3</p>
-                <p>#3DE7GH</p>
-                <p>Rp250,000</p>
-                <p>Pending</p>
-              </div>
-              <div className="flex flex-row justify-between text-[10px] md:text-[1rem] my-3">
-                <p>3</p>
-                <p>#3DE7GH</p>
-                <p>Rp250,000</p>
-                <p>Pending</p>
-              </div>
-              <div className="flex flex-row justify-between text-[10px] md:text-[1rem] my-3">
-                <p>3</p>
-                <p>#3DE7GH</p>
-                <p>Rp250,000</p>
-                <p>Pending</p>
-              </div>
-              <div className="flex flex-row justify-between text-[10px] md:text-[1rem] my-3">
-                <p>3</p>
-                <p>#3DE7GH</p>
-                <p>Rp250,000</p>
-                <p>Pending</p>
-              </div>
-              <div className="flex flex-row justify-between text-[10px] md:text-[1rem] my-3">
-                <p>3</p>
-                <p>#3DE7GH</p>
-                <p>Rp250,000</p>
-                <p>Pending</p>
-              </div>
-              <div className="flex flex-row justify-between text-[10px] md:text-[1rem] my-3">
-                <p>3</p>
-                <p>#3DE7GH</p>
-                <p>Rp250,000</p>
-                <p>Pending</p>
-              </div>
-              <div className="flex flex-row justify-between text-[10px] md:text-[1rem] my-3">
-                <p>3</p>
-                <p>#3DE7GH</p>
-                <p>Rp250,000</p>
-                <p>Pending</p>
-              </div>
-              <div className="flex flex-row justify-between text-[10px] md:text-[1rem] my-3">
-                <p>3</p>
-                <p>#3DE7GH</p>
-                <p>Rp250,000</p>
-                <p>Pending</p>
-              </div>
-              <div className="flex flex-row justify-between text-[10px] md:text-[1rem] my-3">
-                <p>3</p>
-                <p>#3DE7GH</p>
-                <p>Rp250,000</p>
-                <p>Pending</p>
-              </div>
-              <div className="flex flex-row justify-between text-[10px] md:text-[1rem] my-3">
-                <p>3</p>
-                <p>#3DE7GH</p>
-                <p>Rp250,000</p>
-                <p>Pending</p>
-              </div>
-              <div className="flex flex-row justify-between text-[10px] md:text-[1rem] my-3">
-                <p>3</p>
-                <p>#3DE7GH</p>
-                <p>Rp250,000</p>
-                <p>Pending</p>
-              </div>
-              <div className="flex flex-row justify-between text-[10px] md:text-[1rem] my-3">
-                <p>3</p>
-                <p>#3DE7GH</p>
-                <p>Rp250,000</p>
-                <p>Pending</p>
-              </div>
-              <div className="flex flex-row justify-between text-[10px] md:text-[1rem] my-3">
-                <p>3</p>
-                <p>#3DE7GH</p>
-                <p>Rp250,000</p>
-                <p>Pending</p>
-              </div>
-              <div className="flex flex-row justify-between text-[10px] md:text-[1rem] my-3">
-                <p>3</p>
-                <p>#3DE7GH</p>
-                <p>Rp250,000</p>
-                <p>Pending</p>
-              </div>
             </div>
           </div>
         </div>

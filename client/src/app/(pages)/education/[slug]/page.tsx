@@ -20,7 +20,7 @@ const EducationDetail = async ({ params }: { params: { slug: string } }) => {
     data: LocationType[];
   };
 
-  const data: res = await fetchData();
+  const data: res = (await fetchData()) as any;
 
   if (!data) {
     redirect("http://localhost:3000/login");

@@ -27,7 +27,7 @@ export const handleClick = async () => {
     qty: ["1"],
     price: [price],
     amount: "10000",
-    returnUrl: "http://localhost:3000/user", // your thank you page url
+    returnUrl: "http://localhost:3000/thankyu", // your thank you page url
     cancelUrl: "http://localhost:3000/cancel", // your cancel page url
     notifyUrl: "http://localhost:3000/", // your callback url
     referenceId: "1234", // your reference id or transaction id
@@ -59,7 +59,7 @@ export const handleClick = async () => {
 
     const responseJson = await response.json();
     // Handle response data here (e.g., update state, display response, etc.)
-    console.log(responseJson, "==========");
+    // console.log(responseJson, "==========");
 
     return responseJson.Data.Url;
 

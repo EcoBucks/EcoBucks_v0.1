@@ -4,5 +4,5 @@
 export const searchProvince = async (formData: FormData) => {
         const prov = formData.get("province")
 
-        console.log(prov);
+        console.log(formData.get("province"));
 }

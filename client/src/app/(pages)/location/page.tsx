@@ -85,6 +85,7 @@ const LocationPage = ({
           {/* Overflow Location Card */}
           {/* <div className="flex flex-col w-full h-[82%] justify-start items-center gap-y-3">
             <div className="overflow-auto w-full h-full">
+
               <div className="flex flex-col w-full gap-y-5 items-center justify-center py-4">
                 {data?.data?.map((location, index) => (
                   <CardLocation key={index} location={location} />

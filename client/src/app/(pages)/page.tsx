@@ -28,7 +28,7 @@ export default async function Home() {
     data: LocationType[];
   };
 
-  const data: res = await fetchData();
+  const data: res = (await fetchData()) as any;
 
   const cookie = cookies();
   const token = cookie.get("token");

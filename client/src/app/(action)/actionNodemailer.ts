@@ -1,6 +1,8 @@
 "use server";
 
 import { transporter } from "@/config/nodemailer";
+import { userModel } from "@/db/models/user";
+import { getUser } from "./actionGetUser";
 
 const htmlTemplate = `
 <!DOCTYPE html>
@@ -102,7 +104,6 @@ const htmlTemplate = `
 </html>
 `;
 
-const email = "ecobucks08@gmail.com";
 
 export const subs = async (formData: FormData) => {
   console.log(formData);
@@ -129,3 +130,40 @@ export const subs = async (formData: FormData) => {
     }
   );
 };
+
+export const ucoPay = async (url: string) => {
+
+  type dataUser = {
+    statusCode: string;
+    message: string;
+    data: userModel;
+  };
+  const data = (await getUser()) as dataUser;
+
+  console.log(data.data.email, '=====email user======');
+  console.log(url, '=====dari nodemailor=====');
+
+  const emailUser = data.data.email
+
+
+  const email = "ecobucks08@gmail.com";
+  const link = url
+
+  transporter.sendMail(
+    {
+      from: `EcoBucks user <${emailUser}>`,
+      to: email.toString(),
+      subject: 'bayar cokkk',
+      text: `nihlink: ${link} email: ${emailUser} `
+      // html: htmlTemplate,
+    },
+    (error, info) => {
+      if (error) {
+        console.error("Error sending email:", error);
+      } else {
+        console.log("Email sent:", info.response);
+      }
+    }
+  );
+
+}
