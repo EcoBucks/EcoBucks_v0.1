@@ -7,6 +7,7 @@ const Page = () => {
   return (
     <>
       {/* <NavbarComponent /> */}
+
       <div className="h-[340px] flex justify-center items-center bg-sea1 bg-fixed bg-no-repeat bg-cover bg-center mt-20 relative ease-in-out translate-y-5 animate-fade-up">
         <h1 className="text-[#ffffff] bg-opacity-50 p-3 rounded-md text-6xl raleway font-bold z-20">
           Our Contributions
