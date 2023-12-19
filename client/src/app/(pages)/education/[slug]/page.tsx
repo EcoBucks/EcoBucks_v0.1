@@ -14,13 +14,7 @@ import { redirect } from "next/navigation";
 const EducationDetail = async ({ params }: { params: { slug: string } }) => {
   // console.log(params.slug);
 
-  type res = {
-    statusCode: 200;
-    message: "successfully read Location";
-    data: LocationType[];
-  };
-
-  const data: res = (await fetchData()) as any;
+  const data: LocationType[] = (await fetchData()) as any;
 
   if (!data) {
     redirect("http://localhost:3000/login");
@@ -133,7 +127,7 @@ const EducationDetail = async ({ params }: { params: { slug: string } }) => {
         <div className="flex flex-col w-screen items-center h-[450px] px-[8%]">
           {/* Card Bar */}
           <div className="overflow-x-auto flex flex-row w-full h-full items-start justify-start pl-1 py-5 gap-x-5">
-            {data?.data?.slice(1, 6).map((location) => (
+            {data?.slice(1, 6).map((location) => (
               <Card key={location + "id"} location={location} />
             ))}
           </div>

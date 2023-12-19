@@ -13,7 +13,10 @@ export default function page() {
       <div>
         <h1>tenkyuuuuu</h1>
 
-        <form action={ClearWallet}>
+        <form
+          action={ClearWallet}
+          className="w-screen h-screen flex justify-center items-center"
+        >
           <input type="text" name="email" />
           <button type="submit" className=" bg-blue-gray-300 rounded-full">
             {" "}

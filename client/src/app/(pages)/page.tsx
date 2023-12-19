@@ -28,17 +28,7 @@ export default async function Home() {
     data: LocationType[];
   };
 
-  const data: res = (await fetchData()) as any;
-
-  const cookie = cookies();
-  const token = cookie.get("token");
-
-  // console.log(token);
-
-  if (!token) {
-    redirect("http://localhost:3000/login");
-  }
-
+  const data: LocationType[] = (await fetchData()) as any;
   const videos = await getVideos();
 
   const provinces = await fetchProvince();
@@ -101,8 +91,9 @@ export default async function Home() {
         {/* Collecting Point Section */}
         <div className="flex flex-col w-screen items-center h-[450px] px-[8%]">
           {/* Card Bar */}
+
           <div className="overflow-x-auto flex flex-row w-full h-full items-start justify-start pl-1 py-5 gap-x-5">
-            {data?.data?.slice(1, 6).map((location) => (
+            {data?.slice(1, 6).map((location) => (
               <Card key={location + "id"} location={location} />
             ))}
           </div>
