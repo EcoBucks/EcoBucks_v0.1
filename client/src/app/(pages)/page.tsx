@@ -38,8 +38,6 @@ export default async function Home() {
 
   return (
     <>
-      <NavbarComponent />
-
       {/* Hero Section */}
       <div className="flex w-screen h-[600px] items-center justify-center px-[8%] mt-[8%]">
         <div className="bg-white w-full h-full flex flex-row gap-x-4 animate-fade-up animate-delay-150">

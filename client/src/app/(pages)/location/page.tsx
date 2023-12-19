@@ -70,7 +70,7 @@ const LocationPage = ({
         <div className="flex flex-col w-[55%] items-center justify-start px-[4%] pt-[3%] animate-fade-up animate-delay-200">
           {/* Search Location */}
           <Search />
-          <div className="flex flex-row w-full h-[50px] justify-between items-center">
+          {/* <div className="flex flex-row w-full h-[50px] justify-between items-center">
             <h1 className="raleway font-bold text-[35px]">Search</h1>
             <div className="flex flex-row bg-white w-[75%] py-2 px-[2%] rounded-xl shadow-md">
               <input
@@ -82,7 +82,7 @@ const LocationPage = ({
                 search
               </span>
             </div>
-          </div>
+          </div> */}
           {/* divider */}
           <div className="flex w-full justify-center items-center py-5 animate-fade-up animate-delay-200">
             <div className="w-[95%] bg-gray-400 h-[1px] justify-center items-center"></div>
@@ -90,7 +90,6 @@ const LocationPage = ({
           {/* Overflow Location Card */}
           <div className="flex flex-col w-full h-[82%] justify-start items-center gap-y-3">
             <div className="overflow-auto w-full h-full">
-
               <div className="flex flex-col w-full gap-y-5 items-center justify-center py-4">
                 {data?.map((location, index) => (
                   <CardLocation key={index} location={location} />

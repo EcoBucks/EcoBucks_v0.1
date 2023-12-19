@@ -18,7 +18,7 @@ const Search = () => {
   return (
     <>
       <div className="flex flex-row w-full h-[50px] justify-between items-center">
-        <h1 className="raleway font-bold text-[35px]">Lokasi Kami</h1>
+        <h1 className="raleway font-bold text-[35px]">Find Location</h1>
         <div className="flex flex-row bg-white w-[60%] py-2 px-[4%] rounded-xl shadow-md">
           <input
             type="text"
