@@ -26,3 +26,28 @@ export const UserLocationProvider = ({
     </UserLocationContext.Provider>
   );
 };
+
+export const UserWalletContext = createContext([]);
+export const UserWalletProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
+  const [userWallet, setUserWallet] = useState<any>(null);
+
+  const getUserLocation = (): void => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      console.log(position);
+    });
+  };
+
+  useEffect(() => {
+    getUserLocation();
+  }, []);
+
+  return (
+    <UserWalletContext.Provider value={userWallet}>
+      {children}
+    </UserWalletContext.Provider>
+  );
+};

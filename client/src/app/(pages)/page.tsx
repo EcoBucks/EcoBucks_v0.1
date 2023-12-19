@@ -4,15 +4,14 @@ import CardEducation from "@/components/CardEducation";
 import Footer from "@/components/Footer";
 import { OptionMT, SelectMT } from "@/components/MaterialTailwind";
 import { LocationType } from "@/types";
-import { fetchData } from "./(action)/fetchDataHome";
-import { fetchProvince } from "./(action)/fetchProvince";
+import { fetchData } from "../(action)/fetchDataHome";
+import { fetchProvince } from "../(action)/fetchProvince";
 import UcoForm from "@/components/UcoForm";
 import { redirect } from "next/navigation";
-import { searchProvince } from "./(action)/searchProvince";
+import { searchProvince } from "../(action)/searchProvince";
 import { cookies } from "next/headers";
 import NavbarComponent from "@/components/Navbar";
 import { getVideos } from "@/db/models/videos";
-import Link from "next/link";
 
 export default async function Home() {
   const slides = [
@@ -39,9 +38,9 @@ export default async function Home() {
     redirect("http://localhost:3000/login");
   }
 
-  const provinces = await fetchProvince();
-
   const videos = await getVideos();
+
+  const provinces = await fetchProvince();
   const randomizedVideos = videos
     .sort(() => Math.random() - Math.random())
     .slice(0, 3);
@@ -152,7 +151,7 @@ export default async function Home() {
 
         <div className="w-full justify-center items-center h-[20%] flex">
           <div className="flex flex-row gap-x-2 bg-eb-10 py-3 rounded-[20px] text-white w-[10%] items-center justify-center">
-            <Link href="/education">See All</Link>
+            <p>See All</p>
           </div>
         </div>
       </div>
