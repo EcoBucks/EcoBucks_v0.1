@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 
-import "./globals.css";
+import "../globals.css";
 import { Inter, Raleway, DM_Sans } from "next/font/google";
 import { useEffect } from "react";
 import { UserLocationProvider } from "@/context/GlobalContext";
+import NavbarComponent from "@/components/Navbar";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const raleway = Raleway({ subsets: ["latin"], variable: "--font-raleway" });
@@ -34,6 +35,7 @@ export default function RootLayout({
         className={`${inter.variable} ${raleway.variable} ${dm_sans.variable} bg-eb-50`}
       >
         <div className={inter.className}>
+          <NavbarComponent />
           <UserLocationProvider> {children}</UserLocationProvider>
         </div>
       </body>

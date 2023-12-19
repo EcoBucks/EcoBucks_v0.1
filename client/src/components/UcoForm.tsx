@@ -54,7 +54,7 @@ const UcoForm: React.FC = () => {
                   <div className="flex flex-row w-full h-full">
                     <input
                       type="text"
-                      className="w-[90%] bg-[#ffffff20] rounded-s-[15px] text-white px-5 placeholder:text-[#ffffff30] focus:outline-none"
+                      className="w-[90%] bg-[#ffffff20] rounded-s-[15px] text-white px-5 placeholder:text-[#ffffff30] focus:outline-none focus:bg-white/20 transition-all"
                       placeholder="ex: 250 liter"
                       onChange={(e) => debounceOnChange(e)}
                     />

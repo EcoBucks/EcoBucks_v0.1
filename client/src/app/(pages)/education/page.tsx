@@ -7,7 +7,7 @@ import React from "react";
 const EducationPage = () => {
   return (
     <div>
-      <NavbarComponent />
+      {/* <NavbarComponent /> */}
 
       {/* Header Component */}
       <div className="w-screen h-[180px] justify-center items-center flex relative mt-[100px] animate-fade-up">
@@ -39,7 +39,7 @@ const EducationPage = () => {
       </div>
 
       {/* Top Article Component */}
-      <div className="w-screen flex flex-row h-[340px] mt-[5%] px-[10%] justify-center items-center gap-x-14 animate-fade-up animate-delay-500">
+      <div className="w-screen flex flex-row h-[340px] mt-[5%] px-[10%] justify-center items-center gap-x-14 animate-fade-up animate-delay-300">
         {/* Left Component */}
         <div className="w-[45%] rounded-[25px] h-[90%] overflow-hidden">
           <img
@@ -71,7 +71,7 @@ const EducationPage = () => {
       </div>
 
       {/* Another Article Grid */}
-      <div className="w-screen grid grid-cols-3 px-[10%] gap-8 mt-10 mb-[80px]">
+      <div className="w-screen grid grid-cols-3 px-[10%] gap-8 mt-10 mb-[80px] animate-fade-up animate-delay-700">
         <CardEducationContent />
         <CardEducationContent />
         <CardEducationContent />

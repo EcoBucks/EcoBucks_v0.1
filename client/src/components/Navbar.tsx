@@ -16,7 +16,7 @@ const NavbarComponent = () => {
   const linkStyle = ` text-sm font-medium hover:scale-100 hover:text-eb-10 active:scale-90 transition-all hover:font-bold `;
   const activeStyle =
     linkStyle +
-    " text-eb-10 font-extrabold hover:scale-100 active:scale-100 hover:font-medium";
+    " text-eb-10 border-b-2 border-eb-10 font-bold hover:scale-100 active:scale-100 hover:font-medium";
   const nonActiveStyle = linkStyle + ` text-gray-400`;
 
   return (
@@ -62,22 +62,6 @@ const NavbarComponent = () => {
             </button>
           </Link>
         </div>
-
-        {/* <button className="flex justify-between px-[1.1%] items-center shadow-md rounded-xl gap-x-4">
-          <div className="flex flex-row justify-center h-full items-center gap-x-2">
-            <span className="material-symbols-outlined text-eb-20">
-              account_balance_wallet
-            </span>
-            <p className="text-sm font-bold">
-              {currencyFormatted(data.data.walletBallance)},-
-            </p>
-          </div>
-          <div className="flex justify-center items-center h-12">
-            <p className="bg-black text-white rounded-lg w-8 h-8 text-center text-[10px] items-center justify-center flex font-semibold">
-              E
-            </p>
-          </div>
-        </button> */}
         <ButtonWallet />
       </div>
     </>

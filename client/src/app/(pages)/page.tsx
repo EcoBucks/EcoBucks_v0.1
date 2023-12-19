@@ -4,13 +4,13 @@ import CardEducation from "@/components/CardEducation";
 import Footer from "@/components/Footer";
 import { OptionMT, SelectMT } from "@/components/MaterialTailwind";
 import { LocationType } from "@/types";
-import { fetchData } from "./(action)/fetchDataHome";
-import { fetchProvince } from "./(action)/fetchProvince";
 import UcoForm from "@/components/UcoForm";
 import { redirect } from "next/navigation";
-import { searchProvince } from "./(action)/searchProvince";
 import { cookies } from "next/headers";
 import NavbarComponent from "@/components/Navbar";
+import Link from "next/link";
+import { fetchData } from "../(action)/fetchDataHome";
+import { fetchProvince } from "../(action)/fetchProvince";
 
 export default async function Home() {
   const slides = [
@@ -41,8 +41,6 @@ export default async function Home() {
 
   return (
     <>
-      <NavbarComponent />
-
       {/* Hero Section */}
       <div className="flex w-screen h-[600px] items-center justify-center px-[8%] mt-[8%]">
         <div className="bg-white w-full h-full flex flex-row gap-x-4 ">
@@ -70,15 +68,28 @@ export default async function Home() {
       </div>
 
       {/* LocationSearch */}
-      <div className="w-screen h-[730px] items-center justify-start px-[8%] flex-col flex mt-[5%]">
+      <div className="w-screen h-[620px] items-center justify-start px-[8%] flex-col flex mt-[5%] animate-fade-up animate-delay-500">
         <div className="flex flex-col w-full">
           <p className="text-eb-30 text-[14px]">Location EcoBucks</p>
-          <p className="text-[50px] raleway font-medium -mt-2">
-            Our Nearest Collector Point
-          </p>
+          <Link href={"/location"}>
+            <div className="flex flex-row gap-x-4 items-center group w-fit">
+              <p className="text-[50px] raleway font-medium group group-hover:text-eb-10 transition-all">
+                Our Nearest Collecting Point
+              </p>
+              {/* Button Next or See All */}
+              <div className="bg-eb-30 rounded-full w-[50px] h-[50px] flex justify-center items-center transition-all group-hover:animate-shake">
+                <span
+                  className="material-symbols-outlined hover"
+                  style={{ color: "white" }}
+                >
+                  arrow_forward
+                </span>
+              </div>
+            </div>
+          </Link>
         </div>
 
-        {/* Search Collecting Point */}
+        {/* Collecting Point Section */}
         <div className="flex flex-col w-screen items-center h-[450px] px-[8%]">
           {/* Search Bar */}
           {/*<div className="flex w-full justify-start items-start -mt-4">
@@ -130,7 +141,7 @@ export default async function Home() {
       </div>
 
       {/* Education */}
-      <div className="flex w-screen flex-col h-[450px] justify-start items-center mb-[5%]">
+      <div className="flex w-screen flex-col h-[450px] justify-start items-center mb-[5%] animate-fade-up animate-delay-700">
         <h1 className="text-sm text-eb-30">EcoBucks Education</h1>
         <h1 className="text-[50px] raleway font-medium text-gray-900 -mt-2">
           Education
@@ -143,9 +154,9 @@ export default async function Home() {
           <CardEducation />
         </div>
 
-        <div className="w-full justify-center items-center h-[20%] flex">
-          <div className="flex flex-row gap-x-2 bg-eb-10 py-3 rounded-[20px] text-white w-[10%] items-center justify-center">
-            <p>See All</p>
+        <div className="w-full justify-center items-center h-[20%] flex ">
+          <div className="flex flex-row gap-x-2 bg-eb-10 py-3 rounded-[20px] text-white w-[15%] items-center justify-center hover:bg-eb-30 hover:scale-105 transition-all">
+            <p>Get More Information</p>
           </div>
         </div>
       </div>
