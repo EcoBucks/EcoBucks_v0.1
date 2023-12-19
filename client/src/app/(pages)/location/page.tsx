@@ -6,11 +6,11 @@ import Footer from "@/components/Footer";
 import NavbarComponent from "@/components/Navbar";
 import { getVideos } from "@/db/models/videos";
 import { LocationType } from "@/types";
-
 import React, { useEffect, useState } from "react";
 import { Locations } from "./action";
 import { locationModel } from "@/db/models/location";
 import Search from "@/components/Search";
+import Link from "next/link";
 
 const LocationPage = ({
   searchParams,
@@ -19,10 +19,6 @@ const LocationPage = ({
 }) => {
   const search =
     typeof searchParams?.search == "string" ? searchParams.search : undefined;
-
-import Link from "next/link";
-import React from "react";
-
 
   type res = {
     statusCode: 200;
@@ -41,12 +37,12 @@ import React from "react";
     };
     getLocations();
   }, [searchParams]);
-  console.log(data, "<<<");
+  // console.log(data, "<<<");
 
-  const videos = await getVideos();
-  const randomizedVideos = videos
-    .sort(() => Math.random() - Math.random())
-    .slice(0, 3);
+  // const videos = await getVideos();
+  // const randomizedVideos = await videos
+  //   .sort(() => Math.random() - Math.random())
+  //   .slice(0, 3);
 
   return (
     <>
@@ -68,7 +64,6 @@ import React from "react";
         {/* Right Component */}
         <div className="flex flex-col w-[55%] items-center justify-start px-[4%] pt-[3%] animate-fade-up animate-delay-200">
           {/* Search Location */}
-
           // <Search />
           <div className="flex flex-row w-full h-[50px] justify-between items-center">
             <h1 className="raleway font-bold text-[35px]">Search</h1>
@@ -83,24 +78,20 @@ import React from "react";
               </span>
             </div>
           </div>
-
-
           {/* divider */}
           <div className="flex w-full justify-center items-center py-5 animate-fade-up animate-delay-200">
             <div className="w-[95%] bg-gray-400 h-[1px] justify-center items-center"></div>
           </div>
-
           {/* Overflow Location Card */}
-          <div className="flex flex-col w-full h-[82%] justify-start items-center gap-y-3">
+          {/* <div className="flex flex-col w-full h-[82%] justify-start items-center gap-y-3">
             <div className="overflow-auto w-full h-full">
-
               <div className="flex flex-col w-full gap-y-5 items-center justify-center py-4">
                 {data?.data?.map((location, index) => (
                   <CardLocation key={index} location={location} />
                 ))}
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
 
@@ -118,9 +109,9 @@ import React from "react";
 
         {/* Card Section */}
         <div className="flex flex-row w-screen px-[5%] h-[70%] justify-center items-center gap-x-4">
-          {randomizedVideos.map((video, idx) => (
+          {/* {randomizedVideos.map((video, idx) => (
             <CardEducation key={idx} detail={video} />
-          ))}
+          ))} */}
         </div>
 
         <div className="w-full justify-center items-center h-[20%] flex ">
