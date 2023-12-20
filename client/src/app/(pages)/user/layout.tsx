@@ -1,5 +1,7 @@
 "use client";
 import { getUser } from "@/app/(action)/actionGetUser";
+import { handleClick } from "@/app/(action)/actionIPaymu";
+import { ucoPay } from "@/app/(action)/actionNodemail";
 import Footer from "@/components/Footer";
 import LogoutButton from "@/components/LogoutButton";
 import Modal from "@/components/Modal";
@@ -7,6 +9,7 @@ import { userModel } from "@/db/models/user";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 export default function UserDashboardLayout({
   children, // will be a page or nested layout
@@ -30,6 +33,22 @@ export default function UserDashboardLayout({
       // console.log(data, "====user===");
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  const redeemWallet = async () => {
+    await initiatePayment();
+    toast.success("Request Send to EcoBucks!");
+  };
+
+  const initiatePayment = async () => {
+    try {
+      const url: string = await handleClick();
+      // console.log(url, "<<<<<<<<<<<<wallet button<<<<<<<<<<<<<<<");
+      await ucoPay(url);
+      // setRedirectUrl(url);
+    } catch (error) {
+      console.error("Payment failed:", error);
     }
   };
 
@@ -141,13 +160,28 @@ export default function UserDashboardLayout({
                 </h1>
               </div>
             )}
+
+            {/* Reedem Wallet */}
+            {user?.data.walletBalance > 0 && (
+              <button
+                onClick={() => redeemWallet()}
+                className="bg-eb-10 rounded-[10px] shadow-xl px-1 py-2 w-full h-fit text-white flex flex-row items-center justify-evenly group hover:bg-eb-30 transition-all"
+              >
+                <h1 className="text-[12px] w-[55%] font-bold">Reedem Wallet</h1>
+                <span
+                  className="material-symbols-outlined group-hover:animate-shake"
+                  style={{ color: "white" }}
+                >
+                  arrow_forward
+                </span>
+              </button>
+            )}
           </div>
 
           {/* Main Page */}
           <div className="flex">{children}</div>
         </div>
       </div>
-
 
       <Footer />
 

@@ -104,9 +104,9 @@ const htmlTemplate = `
 </html>
 `;
 
-export const subs = async (formData: FormData) => {
+export const subs = async (email: string) => {
   // console.log(formData);
-  const email = formData.get("email");
+  // const email = formData.get("email");
 
   if (!email) {
     throw "error";

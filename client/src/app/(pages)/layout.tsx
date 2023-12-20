@@ -39,7 +39,7 @@ export default function RootLayout({
           <NavbarComponent />
           <UserLocationProvider>
             {children}
-            <Toaster expand={false} />
+            <Toaster expand={false} position="top-center" richColors />
           </UserLocationProvider>
         </div>
       </body>

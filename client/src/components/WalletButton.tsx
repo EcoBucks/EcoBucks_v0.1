@@ -89,7 +89,7 @@ const ButtonWallet = () => {
             </div>
           </div>
         </Link>
-      ) : currentPage == "/user" ? (
+      ) : currentPage === "/user" ? (
         <>
           <button className="flex justify-between px-[15px] items-center shadow-md rounded-xl gap-x-4 relative">
             <div className="flex flex-row justify-center h-full items-center gap-x-2">
@@ -103,8 +103,34 @@ const ButtonWallet = () => {
               </p>
             </div>
             <div className="flex justify-center items-center h-12">
-              <p className="bg-black text-white rounded-lg w-8 h-8 text-center text-[10px] items-center justify-center flex font-semibold">
-                E
+              <p className="bg-black text-white overflow-hidden rounded-lg w-8 h-8 text-center text-[10px] items-center justify-center flex font-semibold">
+                <img
+                  className="object-cover w-full h-full"
+                  src={data?.data.profilePicture}
+                />
+              </p>
+            </div>
+          </button>
+        </>
+      ) : currentPage === "/user/settings" ? (
+        <>
+          <button className="flex justify-between px-[15px] items-center shadow-md rounded-xl gap-x-4 relative">
+            <div className="flex flex-row justify-center h-full items-center gap-x-2">
+              <span className="material-symbols-outlined text-eb-20">
+                account_balance_wallet
+              </span>
+              <p className="text-sm font-bold">
+                {data?.data.walletBalance !== undefined
+                  ? currencyFormatted(data?.data.walletBalance)
+                  : ""}
+              </p>
+            </div>
+            <div className="flex justify-center items-center h-12">
+              <p className="bg-black text-white overflow-hidden rounded-lg w-8 h-8 text-center text-[10px] items-center justify-center flex font-semibold">
+                <img
+                  className="object-cover w-full h-full"
+                  src={data?.data.profilePicture}
+                />
               </p>
             </div>
           </button>
@@ -126,8 +152,11 @@ const ButtonWallet = () => {
               </p>
             </div>
             <div className="flex justify-center items-center h-12">
-              <p className="bg-black text-white rounded-lg w-8 h-8 text-center text-[10px] items-center justify-center flex font-semibold">
-                E
+              <p className="bg-black text-white overflow-hidden rounded-lg w-8 h-8 text-center text-[10px] items-center justify-center flex font-semibold">
+                <img
+                  className="object-cover w-full h-full"
+                  src={data?.data.profilePicture}
+                />
               </p>
             </div>
           </button>
@@ -140,7 +169,7 @@ const ButtonWallet = () => {
             >
               <div className="bg-gray-100 fixed z-50 w-[12%] h-[100px] rounded-[13px] gap-y-2 text-[14px] shadow-xl flex justify-center flex-col mt-2 right-[7.5%] top-[7%] animate-fade-down">
                 <button
-                  onClick={handleButtonClick}
+                  onClick={() => handleButtonClick()}
                   className="flex flex-row w-full justify-start text-gray-700 items-center gap-x-1 px-[18px] group hover:text-eb-10 transition-all"
                 >
                   <span className="material-symbols-outlined">wallet</span>
