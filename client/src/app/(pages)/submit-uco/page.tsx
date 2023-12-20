@@ -8,14 +8,35 @@ import MapSubmitUCO from "@/components/Map";
 import { addUco } from "@/app/(action)/addUcoBallance";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-const cookie = cookies();
-const token = cookie.get("token");
+import { getUco } from "@/app/(action)/actionUco";
 
-if (!token) {
-  redirect("http://localhost:3000/");
-}
+const SubmitUcoPage = async ({
+  params,
+  searchParams,
+}: {
+  params: { slug: string };
+  searchParams?: { [key: string]: string | string[] | undefined };
+}) => {
+  // console.log(searchParams?.sum, "======== =");
 
-const SubmitUcoPage = async () => {
+  const sum = searchParams?.sum;
+
+  // console.log(sum, "====== query ====");
+
+  const cookie = cookies();
+  const token = cookie.get("token");
+
+  // const searchParams = props.searchParams;
+
+  // console.log(searchParams, "=====query====");
+
+  // const page = searchParams.page
+
+  //! kasih toast => login first
+  if (!token) {
+    redirect("http://localhost:3000/");
+  }
+
   return (
     <>
       <NavbarComponent />
@@ -58,6 +79,7 @@ const SubmitUcoPage = async () => {
                   <p className="text-[14px]">Your UCO Balance</p>
                   <input
                     name="ucoBallance"
+                    value={sum}
                     type="text"
                     className="w-full bg-gray-200 h-[50px] text-gray-800 rounded-lg px-4"
                   />

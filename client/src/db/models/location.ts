@@ -18,7 +18,8 @@ export type locationModel = {
   _id: ObjectId;
   name: string;
   picture: string;
-  coordinate: string;
+  lat: number
+  lng: number
   operationalHour: number;
   province: string;
   address: string;

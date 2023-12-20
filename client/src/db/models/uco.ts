@@ -95,7 +95,7 @@ export const getTransaction = async (userId: string | null) => {
     }
 
 
-    // console.log(data);
+    console.log(data, '=====data adn=====');
 
     return data 
 
@@ -106,7 +106,7 @@ export const allTrans = async () => {
 
     const data = await db.collection(COLLECTION_NAME).find().toArray() 
 
-    console.log(data);
+    // console.log(data);
 
     return data 
 }

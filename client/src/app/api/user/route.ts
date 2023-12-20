@@ -31,7 +31,7 @@ export const POST = async (request: Request) => {
       throw parsedData.error;
     }
   
-    const user = await createUser(parsedData.data);
+    const user = await createUser(data);
   
     return NextResponse.json(
       {
@@ -52,10 +52,13 @@ export const POST = async (request: Request) => {
 export const GET = async (request: Request) => {
 
 
-  const email =  request.headers.get("x-user-email")
+  const email: string | null =  request.headers.get("x-user-email")
+
+  // console.log(email, '=====eamil====');
 
   const user = await getUserByEmail(email);  
 
+  // console.log(user, '======user balikan=======');
   
   return NextResponse.json({
     statusCode: 200,

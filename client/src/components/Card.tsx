@@ -15,7 +15,7 @@ const Card = ({ location }: { location: LocationType }) => {
             {/* Picture of The Card */}
             <div className="w-full h-full overflow-hidden rounded-lg">
               <img
-                src={location.picture}
+                src={location?.picture}
                 className="object-cover rounded-lg w-full h-full"
               />
             </div>
@@ -24,7 +24,7 @@ const Card = ({ location }: { location: LocationType }) => {
           <div className="flex flex-col w-full px-[7%] pt-4 gap-y-1">
             <p className="text-gray-800 font-bold">{location.name}</p>
             <div className="text-[11px] text-gray-500">
-              {location.address}, <b>{location.province}</b>
+              {location?.address}, <b>{location.province}</b>
             </div>
           </div>
 
@@ -37,10 +37,10 @@ const Card = ({ location }: { location: LocationType }) => {
                 schedule
               </span>
               <p className="text-[12px] text-eb-10 font-bold">
-                09:00 - {changeClock(location.operationalHour)}:00
+                09:00 - {changeClock(location?.operationalHour)}:00
               </p>
             </div>
-            <Link href={`/location/${location._id}`}>
+            <Link href={`/location/${location?._id}`}>
               <span
                 className="material-symbols-outlined p-2 bg-eb-30 text-white rounded-lg"
                 style={{ fontSize: 18 }}

@@ -2,20 +2,29 @@
 
 import { allTrans } from "@/db/models/uco"
 import { cookies } from "next/headers"
+import { redirect } from "next/navigation"
 
 export const Transaction = async (props: string) => {
-    // console.log(props, '========');
-    const response = await fetch(`http://localhost:3000/api/transaction?role=${props}`, {
+    try {
+      const response = await fetch(`http://localhost:3000/api/transaction?role=${props}`, {
         method: "GET",
-        headers:{
-            Cookie: cookies().toString()
+        cache: "no-cache",
+        headers: {
+          Cookie: cookies().toString()
         }
-    })
-
-    const resjson = await response.json()
-    // console.log(resjson, '======action========');
-
-    return resjson
-
-}
+      });
+  
+      const resjson = await response.json();
+      // Process resjson as needed
+  
+      // Redirect after data processing
+    //   redirect('http://localhost:3000/user');
+      return resjson;    // Return the fetched data before the redirect
+  
+    } catch (error) {
+      console.error("Error in transaction:", error);
+      throw error; // Throw the error to handle it in the calling code
+    }
+  };
+  
 

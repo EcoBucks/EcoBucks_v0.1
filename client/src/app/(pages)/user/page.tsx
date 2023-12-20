@@ -10,16 +10,17 @@ import { ucoModels, updateUBallanceOnGoing } from "@/db/models/uco";
 import { userModel } from "@/db/models/user";
 import { currencyFormatted } from "@/lib/ConstantFunction";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 const UserPage = () => {
   const [open, setOpen] = useState(false);
-  const [user, setUser] = useState<dataUser>();
+  const [user, setUser] = useState<userModel>();
   const [transaction, setTransaction] = useState<ucoModels[]>();
+  const [userRole, setUserRole] = useState<string | undefined>(user?.role);
   const [redirectUrl, setRedirectUrl] = useState("");
 
-  const searchParams = useSearchParams();
+  const navigation = useRouter();
 
   type dataUser = {
     statusCode: string;
@@ -27,67 +28,52 @@ const UserPage = () => {
     data: userModel;
   };
 
-  // console.log(searchParams.get("status"), "======");
-
-  const fetchUser = async () => {
-    try {
-      const data = await getUser();
-      setUser(data);
-      // console.log(data, "====user===");
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
-    fetchUser();
-  }, []);
-
-  if (user?.data.role == "user") {
-    const fetch = async () => {
+    const fetchUser = async () => {
       try {
-        const data: ucoModels[] = (await Transaction("user")) as any;
-        setTransaction(data);
-        // console.log(data, "=======");
+        const data = await getUser();
+        setUser(data.data);
+        // console.log(data.data, "====user===");
       } catch (error) {
         console.log(error);
       }
     };
 
-    useEffect(() => {
-      fetch();
-    }, []);
-  } else {
-    useEffect(() => {
-      const fetch = async () => {
-        try {
-          const data: ucoModels[] = (await Transaction("driver")) as any;
-          // console.log(data, "===driver====");
-          setTransaction(data);
-        } catch (error) {
-          console.log(error);
-        }
-      };
-      fetch();
-    }, []);
+    fetchUser();
+  }, []);
+
+  if (!user) {
+    console.log("amn=anglyy ni bost");
   }
 
-  // const status = searchParams.get("status");
-  // if (status === "berhasil") {
-  //   useEffect(() => {
-  //     const clearUserWallet = async () => {
-  //       try {
-  //         await ClearWallet();
-  //         // Handle successful wallet clearing if needed
-  //       } catch (error) {
-  //         // Handle errors here
-  //         console.error(error);
-  //       }
-  //     };
+  useEffect(() => {
+    // Update userRole state when user?.role changes
+    setUserRole(user?.role);
+  }, [user?.role]);
 
-  //     clearUserWallet();
-  //   }, []);
-  // }
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        let data: ucoModels[] = [];
+        if (userRole === "driver") {
+          data = (await Transaction("driver")) as ucoModels[];
+        } else {
+          data = (await Transaction("user")) as ucoModels[];
+        }
+        console.log(data, "== Data Retrieved =====");
+        setTransaction(data);
+
+        navigation.refresh();
+      } catch (error) {
+        console.log(error);
+        // Handle error if necessary
+      }
+    };
+
+    fetchData();
+  }, [userRole]); // Trigger the effect whenever user role changes
+
+  // Assuming `user` is coming from your context or props
 
   const onLCickHandler = async (id: string) => {
     // console.log(id);
@@ -119,27 +105,6 @@ const UserPage = () => {
     }
   };
 
-  // console.log(transaction, "<<<<<<< transaction");
-
-  // const initiatePayment = async () => {
-  //   try {
-  //     const url = await handleClick();
-  //     setRedirectUrl(url);
-  //   } catch (error) {
-  //     console.error("Payment failed:", error);
-  //   }
-  // };
-
-  // const handleButtonClick = async () => {
-  //   await initiatePayment();
-  // };
-
-  // // Redirect when redirectUrl is set
-  // if (redirectUrl) {
-  //   window.location.href = redirectUrl;
-  //   return null; // Optionally return null or a loading message while redirecting
-  // }
-
   return (
     <>
       <NavbarComponent />
@@ -147,9 +112,7 @@ const UserPage = () => {
         <div className="flex flex-col md:flex-row">
           <div className=" bg-eb-10 rounded-[10px] shadow-[0_10px_29px_0px_rgba(0,0,0,0.1)] md:mr-[1.5rem] p-6 md:p-12 w-[75%] h-[200px] md:w-[308px] md:h-[332px] self-center md:self-start">
             <div className="flex flex-col raleway font-bold">
-              <h1 className="text-white text-[20px]">
-                Hola {user?.data.name}!
-              </h1>
+              <h1 className="text-white text-[20px]">Hola {user?.name}!</h1>
               <Link href="/user-page">
                 <div className="flex my-2 md:my-4">
                   <svg
@@ -340,11 +303,11 @@ const UserPage = () => {
 
                   {el.status == "complete" ? (
                     <p>{el.status}</p>
-                  ) : el.status == "ongoing" && user?.data.role == "driver" ? (
+                  ) : el.status == "ongoing" && user?.role == "driver" ? (
                     <button onClick={() => complete(el._id)}>
                       {el.status}
                     </button>
-                  ) : user?.data.role == "driver" ? (
+                  ) : user?.role == "driver" ? (
                     <button onClick={() => onLCickHandler(el._id)}>
                       {el.status}
                     </button>

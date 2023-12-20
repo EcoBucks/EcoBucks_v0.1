@@ -1,5 +1,6 @@
 "use client";
 
+import { getUco } from "@/app/(action)/actionUco";
 import {
   calculateCarbonEmissions,
   currencyFormatted,
@@ -45,7 +46,10 @@ const UcoForm: React.FC = () => {
             </div>
 
             <div className="flex w-full justify-start mt-2 h-full">
-              <form className="flex flex-col w-full h-full gap-y-4 mt-[10%] items-center">
+              <form
+                action={getUco}
+                className="flex flex-col w-full h-full gap-y-4 mt-[10%] items-center"
+              >
                 <div className="flex flex-col w-full h-[23%] items-center justify-center gap-y-1">
                   {/* <form> */}
                   <p className="flex w-full justify-start items-start text-[12px] text-white inter">
@@ -56,18 +60,18 @@ const UcoForm: React.FC = () => {
                       type="text"
                       className="w-[90%] bg-[#ffffff20] rounded-s-[15px] text-white px-5 placeholder:text-[#ffffff30] focus:outline-none focus:bg-white/20 transition-all"
                       placeholder="ex: 250 liter"
+                      name="sum"
                       onChange={(e) => debounceOnChange(e)}
                     />
                     <div className="bg-eb-20 px-[1%] w-[50%] h-full flex pl-[2%] items-center rounded-e-[15px] text-[14px] raleway">
                       <select
-                        name=""
-                        id=""
+                        name="jenis"
                         className=" bg-eb-20 h-[50px] px-4 w-full rounded-lg focus:outline-none appearance-none mr-3"
                       >
-                        <option value="">Galon</option>
-                        <option value="">Drigen</option>
-                        <option value="">Bottle</option>
-                        <option value="">Liter</option>
+                        <option value="Galon">Galon</option>
+                        <option value="Drigen">Drigen</option>
+                        <option value="Bottle">Bottle</option>
+                        <option value="Liter">Liter</option>
                       </select>
                     </div>
                   </div>
@@ -88,9 +92,11 @@ const UcoForm: React.FC = () => {
                 </div>
                 <div className="bg-[#ffffff60] w-[90%] h-[2px] rounded-[20px]"></div>
                 <div className="w-full flex flex-row gap-x-3 justify-center items-center bg-eb-30/60 text-white/70 rounded-xl h-12 group hover:bg-eb-30 hover:text-white">
-                  <Link href={"/submit-uco"}>
+                  {/* <Link href={"/submit-uco"}> */}
+                  <button type="submit">
                     <p className="font-bold raleway ">Request Pickup</p>
-                  </Link>
+                  </button>
+                  {/* </Link> */}
                   <span className="material-symbols-outlined group-hover:animate-shake">
                     quick_reorder
                   </span>
