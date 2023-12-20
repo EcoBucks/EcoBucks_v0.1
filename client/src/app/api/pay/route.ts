@@ -5,13 +5,13 @@ import { NextRequest, NextResponse } from "next/server";
 export const PUT = async (request: NextRequest) => {
 
 
-    const id = await  request.json()
+    const data = await request.json()
     // const data = await  request.json()
 
     // console.log(data, '======= ini dari mana ');
 
-    if (id) {
-        await updateUWallet(id);
+    if (data) {
+        await updateUWallet(data.id, data.driverId);
         return NextResponse.json({
             statusCode: 201,
             message: "Successfully updated sumUco",

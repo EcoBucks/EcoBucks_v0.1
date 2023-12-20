@@ -77,12 +77,22 @@ const SubmitUcoPage = async ({
               <div className="flex flex-col w-full gap-y-6">
                 <div className="flex flex-col">
                   <p className="text-[14px]">Your UCO Balance</p>
-                  <input
-                    name="ucoBallance"
-                    value={sum}
-                    type="text"
-                    className="w-full bg-gray-200 h-[50px] text-gray-800 rounded-lg px-4"
-                  />
+                  {/* //! ini tambahan dari gua jangan di apus */}
+                  {sum == "" || !sum ? (
+                    <input
+                      name="ucoBallance"
+                      type="text"
+                      className="w-full bg-gray-200 h-[50px] text-gray-800 rounded-lg px-4"
+                    />
+                  ) : (
+                    <input
+                      name="ucoBallance"
+                      value={sum}
+                      type="text"
+                      className="w-full bg-gray-200 h-[50px] text-gray-800 rounded-lg px-4"
+                    />
+                  )}
+                  {/* //! sampe sini */}
                 </div>
 
                 <div className="flex flex-col">

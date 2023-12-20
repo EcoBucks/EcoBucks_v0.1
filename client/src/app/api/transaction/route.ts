@@ -40,13 +40,20 @@ export const PUT = async (request: NextRequest) => {
 
     // console.log(query, '==complete==');
 
-    const id = await  request.json()
-    // const data = await  request.json()
+    // const {id} = await  request.json()
+    // const {driverId} = await  request.json()
+
+    // console.log(await  request.json(), '======dari route=======');
+
+    const data = await request.json()
+
 
     // console.log(data, '======= ini dari mana ');
 
-    if (id) {
-        await updateUBallance(id);
+
+    // return;
+    if (data) {
+        await updateUBallance(data.id, data.driverId);
         return NextResponse.json({
             statusCode: 201,
             message: "Successfully updated sumUco",

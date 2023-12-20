@@ -79,7 +79,10 @@ const UserPage = () => {
     try {
       await fetch(`http://localhost:3000/api/transaction`, {
         method: "PUT",
-        body: JSON.stringify(id),
+        body: JSON.stringify({
+          id: id,
+          driverId: user?._id,
+        }),
         headers: {
           "Content-Type": "application/json",
         },
@@ -94,7 +97,10 @@ const UserPage = () => {
     try {
       await fetch("http://localhost:3000/api/pay", {
         method: "PUT",
-        body: JSON.stringify(id),
+        body: JSON.stringify({
+          id: id,
+          driverId: user?._id,
+        }),
         headers: {
           "Content-Type": "application/json",
         },
