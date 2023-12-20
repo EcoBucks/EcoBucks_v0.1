@@ -97,7 +97,9 @@ const LocationDetailPage = async ({ params }: { params: { id: string } }) => {
           <div className="flex flex-col w-full h-full justify-between items-center gap-y-4">
             {/* Row 1 - Title */}
             <div className="flex flex-col w-full h-fit gap-y-1">
-              <h1 className="raleway font-bold text-[35px]">{data?.name}</h1>
+              <h1 className="raleway font-bold text-[35px] w-[90%]">
+                {data?.name}
+              </h1>
               <h1 className="raleway text-[18px]">{data?.province}</h1>
             </div>
 
@@ -109,7 +111,7 @@ const LocationDetailPage = async ({ params }: { params: { id: string } }) => {
               <div className="flex flex-col justify-start items-start w-full text-[16px] gap-y-3 text-gray-600 h-fit">
                 <div
                   id="divider"
-                  className="w-[85%] bg-gray-400 h-[1px] justify-center items-center mt-4"
+                  className="w-[85%] bg-gray-400 h-[1px] justify-center items-center mt-1"
                 ></div>
                 <div className="flex flex-row w-full h-[20px] items-center justify-start gap-x-3">
                   <p>
@@ -127,17 +129,19 @@ const LocationDetailPage = async ({ params }: { params: { id: string } }) => {
 
             {/* Row 3 - Google Images */}
             <div className="flex flex-row w-full h-full relative">
-              <div className="absolute right-0 bottom-0 z-10">
-                <div className="bg-eb-30 w-[180px] h-[40px] m-4 rounded-lg flex justify-center items-center text-white dm-sans flex-row gap-x-1">
-                  <p>Go To Location</p>
-                  <span
-                    className="material-symbols-outlined text-white rounded-lg"
-                    style={{ fontSize: 20 }}
-                  >
-                    arrow_forward
-                  </span>
+              <Link href={data?.url}>
+                <div className="absolute right-0 bottom-0 z-10">
+                  <div className="bg-eb-30 w-[180px] h-[40px] m-4 rounded-lg flex justify-center items-center text-white dm-sans flex-row gap-x-1 active:scale-90 transition-all hover:bg-eb-20">
+                    <p>Go To Location</p>
+                    <span
+                      className="material-symbols-outlined text-white rounded-lg"
+                      style={{ fontSize: 20 }}
+                    >
+                      arrow_forward
+                    </span>
+                  </div>
                 </div>
-              </div>
+              </Link>
               {/* <img
                 src="https://source.unsplash.com/random/900x700/?indonesia+6"
                 className="object-cover rounded-lg w-full h-full"

@@ -104,7 +104,7 @@ const UserPage = () => {
   };
 
   const complete = async (id: string) => {
-    console.log(id);
+    // console.log(id);
     try {
       await fetch("http://localhost:3000/api/pay", {
         method: "PUT",
@@ -142,10 +142,17 @@ const UserPage = () => {
   return (
     <>
       {/* Main Page */}
-      <div className="rounded-[10px] h-[500px] w-full md:w-[875px] md:h-[650px] mt-4 md:mt-0 md:p-10 overflow-auto bg-white shadow-lg animate-fade-up">
-        <h1 className="mb-5 px-10 text-[20px] underline font-bold text-eb-10">
-          Your Transaction Pending
-        </h1>
+      <div className="rounded-[10px] h-[500px] w-full md:w-[875px] md:h-[650px] mt-4 md:mt-0 md:p-10 overflow-auto bg-white shadow-lg animate-fade-up mb-[7%]">
+        <div className="flex flex-col w-full h-fit -gap-y-2 mb-5">
+          <h1 className="px-10 text-[20px] underline font-bold text-eb-10">
+            Transaction List
+          </h1>
+          {user?.data.role !== "driver" && (
+            <h1 className="px-10 text-[12px] text-gray-500">
+              *You can only watch your transaction
+            </h1>
+          )}
+        </div>
         <div className="w-full flex justify-center">
           <table className="table-auto w-[90%]">
             <thead className="border-b-2 text-gray-900">
@@ -160,9 +167,7 @@ const UserPage = () => {
               {transaction?.map((el, idx) => (
                 <tr key={el._id} className="h-9">
                   <td>{idx + 1}</td>
-                  <td className="uppercase">
-                    {el._id.substring(12, 17)}-{user?.data.name.substring(0, 2)}
-                  </td>
+                  <td className="uppercase">{el._id.substring(12, 18)}</td>
                   <td>
                     {el.ucoBalance !== undefined
                       ? currencyFormatted(el.ucoBalance)
@@ -170,18 +175,34 @@ const UserPage = () => {
                   </td>
                   <td>
                     {el.status == "complete" ? (
-                      <p>{el.status}</p>
+                      <button
+                        disabled
+                        className="bg-eb-10 rounded-lg text-white px-4"
+                      >
+                        {el.status}
+                      </button>
                     ) : el.status == "ongoing" &&
                       user?.data.role == "driver" ? (
-                      <button onClick={() => complete(el._id)}>
+                      <button
+                        className="bg-light-blue-400 rounded-lg text-white px-4 hover:bg-eb-20 hover:scale-105 transition-all"
+                        onClick={() => complete(el._id)}
+                      >
                         {el.status}
                       </button>
                     ) : user?.data.role == "driver" ? (
-                      <button onClick={() => onLCickHandler(el._id)}>
+                      <button
+                        className="bg-eb-30 rounded-lg text-white px-4 hover:bg-eb-20 hover:scale-105 transition-all"
+                        onClick={() => onLCickHandler(el._id)}
+                      >
                         {el.status}
                       </button>
                     ) : (
-                      <p>{el.status}</p>
+                      <button
+                        disabled
+                        className="bg-eb-40/50 rounded-lg text-white px-4"
+                      >
+                        {el.status}
+                      </button>
                     )}
                   </td>
                 </tr>

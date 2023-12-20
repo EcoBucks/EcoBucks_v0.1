@@ -7,7 +7,7 @@ export const currencyFormatted = (number: number): string => {
 };
 
 export const calculateCarbonEmissions = (usedCookingOil: number): number => {
-  const emissionFactor = 2.5;
+  const emissionFactor = 0.5;
   const carbonEmissions = usedCookingOil * emissionFactor;
 
   return carbonEmissions;

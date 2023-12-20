@@ -9,11 +9,11 @@ const middleware = async (request: NextRequest) => {
     !request.url.includes("_next/image") &&
     !request.url.includes("favicon.ico")
   ) {
-    console.log(request.method, request.url);
+    // console.log(request.method, request.url);
   }
 
   if (request.url.includes("/api")) {
-    console.log("API", request.method, request.url);
+    // console.log("API", request.method, request.url);
 
     const cookiesStore = cookies();
     const token = cookiesStore.get("token");

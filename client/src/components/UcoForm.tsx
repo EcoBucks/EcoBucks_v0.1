@@ -97,12 +97,16 @@ const UcoForm: React.FC = () => {
                 </div>
                 <div className="text-white text-[12px] mt-2 flex flex-row gap-x-1">
                   {/* MVP Emition Gas */}
-                  <p className="font-bold text-white underline">
+                  <p className="font-bold text-eb-40 underline bg-yellow-300 rounded-sm">
                     {query.uco > 0
-                      ? `+${calculateCarbonEmissions(query.uco)}%`
-                      : "Doesn't have"}
+                      ? `+${
+                          calculateCarbonEmissions(query.uco) > 100
+                            ? 99.5
+                            : calculateCarbonEmissions(query.uco)
+                        }%`
+                      : "Doesn't have a"}
                   </p>
-                  <p>Contribution for Emition Gas Carbon</p>
+                  <p>contribution to carbon gas emissions</p>
                 </div>
               </form>
             </div>
