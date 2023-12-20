@@ -75,14 +75,16 @@ export const createUBallance = async (uco: ucoModel) => {
 export const getTransaction = async (userId: string | null) => {
   // console.log(userId, '=======model');
 
-    const db = await getDb()
-    let data
-    if(userId){
-         data = await db.collection(COLLECTION_NAME).find({userId: new ObjectId(userId)}).toArray() 
-    }else{
-        console.log("error data from getTransaction");
-    }
-
+  const db = await getDb();
+  let data;
+  if (userId) {
+    data = await db
+      .collection(COLLECTION_NAME)
+      .find({ userId: new ObjectId(userId) })
+      .toArray();
+  } else {
+    console.log("error data from getTransaction");
+  }
 
   // console.log(data);
 
@@ -133,7 +135,7 @@ export const updateUWallet = async (id: string) => {
 
   let sumUco = 0;
   if (uco.ucoBalance) {
-    sumUco = uco.ucoBalance + user.walletBallance;
+    sumUco = uco.ucoBalance + user.walletBalance;
   }
 
   console.log(sumUco, "+++++ sumUco +++++");
@@ -142,7 +144,7 @@ export const updateUWallet = async (id: string) => {
     .collection(COLLECTION_USER)
     .updateOne(
       { _id: new ObjectId(uco.userId) },
-      { $set: { walletBallance: sumUco } }
+      { $set: { walletBalance: sumUco } }
     );
 
   await db
@@ -165,5 +167,5 @@ export const deleteWallet = async (email: string) => {
 
   await db
     .collection(COLLECTION_USER)
-    .updateOne({ email: user.email }, { $set: { walletBallance: 0 } });
+    .updateOne({ email: user.email }, { $set: { walletBalance: 0 } });
 };

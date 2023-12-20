@@ -122,7 +122,7 @@ const ButtonWallet = () => {
               </span>
               <p className="text-sm font-bold">
                 {data?.data.walletBallance !== undefined
-                  ? currencyFormatted(data?.data.walletBallance)
+                  ? currencyFormatted(data?.data.walletBalance)
                   : ""}
               </p>
             </div>

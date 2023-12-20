@@ -24,3 +24,7 @@ select {
   background-repeat: no-repeat;
   background-position: right;
 }
+
+nextjs-portal {
+  display: none;
+}

@@ -112,7 +112,7 @@ const UserPage = () => {
           <h1 className="px-10 text-[20px] underline font-bold text-eb-10">
             Transaction List
           </h1>
-          {user?.data.role !== "driver" && (
+          {user?.role !== "driver" && (
             <h1 className="px-10 text-[12px] text-gray-500">
               *You can only watch your transaction
             </h1>
@@ -146,15 +146,14 @@ const UserPage = () => {
                       >
                         {el.status}
                       </button>
-                    ) : el.status == "ongoing" &&
-                      user?.data.role == "driver" ? (
+                    ) : el.status == "ongoing" && user?.role == "driver" ? (
                       <button
                         className="bg-light-blue-400 rounded-lg text-white px-4 hover:bg-eb-20 hover:scale-105 transition-all"
                         onClick={() => complete(el._id)}
                       >
                         {el.status}
                       </button>
-                    ) : user?.data.role == "driver" ? (
+                    ) : user?.role == "driver" ? (
                       <button
                         className="bg-eb-30 rounded-lg text-white px-4 hover:bg-eb-20 hover:scale-105 transition-all"
                         onClick={() => onLCickHandler(el._id)}

@@ -12,13 +12,26 @@ export type userModel = {
   email: string;
   job: string;
   dateOfBirth: string;
-  walletBallance: number | any;
-  profilePicture?: string | null | undefined;
-  role: string
+  walletBalance: number | any;
+  profilePicture?: string | null | undefined | any;
+  role?: string | undefined;
   phoneNumber: string;
   pickupVoucher?: number | any;
 };
 
+export type userType = {
+  name: string;
+  password: string;
+  email: string;
+  job: string;
+  dateOfBirth: string;
+  walletBalance: number;
+  profilePicture: string;
+  role: string;
+  phoneNumber: string;
+  pickupVoucher: number;
+};
+//
 export type UserModelCreateInput = Omit<userModel, "_id">;
 
 export const getDb = async () => {
@@ -47,10 +60,9 @@ export const createUser = async (user: UserModelCreateInput) => {
   let data = {
     ...user,
     password: hashPw(user.password),
-    walletBallance: 0,
+    walletBalance: 0,
     profilePicture: "",
     role: "user",
-    pickupVoucher: 10
   };
 
   const db = await getDb();
@@ -59,15 +71,9 @@ export const createUser = async (user: UserModelCreateInput) => {
   return result;
 };
 
-
-export const getUserByEmail = async (
-  email: string | null
-) => {
+export const getUserByEmail = async (email: string | null) => {
   const db = await getDb();
   const result = await db.collection(COLLECTION_NAME).findOne({ email });
-
-  // console.log(result, '======useer email======');
-
   return result as userModel | null;
 };
 

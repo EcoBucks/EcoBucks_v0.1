@@ -13,7 +13,7 @@ const SettingsPage = () => {
   type dataUser = {
     statusCode: string;
     message: string;
-    data: userModel;
+    data: userModel | undefined;
   };
 
   const [open, setOpen] = useState(false);
@@ -23,9 +23,9 @@ const SettingsPage = () => {
 
   const fetchUser = async () => {
     try {
-      const data = await getUser();
-      setUser(data);
-      // console.log(data, "====user===");
+      const data: dataUser | undefined = await getUser();
+      // setUser(data);
+      console.log(data, "====user===");
     } catch (error) {
       console.log(error);
     }
@@ -38,7 +38,7 @@ const SettingsPage = () => {
       await fetch("http://localhost:3000/api/picture", {
         method: "PUT",
         body: JSON.stringify({
-          email: user?.data.email,
+          email: user?.data?.email,
           picture: data,
         }),
         headers: {

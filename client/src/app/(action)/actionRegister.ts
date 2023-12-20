@@ -1,6 +1,6 @@
 "use server";
 
-import { createUser } from "@/db/models/user";
+import { createUser, userModel, userType } from "@/db/models/user";
 import { MyResponse } from "@/types";
 import { redirect } from "next/navigation";
 import { z } from "zod";
@@ -38,7 +38,20 @@ export const onSubmitRegister = async (formData: FormData) => {
     return redirect(`http://localhost:3000/login?error=${errorFinal}`);
   }
 
-  await createUser(parsedData.data);
+  const userData: userType | any = {
+    name: parsedData.data.name,
+    password: parsedData.data.password,
+    email: parsedData.data.email,
+    job: parsedData.data.job,
+    dateOfBirth: parsedData.data.dateOfBirth,
+    walletBalance: 0, // Ensure this property matches the expected spelling in UserModelCreateInput
+    phoneNumber: "",
+    pickupVoucher: 0,
+
+    // Add the missing properties from UserModelCreateInput
+  };
+
+  await createUser(userData);
 
   return redirect("http://localhost:3000/login");
 };

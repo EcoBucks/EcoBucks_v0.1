@@ -12,7 +12,7 @@ export const handleClick = async () => {
 
   // console.log(data, '========');
 
-  const price = data.data.walletBallance.toString();
+  const price = data.data.walletBalance.toString();
   const email = data.data.email;
   const name = data.data.name;
 
