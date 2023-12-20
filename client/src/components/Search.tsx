@@ -18,13 +18,17 @@ const Search = () => {
   return (
     <>
       <div className="flex flex-row w-full h-[50px] justify-between items-center">
-        <h1 className="raleway font-bold text-[35px]">Find Location</h1>
-        <div className="flex flex-row bg-white w-[60%] py-2 px-[4%] rounded-xl shadow-md">
+        {/* <h1 className="raleway font-bold text-[35px]">Find Location</h1> */}
+        <div className="flex flex-row bg-white w-full py-2 px-[4%] rounded-xl shadow-md">
+          <div className="w-[180px] text-eb-10 font-bold raleway">
+            Find Location
+          </div>
           <input
             type="text"
             value={text}
+            placeholder="Search Location by Name .."
             onChange={(e) => setText(e.target.value)}
-            className="w-full px-[4%] focus:outline-none"
+            className="w-full px-[1%] focus:outline-none text-[14px]"
           />
           <span className="material-symbols-outlined text-gray-500">
             search

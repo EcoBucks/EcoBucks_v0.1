@@ -1,6 +1,7 @@
 import Footer from "@/components/Footer";
 import NavbarComponent from "@/components/Navbar";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const Page = () => {
@@ -58,14 +59,12 @@ const Page = () => {
       </div>
       <div className="bg-sea2 min-h-screen bg-center bg-no-repeat bg-cover bg-fixed p-6 relative animate-fade-up window">
         <div className="w-2/6 flex flex-col absolute bottom-20">
-          <h2 className="font-bold text-white text-4xl">Did You Know?</h2>
+          <h2 className="font-bold text-white text-4xl">
+            Transform Waste into Wealth:
+          </h2>
           <p className="text-white leading-7 tracking-[0.1rem]">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab numquam
-            eveniet molestias veniam, inventore sint voluptates nam provident
-            impedit laborum ipsa vel quos amet laboriosam dolorum suscipit!
-            Nihil eos repellendus blanditiis repellat laboriosam veniam quod
-            maxime ab! Ea eveniet doloremque, excepturi totam, et molestias
-            dicta accusamus quibusdam quas sunt inventore!
+            We empower individuals and communities to turn their everyday waste,
+            especially Used Cooking Oil (UCO), into a valuable resource.
           </p>
         </div>
       </div>
@@ -73,16 +72,15 @@ const Page = () => {
         <div className="w-2/6 flex flex-col absolute bottom-20 right-20">
           <h2 className="font-bold text-white text-4xl">Join the Movement</h2>
           <p className="text-white leading-6 tracking-[0.1rem]">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab numquam
-            eveniet molestias veniam, inventore sint voluptates nam provident
-            impedit laborum ipsa vel quos amet laboriosam dolorum suscipit!
-            Nihil eos repellendus blanditiis repellat laboriosam veniam quod
-            maxime ab! Ea eveniet doloremque, excepturi totam, et molestias
-            dicta accusamus quibusdam quas sunt inventore!
+            EcoBucks brings people together for a common cause. Join a network
+            of environmentally conscious individuals, schools, businesses, and
+            organizations committed to making a positive difference.
           </p>
-          <button className="bg-[#304D30] w-[30%] p-3 mt-2 text-white rounded-md">
-            Join Now
-          </button>
+          <Link href={"/submit-uco"}>
+            <button className="bg-eb-10 w-[30%] p-3 mt-2 text-white rounded-md hover:bg-eb-30 transition-all">
+              Join Now
+            </button>
+          </Link>
         </div>
       </div>
       <Footer />

@@ -70,19 +70,18 @@ const EducationPage = ({
               <div className="w-[45%] rounded-lg h-[83%] flex flex-col ">
                 <div className="flex flex-col w-full justify-between h-full gap-y-2">
                   <div className="flex flex-col gap-y-4">
-                    <h1 className="text-[45px] raleway font-bold leading-10 text-gray-900">
+                    <h1 className="text-[45px] raleway font-bold leading-10 text-gray-900 underline">
                       Pengertian Used Cooking Oil
                     </h1>
                   </div>
                   <p className="text-gray-500 leading-7">
-                    Used Cooking Oil yang selanjutnya disingkat UCO adalah
-                    minyak limbah hasil dari penggunaan minyak goreng baik
-                    penggunaan rumah tangga maupun industri.
+                    Minyak jelantah atau{" "}
+                    <b className="bg-yellow-500">used cooking oil ( UCO )</b>{" "}
+                    adalah minyak limbah yang bisa berasal dari jenis-jenis
+                    minyak goreng seperti halnya minyak jagung, minyak sayur,
+                    minyak samin dan sebagainya, minyak ini merupakan minyak
+                    bekas pemakaian kebutuhan rumah tangga umumnya.
                   </p>
-                  <div className="flex flex-col">
-                    <p className="font-bold">Brain Owen</p>
-                    <p className="text-gray-600">Jun 27, 2023</p>
-                  </div>
                 </div>
               </div>
             </div>
