@@ -25,14 +25,13 @@ const Card = ({ location }: { location: LocationType }) => {
           {/* Title Card */}
           <div className="flex flex-col w-full px-[7%] pt-4 gap-y-1">
             <div className="flex flex-row gap-x-1 justify-start items-center">
-              <p className="text-gray-800 font-bold">{location.name}</p>
-              <p className="text-[12px] text-gray-600">
-                {" "}
-                - {location.province}
+              <p className="text-gray-800 font-bold line-clamp-1">
+                {location.name}
               </p>
             </div>
             <div className="text-[11px] text-gray-500 w-full line-clamp-2">
-              {location.address}, <b></b>
+              {location.address},{" "}
+              <b className="text-gray-900">{location.province} </b>
             </div>
           </div>
 

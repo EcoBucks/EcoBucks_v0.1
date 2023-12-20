@@ -148,6 +148,9 @@ export default function UserDashboardLayout({
         </div>
       </div>
 
+
+      <Footer />
+
       {/* <Footer type={currentRoute === "/user/settings" ? "absolute" : "flex"} /> */}
     </section>
   );

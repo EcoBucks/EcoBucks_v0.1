@@ -59,7 +59,7 @@ const SettingsPage = () => {
 
   return (
     <>
-      <div className="rounded-[10px] h-[500px] w-full md:w-[875px] md:h-fit mt-4 md:mt-0 md:p-10 overflow-auto bg-white shadow-lg animate-fade-up">
+      <div className="rounded-[10px] h-[500px] w-full md:w-[875px] md:h-fit mt-4 md:mt-0 md:p-10 overflow-auto bg-white shadow-lg animate-fade-up mb-[7%]">
         <div className="flex flex-col">
           <div className="flex justify-center">
             <div className="w-full sm:max-w-xl sm:rounded-lg">

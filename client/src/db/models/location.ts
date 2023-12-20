@@ -24,6 +24,7 @@ export type locationModel = {
   operationalHour: number;
   province: string;
   address: string;
+  url: string | any | undefined;
 };
 
 export const getDb = async () => {

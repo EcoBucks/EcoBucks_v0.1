@@ -57,7 +57,7 @@ const LocationPage = ({
         <div className="flex flex-row w-[45%] justify-end items-center animate-fade-up animate-delay-0">
           <div className="flex w-[85%] h-[90%] rounded-[20px] shadow-lg">
             <img
-              src="https://source.unsplash.com/random/900x700/?indonesia"
+              src="https://ik.imagekit.io/9nm0rr5hka/4(1).png?updatedAt=1703076509617"
               className="object-cover rounded-lg w-full h-full"
             />
           </div>
