@@ -14,17 +14,25 @@ const Card = ({ location }: { location: LocationType }) => {
           <div className="flex h-[70%] w-full overflow-hidden items-center justify-center p-[5%] -mb-[5%] rounded-lg">
             {/* Picture of The Card */}
             <div className="w-full h-full overflow-hidden rounded-lg">
-              <img
-                src={location.picture}
-                className="object-cover rounded-lg w-full h-full"
-              />
+              <Link href={`/location/${location._id}`}>
+                <img
+                  src={location.picture}
+                  className="object-cover rounded-lg w-full h-full"
+                />
+              </Link>
             </div>
           </div>
           {/* Title Card */}
           <div className="flex flex-col w-full px-[7%] pt-4 gap-y-1">
-            <p className="text-gray-800 font-bold">{location.name}</p>
-            <div className="text-[11px] text-gray-500">
-              {location.address}, <b>{location.province}</b>
+            <div className="flex flex-row gap-x-1 justify-start items-center">
+              <p className="text-gray-800 font-bold">{location.name}</p>
+              <p className="text-[12px] text-gray-600">
+                {" "}
+                - {location.province}
+              </p>
+            </div>
+            <div className="text-[11px] text-gray-500 w-full line-clamp-2">
+              {location.address}, <b></b>
             </div>
           </div>
 

@@ -31,7 +31,7 @@ const NavbarComponent = () => {
           </div>
         </Link>
 
-        <div className="flex flex-row items-center gap-x-4 rounded-xl shadow-md h-12 w-[25%] border px-[1%] justify-evenly">
+        <div className="flex flex-row items-center gap-x-4 rounded-xl shadow-md h-12 w-[30%] border px-[1%] justify-evenly">
           <Link href={"/contribution"}>
             <div
               className={

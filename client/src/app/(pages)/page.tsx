@@ -40,7 +40,7 @@ export default async function Home() {
     <>
       {/* Hero Section */}
       <div className="flex w-screen h-[600px] items-center justify-center px-[8%] mt-[8%]">
-        <div className="bg-white w-full h-full flex flex-row gap-x-4 animate-fade-up animate-delay-150">
+        <div className="w-full h-full flex flex-row gap-x-4 animate-fade-up animate-delay-150">
           {/* Left Component */}
           <div className="flex flex-row justify-end items-center w-[70%] h-full rounded-[20px] overflow-hidden shadow-md">
             <div className="w-full h-full flex flex-row relative">

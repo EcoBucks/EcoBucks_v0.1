@@ -9,22 +9,22 @@ const CardEducationContent = ({ video }: { video: VideoModel }) => {
     <>
       {/* Card Article */}
       <Link href={`/education/${video?.slug}`}>
-        <div className="h-[440px] flex flex-col w-full hover:scale-105">
-          <div className="h-[60%] rounded-tl-[25px] rounded-tr-[25px]  overflow-hidden">
+        <div className="h-[440px] flex flex-col w-full items-center justify-start">
+          <div className="h-[55%] w-[95%] rounded-[15px] overflow-hidden">
             <img
               src={video.thumbnail}
-              className="object-cover  w-full h-full"
+              className="object-cover w-full h-full grayscale hover:grayscale-0 transition-all"
             />
           </div>
 
-          <div className="flex flex-col  gap-y-2 justify-between p-3  bg-white rounded-bl-[25px] rounded-br-[25px] ">
+          <div className="flex flex-col gap-y-2 justify-between p-3 mt-2 ">
             <div className="flex flex-col gap-y-1">
               <h1 className="text-[12px] text-eb-30">{video.category}</h1>
-              <h1 className="text-[24px] raleway font-bold text-gray-900">
+              <h1 className="text-[24px] raleway font-bold text-gray-900 line-clamp-2">
                 {video.title}
               </h1>
             </div>
-            <p className="text-gray-500 w-[90%] text-ellipsis h-20 truncate overflow-hidden">
+            <p className="text-gray-500 line-clamp-2 overflow-hidden text-[14px]">
               {video.description}
             </p>
             <div className="flex flex-row gap-x-2 text-[13px] text-gray-800">
