@@ -6,10 +6,6 @@ import ButtonWallet from "./WalletButton";
 import { usePathname } from "next/navigation";
 
 const NavbarComponent = () => {
-  // const data = await getUser();
-
-  // console.log(data, "======ini navbar");
-
   const currentRoute = usePathname();
   const linkStyle = ` text-sm font-medium hover:scale-100 hover:text-eb-10 active:scale-90 transition-all hover:font-bold `;
   const activeStyle =

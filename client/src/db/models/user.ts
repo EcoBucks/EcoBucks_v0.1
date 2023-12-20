@@ -13,9 +13,10 @@ export type userModel = {
   job: string;
   dateOfBirth: string;
   walletBallance: number | any;
-  profilePicture?: string | null | undefined;
+  profilePicture?: string | null | undefined | any;
   role?: string | undefined | null;
   phoneNumber: string;
+  pickupVoucher?: number | any;
 };
 
 export type UserModelCreateInput = Omit<userModel, "_id">;
