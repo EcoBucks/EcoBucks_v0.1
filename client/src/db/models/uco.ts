@@ -121,7 +121,7 @@ export const updateUBallanceOnGoing = async (id: string) => {
     .collection(COLLECTION_NAME)
     .updateOne({ _id: new ObjectId(id) }, { $set: { status: "ongoing" } });
 
-  console.log(result, "========= model");
+  // console.log(result, "========= model");
   return result;
 };
 
@@ -138,14 +138,14 @@ export const updateUWallet = async (id: string, driverId: string) => {
     .collection(COLLECTION_USER)
     .findOne({ _id: new ObjectId(uco.userId) })) as any;
 
-  console.log(uco.ucoBalance, "+++++ ucoBalance +++++");
+  // console.log(uco.ucoBalance, "+++++ ucoBalance +++++");
 
   let sumUco = 0
   if (uco.ucoBalance) {
     sumUco = uco.ucoBalance + user.walletBalance;
   }
   
-  console.log(user.email, "+++++ sumUco +++++");
+  // console.log(user.email, "+++++ sumUco +++++");
 
 
 
