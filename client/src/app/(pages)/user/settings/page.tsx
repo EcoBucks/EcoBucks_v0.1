@@ -4,10 +4,12 @@ import Modal from "@/components/Modal";
 import NavbarComponent from "@/components/Navbar";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { userModel } from "@/db/models/user";
+import { updatePicture, userModel } from "@/db/models/user";
 import { getUser } from "@/app/(action)/actionGetUser";
+import { useRouter } from "next/navigation";
 
 const SettingsPage = () => {
+  const router = useRouter();
   type dataUser = {
     statusCode: string;
     message: string;
@@ -17,6 +19,7 @@ const SettingsPage = () => {
   const [open, setOpen] = useState(false);
   const [pressChangePicture, setPressChangePicture] = useState(false);
   const [user, setUser] = useState<dataUser>();
+  const [picture, setPicture] = useState("");
 
   const fetchUser = async () => {
     try {
@@ -28,9 +31,31 @@ const SettingsPage = () => {
     }
   };
 
+  const changePicture = async (formData: FormData) => {
+    try {
+      const data = formData.get("picture");
+
+      await fetch("http://localhost:3000/api/picture", {
+        method: "PUT",
+        body: JSON.stringify({
+          email: user?.data.email,
+          picture: data,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      router.push("/user/settings");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     fetchUser();
   }, []);
+  console.log(user?.data);
+  // console.log(picture);
 
   return (
     <>
@@ -45,7 +70,7 @@ const SettingsPage = () => {
                 <div className="flex flex-col items-center space-y-5 sm:flex-row sm:space-y-0">
                   <img
                     className="object-cover w-40 h-40 p-1 rounded-full ring-2 ring-indigo-300 dark:ring-indigo-500"
-                    src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGZhY2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+                    src={user?.data?.profilePicture}
                     alt="Bordered avatar"
                   />
                   <div className="flex flex-col space-y-5 sm:ml-8">
@@ -65,17 +90,25 @@ const SettingsPage = () => {
                           <h1 className="text-xl font-semibold mb-4">
                             Update your profile picture
                           </h1>
+                          <form action={changePicture}>
+                            <div className="mb-4">
+                              <input
+                                type="text"
+                                placeholder="https://yourimage.com"
+                                className=" w-full px-4 py-2 border rounded-lg text-gray-700 focus:border-blue-500"
+                                name="picture"
+                                // value={picture}
+                                // onChange={(e) => setPicture(e.target.value)}
+                              />
+                            </div>
 
-                          <div className="mb-4">
-                            <input
-                              type="text"
-                              placeholder="https://yourimage.com"
-                              className=" w-full px-4 py-2 border rounded-lg text-gray-700 focus:border-blue-500"
-                            />
-                          </div>
-                          <button className="w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none">
-                            Save
-                          </button>
+                            <button
+                              type="submit"
+                              className="w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none"
+                            >
+                              Save
+                            </button>
+                          </form>
                         </div>
                       </Modal>
                     )}

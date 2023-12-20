@@ -58,10 +58,18 @@ export const createUser = async (user: UserModelCreateInput) => {
   return result;
 };
 
-export const getUserByEmail = async (
-  email: string
-): Promise<userModel | null> => {
+export const getUserByEmail = async (email: string | null) => {
   const db = await getDb();
   const result = await db.collection(COLLECTION_NAME).findOne({ email });
   return result as userModel | null;
+};
+
+export const updatePicture = async (
+  email: string | undefined,
+  picture: string
+) => {
+  const db = await getDb();
+  await db
+    .collection(COLLECTION_NAME)
+    .updateOne({ email: email }, { $set: { profilePicture: picture } });
 };
