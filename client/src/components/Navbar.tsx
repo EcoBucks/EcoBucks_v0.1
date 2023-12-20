@@ -6,10 +6,6 @@ import ButtonWallet from "./WalletButton";
 import { usePathname } from "next/navigation";
 
 const NavbarComponent = () => {
-  // const data = await getUser();
-
-  // console.log(data, "======ini navbar");
-
   const currentRoute = usePathname();
   const linkStyle = ` text-sm font-medium hover:scale-100 hover:text-eb-10 active:scale-90 transition-all hover:font-bold `;
   const activeStyle =
@@ -31,7 +27,7 @@ const NavbarComponent = () => {
           </div>
         </Link>
 
-        <div className="flex flex-row items-center gap-x-4 rounded-xl shadow-md h-12 w-[25%] border px-[1%] justify-evenly">
+        <div className="flex flex-row items-center gap-x-4 rounded-xl shadow-md h-12 w-[30%] border px-[1%] justify-evenly">
           <Link href={"/contribution"}>
             <div
               className={

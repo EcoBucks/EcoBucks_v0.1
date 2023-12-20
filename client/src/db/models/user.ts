@@ -16,6 +16,7 @@ export type userModel = {
   profilePicture?: string | null | undefined;
   role: string
   phoneNumber: string;
+  pickupVoucher?: number | any;
 };
 
 export type UserModelCreateInput = Omit<userModel, "_id">;
@@ -58,6 +59,7 @@ export const createUser = async (user: UserModelCreateInput) => {
   return result;
 };
 
+
 export const getUserByEmail = async (
   email: string | null
 ) => {
@@ -67,4 +69,14 @@ export const getUserByEmail = async (
   // console.log(result, '======useer email======');
 
   return result as userModel | null;
+};
+
+export const updatePicture = async (
+  email: string | undefined,
+  picture: string
+) => {
+  const db = await getDb();
+  await db
+    .collection(COLLECTION_NAME)
+    .updateOne({ email: email }, { $set: { profilePicture: picture } });
 };

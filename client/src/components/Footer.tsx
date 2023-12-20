@@ -4,11 +4,19 @@ import { subs } from "@/app/(action)/ACTIONNODEMAILER";
 import Image from "next/image";
 import React from "react";
 
-const Footer = () => {
+interface FooterProps {
+  type?: string;
+}
+
+const Footer = ({ type }: FooterProps) => {
+  const NavAbsolute =
+    "absolute w-screen h-[235px] px-[6%] text-gray-500 bottom-0";
+  const NavFlex = "flex w-screen h-[235px] px-[6%] text-gray-500";
+
   return (
     <>
       {/* Footer */}
-      <div className="flex w-screen h-[235px] px-[6%] text-gray-500">
+      <div className={type === "absolute" ? NavAbsolute : NavFlex}>
         <div className="border-t-2 w-full h-full flex flex-row items-center pb-[4%] pt-[6%] gap-x-3">
           {/* Coloumn 1 */}
           <div className="flex flex-col col-span-2 gap-y-2 w-[50%] h-full -mt-[10%]">
@@ -94,7 +102,6 @@ const Footer = () => {
               action={subs}
               className="flex flex-row gap-x-2 w-[100%] py-2 h-[35%]"
             >
-              {/* <div className="flex flex-row gap-x-2 w-[100%] py-2 h-[35%]"> */}
               <input
                 type="text"
                 name="email"
@@ -105,9 +112,6 @@ const Footer = () => {
                 <span className="material-symbols-outlined">mail</span>
                 <p>send</p>
               </button>
-              {/* <div className="w-[40%] h-full bg-eb-10 justify-center items-center flex flex-row rounded-lg text-white gap-x-1 px-2 pb-1"> */}
-              {/* </div> */}
-              {/* </div> */}
             </form>
           </div>
         </div>

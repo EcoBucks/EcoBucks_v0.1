@@ -23,16 +23,15 @@ export const userLogin = z.object({
 
 export const POST = async (request: Request) => {
   try {
-    
     const data = await request.json();
     const parsedData = userInput.safeParse(data);
-  
+
     if (!parsedData.success) {
       throw parsedData.error;
     }
   
     const user = await createUser(data);
-  
+
     return NextResponse.json(
       {
         statusCode: 201,
@@ -50,16 +49,9 @@ export const POST = async (request: Request) => {
 };
 
 export const GET = async (request: Request) => {
+  const email: string | null = request.headers.get("x-user-email");
 
-
-  const email: string | null =  request.headers.get("x-user-email")
-
-  // console.log(email, '=====eamil====');
-
-  const user = await getUserByEmail(email);  
-
-  // console.log(user, '======user balikan=======');
-  
+  const user = await getUserByEmail(email);
   return NextResponse.json({
     statusCode: 200,
     message: "succcessfully create user",

@@ -2,36 +2,23 @@ import Caraousel from "@/components/Caraousel";
 import Card from "@/components/Card";
 import CardEducation from "@/components/CardEducation";
 import Footer from "@/components/Footer";
-import { OptionMT, SelectMT } from "@/components/MaterialTailwind";
 import { LocationType } from "@/types";
 import { fetchData } from "../(action)/fetchDataHome";
 import { fetchProvince } from "../(action)/fetchProvince";
 import UcoForm from "@/components/UcoForm";
-import { redirect } from "next/navigation";
-import { searchProvince } from "../(action)/searchProvince";
-import { cookies } from "next/headers";
-import NavbarComponent from "@/components/Navbar";
 import { getVideos } from "@/db/models/videos";
 import Link from "next/link";
 
 export default async function Home() {
   const slides = [
-    "https://source.unsplash.com/random/900x700/?person",
-    "https://source.unsplash.com/random/900x700/?person+2",
-    "https://source.unsplash.com/random/900x700/?person+3",
-    "https://source.unsplash.com/random/900x700/?person+4",
+    "https://ik.imagekit.io/9nm0rr5hka/1(1).png?updatedAt=1703076973396",
+    "https://ik.imagekit.io/9nm0rr5hka/2(1).png?updatedAt=1703076973304",
+    "https://ik.imagekit.io/9nm0rr5hka/3(1).png?updatedAt=1703076972489",
   ];
-
-  type res = {
-    statusCode: 200;
-    message: "successfully read Location";
-    data: LocationType[];
-  };
 
   const data: LocationType[] = (await fetchData()) as any;
   const videos = await getVideos();
 
-  const provinces = await fetchProvince();
   const randomizedVideos = videos
     .sort(() => Math.random() - Math.random())
     .slice(0, 3);
@@ -40,7 +27,7 @@ export default async function Home() {
     <>
       {/* Hero Section */}
       <div className="flex w-screen h-[600px] items-center justify-center px-[8%] mt-[8%]">
-        <div className="bg-white w-full h-full flex flex-row gap-x-4 animate-fade-up animate-delay-150">
+        <div className="w-full h-full flex flex-row gap-x-4 animate-fade-up animate-delay-150">
           {/* Left Component */}
           <div className="flex flex-row justify-end items-center w-[70%] h-full rounded-[20px] overflow-hidden shadow-md">
             <div className="w-full h-full flex flex-row relative">
@@ -49,7 +36,7 @@ export default async function Home() {
                   <img
                     key={s + "id"}
                     src={s}
-                    className="w-full h-full object-contain"
+                    className="w-[1000px] h-[600px] object-cover"
                     alt="image"
                   />
                 ))}

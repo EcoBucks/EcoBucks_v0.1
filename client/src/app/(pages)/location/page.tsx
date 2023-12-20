@@ -1,11 +1,8 @@
 "use client";
-import { fetchData } from "@/app/(action)/fetchDataHome";
 import CardEducation from "@/components/CardEducation";
 import CardLocation from "@/components/CardLocation";
 import Footer from "@/components/Footer";
-import NavbarComponent from "@/components/Navbar";
-import { VideoModel, getVideos } from "@/db/models/videos";
-import { LocationType } from "@/types";
+import { VideoModel } from "@/db/models/videos";
 import React, { useEffect, useState } from "react";
 import { Locations, Videos } from "./action";
 import { locationModel } from "@/db/models/location";
@@ -60,7 +57,7 @@ const LocationPage = ({
         <div className="flex flex-row w-[45%] justify-end items-center animate-fade-up animate-delay-0">
           <div className="flex w-[85%] h-[90%] rounded-[20px] shadow-lg">
             <img
-              src="https://source.unsplash.com/random/900x700/?indonesia"
+              src="https://ik.imagekit.io/9nm0rr5hka/4(1).png?updatedAt=1703076509617"
               className="object-cover rounded-lg w-full h-full"
             />
           </div>

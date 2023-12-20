@@ -8,8 +8,8 @@ const CardEducation = ({ detail }: { detail: VideoModel }) => {
       {/* Card Education */}
       <div className="w-[359px] h-[243px] rounded-[20px] overflow-hidden relative">
         <div className="w-full h-full absolute p-5 z-10">
-          <h1 className="text-gray-400 text-lg">{detail.date}</h1>
-          <h1 className="text-white text-[25px] leading-8 raleway font-bold">
+          <h1 className="text-gray-400 text-sm">{detail.date}</h1>
+          <h1 className="text-white text-[25px] leading-8 raleway font-bold line-clamp-2">
             {detail.title}
           </h1>
           <div className="absolute bottom-0 right-0 p-6 text-white flex flex-row items-center">
@@ -25,7 +25,11 @@ const CardEducation = ({ detail }: { detail: VideoModel }) => {
           </div>
         </div>
         <div className="bg-[#00000060] w-full h-full absolute"></div>
-        <img src={detail.thumbnail} alt="image" className="w-full h-full" />
+        <img
+          src={detail.thumbnail}
+          alt="image"
+          className="w-full h-full object-cover"
+        />
       </div>
     </>
   );

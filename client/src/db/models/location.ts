@@ -17,12 +17,15 @@ const COLLECTION_NAME = "location";
 export type locationModel = {
   _id: ObjectId;
   name: string;
+  lat: number;
+  lng: number;
   picture: string;
   lat: number
   lng: number
   operationalHour: number;
   province: string;
   address: string;
+  url: string | any | undefined;
 };
 
 export const getDb = async () => {
