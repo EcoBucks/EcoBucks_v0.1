@@ -82,14 +82,16 @@ const SubmitUcoPage = async ({
                     <input
                       name="ucoBallance"
                       type="text"
-                      className="w-full bg-gray-200 h-[50px] text-gray-800 rounded-lg px-4"
+                      placeholder="How Many UCO .. "
+                      className="w-full bg-gray-200 h-[50px] text-gray-800 rounded-lg px-4 text-[14px]"
                     />
                   ) : (
                     <input
                       name="ucoBallance"
                       value={sum}
                       type="text"
-                      className="w-full bg-gray-200 h-[50px] text-gray-800 rounded-lg px-4"
+                      placeholder="How Many UCO .. "
+                      className="w-full bg-gray-200 h-[50px] text-gray-800 rounded-lg px-4 text-[14px]"
                     />
                   )}
                   {/* //! sampe sini */}
@@ -100,7 +102,8 @@ const SubmitUcoPage = async ({
                   <input
                     name="phoneNumbers"
                     type="text"
-                    className="w-full bg-gray-200 h-[50px] text-gray-800 rounded-lg px-4"
+                    placeholder="Type your Phone Number .. "
+                    className="w-full bg-gray-200 h-[50px] text-gray-800 rounded-lg px-4 text-[14px]"
                   />
                 </div>
 
@@ -109,7 +112,8 @@ const SubmitUcoPage = async ({
                   <input
                     name="locationDetails"
                     type="text"
-                    className="w-full bg-gray-200 h-[50px] text-gray-800 rounded-lg px-4"
+                    placeholder="Give us the Detail Location .. "
+                    className="w-full bg-gray-200 h-[50px] text-gray-800 rounded-lg px-4 text-[14px]"
                   />
                 </div>
                 {/* Pickup Date & Time */}
@@ -119,6 +123,7 @@ const SubmitUcoPage = async ({
                     <input
                       name="pickUpDate"
                       type="date"
+                      min={new Date().toISOString().split("T")[0]}
                       className="w-full bg-gray-200 h-[50px] text-gray-800 rounded-lg px-4"
                     />
                   </div>
@@ -130,10 +135,12 @@ const SubmitUcoPage = async ({
                         id=""
                         className=" bg-gray-200 h-[50px] text-gray-800 px-4 w-[90%] rounded-lg focus:outline-none"
                       >
+                        <option value="10:00 - 11:00">10:00 - 11:00</option>
+                        <option value="11:00 - 12:00">11:00 - 12:00</option>
+                        <option value="13:00 - 14:00">13:00 - 14:00</option>
+                        <option value="14:00 - 15:00">14:00 - 15:00</option>
                         <option value="15:00 - 16:00">15:00 - 16:00</option>
-                        <option value="15:00 - 16:00">15:00 - 16:00</option>
-                        <option value="15:00 - 16:00">15:00 - 16:00</option>
-                        <option value="15:00 - 16:00">15:00 - 16:00</option>
+                        <option value="16:00 - 17:00">16:00 - 17:00</option>
                       </select>
                     </div>
                   </div>

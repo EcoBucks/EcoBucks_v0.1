@@ -120,19 +120,21 @@ const UcoForm: React.FC = () => {
         </div>
 
         {/* Button Component */}
-        <div className="flex flex-row w-full h-[20%] bg-eb-40 rounded-[20px] text-white justify-center items-center px-[8%] group hover:bg-eb-30 transition-all">
-          <div className="flex flex-col w-full justify-center items-start">
-            <p className="text-[25px] raleway font-bold">Free Pickup UCO</p>
-            <p className="text-[12px]">
-              Free pickup at your preferred location.{" "}
-            </p>
+        <Link href={"/submit-uco"}>
+          <div className="flex flex-row w-[380px] h-[120px] bg-eb-40 rounded-[20px] text-white justify-center items-center px-[8%] group hover:bg-eb-30 transition-all">
+            <div className="flex flex-col w-full justify-center items-start">
+              <p className="text-[25px] raleway font-bold">Free Pickup UCO</p>
+              <p className="text-[12px]">
+                Free pickup at your preferred location.{" "}
+              </p>
+            </div>
+            <div className="bg-eb-20 rounded-[100px] w-[55px] h-[50px] flex justify-center items-center group-hover:bg-white group-hover:text-black transition-all group-hover:scale-105 group-hover:animate-shake">
+              <span className="material-symbols-outlined hover">
+                arrow_forward
+              </span>
+            </div>
           </div>
-          <div className="bg-eb-20 rounded-[100px] w-[55px] h-[50px] flex justify-center items-center group-hover:bg-white group-hover:text-black transition-all group-hover:scale-105">
-            <span className="material-symbols-outlined hover">
-              arrow_forward
-            </span>
-          </div>
-        </div>
+        </Link>
       </div>
     </>
   );
