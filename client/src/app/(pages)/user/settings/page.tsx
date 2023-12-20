@@ -24,8 +24,8 @@ const SettingsPage = () => {
   const fetchUser = async () => {
     try {
       const data: dataUser | undefined = await getUser();
-      // setUser(data);
-      console.log(data, "====user===");
+      setUser(data);
+      // console.log(data, "====user===");
     } catch (error) {
       console.log(error);
     }
@@ -54,7 +54,7 @@ const SettingsPage = () => {
   useEffect(() => {
     fetchUser();
   }, []);
-  console.log(user?.data);
+  // console.log(user?.data);
   // console.log(picture);
 
   return (

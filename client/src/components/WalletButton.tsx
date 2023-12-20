@@ -9,6 +9,7 @@ import { currencyFormatted } from "@/lib/ConstantFunction";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 const ButtonWallet = () => {
   const [isLogin, setIsLogin] = useState(false);
@@ -65,6 +66,7 @@ const ButtonWallet = () => {
 
   const handleButtonClick = async () => {
     await initiatePayment();
+    toast.success("Request Send to EcoBucks!");
   };
 
   // Redirect when redirectUrl is set
@@ -89,17 +91,14 @@ const ButtonWallet = () => {
         </Link>
       ) : currentPage == "/user" ? (
         <>
-          <button
-            onClick={handleButtonClick}
-            className="flex justify-between px-[15px] items-center shadow-md rounded-xl gap-x-4 relative"
-          >
+          <button className="flex justify-between px-[15px] items-center shadow-md rounded-xl gap-x-4 relative">
             <div className="flex flex-row justify-center h-full items-center gap-x-2">
               <span className="material-symbols-outlined text-eb-20">
                 account_balance_wallet
               </span>
               <p className="text-sm font-bold">
-                {data?.data.walletBallance !== undefined
-                  ? currencyFormatted(data?.data.walletBallance)
+                {data?.data.walletBalance !== undefined
+                  ? currencyFormatted(data?.data.walletBalance)
                   : ""}
               </p>
             </div>
@@ -121,7 +120,7 @@ const ButtonWallet = () => {
                 account_balance_wallet
               </span>
               <p className="text-sm font-bold">
-                {data?.data.walletBallance !== undefined
+                {data?.data.walletBalance !== undefined
                   ? currencyFormatted(data?.data.walletBalance)
                   : ""}
               </p>
@@ -140,7 +139,10 @@ const ButtonWallet = () => {
               className="w-screen h-screen fixed inset-0"
             >
               <div className="bg-gray-100 fixed z-50 w-[12%] h-[100px] rounded-[13px] gap-y-2 text-[14px] shadow-xl flex justify-center flex-col mt-2 right-[7.5%] top-[7%] animate-fade-down">
-                <button className="flex flex-row w-full justify-start text-gray-700 items-center gap-x-1 px-[18px] group hover:text-eb-10 transition-all">
+                <button
+                  onClick={handleButtonClick}
+                  className="flex flex-row w-full justify-start text-gray-700 items-center gap-x-1 px-[18px] group hover:text-eb-10 transition-all"
+                >
                   <span className="material-symbols-outlined">wallet</span>
                   <h1 className="font-bold">Reedem Wallet</h1>
                 </button>
