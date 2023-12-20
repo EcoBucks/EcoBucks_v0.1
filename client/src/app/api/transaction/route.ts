@@ -40,13 +40,20 @@ export const PUT = async (request: NextRequest) => {
 
     // console.log(query, '==complete==');
 
-    const id = await  request.json()
-    // const data = await  request.json()
+    // const {id} = await  request.json()
+    // const {driverId} = await  request.json()
+
+    // console.log(await  request.json(), '======dari route=======');
+
+    const data = await request.json()
+
 
     // console.log(data, '======= ini dari mana ');
 
-    if (id) {
-        await updateUBallance(id);
+
+    // return;
+    if (data) {
+        await updateUBallance(data.id, data.driverId);
         return NextResponse.json({
             statusCode: 201,
             message: "Successfully updated sumUco",
@@ -67,11 +74,11 @@ export const GET = async (request: NextRequest) => {
     const searchParams = request.nextUrl.searchParams
     const query = searchParams.get('role')
 
-    console.log(query, '==== query')
+    // console.log(query, '==== query')
 
     if(query == "driver"){
         const data = await allTrans();
-        console.log(data, '====route=====');
+        // console.log(data, '====route=====');
         return NextResponse.json(data);
     }else if (query == "user") {
         const data = await getTransaction(userId);

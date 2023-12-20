@@ -97,12 +97,19 @@ export const allTrans = async () => {
   return data;
 };
 
-export const updateUBallance = async (id: string) => {
+export const updateUBallance = async (id: string, driverId: string) => {
   const db = await getDb();
+
+
+  await db
+    .collection(COLLECTION_NAME)
+    .updateOne({ _id: new ObjectId(id) }, { $set: { driverId: new ObjectId(driverId) } });
 
   const result = await db
     .collection(COLLECTION_NAME)
     .updateOne({ _id: new ObjectId(id) }, { $set: { status: "ongoing" } });
+
+
 
   return result;
 };
@@ -114,11 +121,11 @@ export const updateUBallanceOnGoing = async (id: string) => {
     .collection(COLLECTION_NAME)
     .updateOne({ _id: new ObjectId(id) }, { $set: { status: "ongoing" } });
 
-  console.log(result, "========= model");
+  // console.log(result, "========= model");
   return result;
 };
 
-export const updateUWallet = async (id: string) => {
+export const updateUWallet = async (id: string, driverId: string) => {
   const db = await getDb();
 
   // Convert id to ObjectId
@@ -126,33 +133,35 @@ export const updateUWallet = async (id: string) => {
 
   const uco: ucoModels = (await db
     .collection(COLLECTION_NAME)
-    .findOne({ _id: objectId })) as any;
+    .findOne({ _id: objectId, driverId: new ObjectId(driverId)  })) as any;
   const user: userModel = (await db
     .collection(COLLECTION_USER)
     .findOne({ _id: new ObjectId(uco.userId) })) as any;
 
-  console.log(uco.ucoBalance, "+++++ ucoBalance +++++");
+  // console.log(uco.ucoBalance, "+++++ ucoBalance +++++");
 
-  let sumUco = 0;
+  let sumUco = 0
   if (uco.ucoBalance) {
     sumUco = uco.ucoBalance + user.walletBalance;
   }
+  
+  // console.log(user.email, "+++++ sumUco +++++");
 
-  console.log(sumUco, "+++++ sumUco +++++");
 
-  await db
-    .collection(COLLECTION_USER)
-    .updateOne(
-      { _id: new ObjectId(uco.userId) },
-      { $set: { walletBalance: sumUco } }
-    );
 
+  
   await db
     .collection(COLLECTION_NAME)
     .updateOne(
-      { _id: new ObjectId(uco._id) },
-      { $set: { status: "complete" } }
-    );
+        { _id: new ObjectId(uco._id), driverId: new ObjectId(driverId) },
+        { $set: { status: "complete" } }
+      );
+    await db
+      .collection(COLLECTION_USER)
+      .updateOne(
+        { _id: new ObjectId(user._id) },
+        { $set: { walletBalance: sumUco } }
+      );
 };
 
 export const deleteWallet = async (email: string) => {
