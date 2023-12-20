@@ -1,6 +1,7 @@
 "use client";
 import { getUser } from "@/app/(action)/actionGetUser";
 import Footer from "@/components/Footer";
+import LogoutButton from "@/components/LogoutButton";
 import Modal from "@/components/Modal";
 import { userModel } from "@/db/models/user";
 import Link from "next/link";
@@ -116,7 +117,7 @@ export default function UserDashboardLayout({
                       </p>
                     </div>
                     <div className="flex gap-4">
-                      <button className=" w-full">Logout</button>
+                      <LogoutButton />
                       <button
                         className=" w-full"
                         onClick={() => setOpen(false)}
@@ -147,7 +148,7 @@ export default function UserDashboardLayout({
         </div>
       </div>
 
-      <Footer type={currentRoute === "/user/settings" ? "absolute" : "flex"} />
+      {/* <Footer type={currentRoute === "/user/settings" ? "absolute" : "flex"} /> */}
     </section>
   );
 }
