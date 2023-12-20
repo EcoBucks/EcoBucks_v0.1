@@ -17,6 +17,8 @@ const COLLECTION_NAME = "location";
 export type locationModel = {
   _id: ObjectId;
   name: string;
+  lat: number;
+  lng: number;
   picture: string;
   coordinate: string;
   operationalHour: number;

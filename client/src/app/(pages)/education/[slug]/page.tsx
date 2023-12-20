@@ -3,8 +3,6 @@ import { fetchProvince } from "@/app/(action)/fetchProvince";
 import Card from "@/components/Card";
 import CopyButton from "@/components/CopyButton";
 import Footer from "@/components/Footer";
-import { OptionMT, SelectMT } from "@/components/MaterialTailwind";
-import NavbarComponent from "@/components/Navbar";
 import ShareWhatsapp from "@/components/ShareWhatsapp";
 import { getVideoBySlug } from "@/db/models/videos";
 import { LocationType } from "@/types";
@@ -26,15 +24,13 @@ const EducationDetail = async ({ params }: { params: { slug: string } }) => {
 
   return (
     <>
-      <NavbarComponent />
-
       <div className="mt-20 py-14 px-[8%]">
         {/* BreadCrumb */}
         <Link href="/education">
-          <div className="flex flex-row">
+          <div className="flex flex-row w-fit">
             <nav
               aria-label="breadcrumb"
-              className="w-full dark:bg-gray-800 dark:text-gray-100"
+              className="w-fit dark:bg-gray-800 dark:text-gray-100"
             >
               <div className="flex flex-row w-full gap-x-2 items-center">
                 <span
@@ -43,8 +39,8 @@ const EducationDetail = async ({ params }: { params: { slug: string } }) => {
                 >
                   arrow_back
                 </span>
-                <li className=" flex items-center text-[1rem] text-[#052E1B]">
-                  Kembali
+                <li className=" underline flex items-center text-[14px] text-gray-600">
+                  Other Educations
                 </li>
               </div>
             </nav>

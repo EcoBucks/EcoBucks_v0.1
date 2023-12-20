@@ -11,7 +11,7 @@ export default function Modal({
     <>
       <div
         onClick={onClose}
-        className={`fixed inset-0 flex justify-center items-center transition-colors bg-[#00000050] backdrop-blur-sm z-20
+        className={`fixed inset-0 flex justify-center items-center transition-colors bg-[#00000050] backdrop-blur-sm z-40
        ${open ? "visible" : "invisible"}
       `}
       >

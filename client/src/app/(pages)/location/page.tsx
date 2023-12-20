@@ -1,11 +1,8 @@
 "use client";
-import { fetchData } from "@/app/(action)/fetchDataHome";
 import CardEducation from "@/components/CardEducation";
 import CardLocation from "@/components/CardLocation";
 import Footer from "@/components/Footer";
-import NavbarComponent from "@/components/Navbar";
-import { VideoModel, getVideos } from "@/db/models/videos";
-import { LocationType } from "@/types";
+import { VideoModel } from "@/db/models/videos";
 import React, { useEffect, useState } from "react";
 import { Locations, Videos } from "./action";
 import { locationModel } from "@/db/models/location";
