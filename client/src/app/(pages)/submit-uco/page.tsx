@@ -3,25 +3,19 @@ import CardLocation from "@/components/CardLocation";
 import Footer from "@/components/Footer";
 import NavbarComponent from "@/components/Navbar";
 import { LocationType } from "@/types";
-import React from "react";
+// import React, { useContext } from "react";
 import MapSubmitUCO from "@/components/Map";
 import { addUco } from "@/app/(action)/addUcoBallance";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+const cookie = cookies();
+const token = cookie.get("token");
 
-const fetchData = async () => {
-  try {
-    const response = await fetch("http://localhost:3001/location", {
-      cache: "no-store",
-    });
-    const responseJson: LocationType[] = await response.json();
-    return responseJson;
-  } catch (error) {
-    console.log(error);
-  }
-};
+if (!token) {
+  redirect("http://localhost:3000/");
+}
 
 const SubmitUcoPage = async () => {
-  const data = await fetchData();
-
   return (
     <>
       <NavbarComponent />

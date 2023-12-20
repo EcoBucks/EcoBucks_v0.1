@@ -12,7 +12,10 @@ export const UserLocationProvider = ({
 
   const getUserLocation = (): void => {
     navigator.geolocation.getCurrentPosition((position) => {
-      console.log(position);
+      setUserLocation({
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      });
     });
   };
 

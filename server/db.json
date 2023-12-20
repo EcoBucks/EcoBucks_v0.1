@@ -58,13 +58,58 @@
   ],
   "location": [
     {
-      "name": "Champion Cafe Medan",
+      "name": "Chiefmanship Center",
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGxDLgd2EZmjdZiaAejbsPLgZJwso4ZI8Fwg&usqp=CAU",
-      "lat": 3.5675618,
-      "long": 98.6465939,
+      "lat": -6.3015519,
+      "long": 106.6488034,
       "operationalHour": 480,
-      "province": "Sumatera Utara",
-      "address": "Jl. Dr. Mansyur No.134, Padang Bulan Selayang I, Kec. Medan Selayang, Kota Medan"
+      "province": "Banten",
+      "address": "Sampora, Kec. Cisauk, Kabupaten Tangerang"
+    },
+    {
+      "name": "Grha Unilever",
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGxDLgd2EZmjdZiaAejbsPLgZJwso4ZI8Fwg&usqp=CAU",
+      "lat": -6.3007986,
+      "long": 106.6493538,
+      "operationalHour": 400,
+      "province": "Banten",
+      "address": "Barat BSD City, Green Office Park, Jl. BSD Grand Boulevard Kav. 3, Sampora, Kec. Cisauk, Kabupaten Tangerang"
+    },
+    {
+      "name": "The Breeze BSD City",
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGxDLgd2EZmjdZiaAejbsPLgZJwso4ZI8Fwg&usqp=CAU",
+      "lat": -6.3010909,
+      "long": 106.651687,
+      "operationalHour": 480,
+      "province": "Banten",
+      "address": "Jl. BSD Green Office Park Jl. BSD Grand Boulevard, Sampora, BSD, Kabupaten Tangerang"
+    },
+    {
+      "name": "Sate Khas Senayan",
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGxDLgd2EZmjdZiaAejbsPLgZJwso4ZI8Fwg&usqp=CAU",
+      "lat": -6.3015172,
+      "long": 106.6530755,
+      "operationalHour": 400,
+      "province": "Banten",
+      "address": "Jl. Grand Boulevard BSD Green Office Park, Sampora, Kec. Cisauk, Kabupaten Tangerang"
+    },
+    {
+      "name": "Marigold Navapark Apartment Tower 3",
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGxDLgd2EZmjdZiaAejbsPLgZJwso4ZI8Fwg&usqp=CAU",
+      "lat": -6.2973016,
+      "long": 106.65098,
+      "operationalHour": 480,
+      "province": "Banten",
+      "address": "PM22+R7W, Jl. Boulevard BSD City, Cijantra, Kec. Pagedangan, Kabupaten Tangerang"
+    },
+    {
+      "name": "Masjid Jami' Al-Ikhlas",
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGxDLgd2EZmjdZiaAejbsPLgZJwso4ZI8Fwg&usqp=CAU",
+      "lat": -6.2949512,
+      "long": 106.6463759,
+      "operationalHour": 480,
+      "province": "Banten",
+      "address": "PJ4W+4CH, Kp. Nagreg, Sampora, Cisauk, Sampora, Kec. Cisauk, Kabupaten Tangerang"
     },
     {
       "name": "Bakso Granat Cak Ri",

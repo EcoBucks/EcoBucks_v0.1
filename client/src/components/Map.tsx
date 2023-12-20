@@ -1,4 +1,5 @@
 "use client";
+import { UserLocationContext } from "@/context/GlobalContext";
 import {
   useJsApiLoader,
   GoogleMap,
@@ -6,15 +7,20 @@ import {
   Autocomplete,
   DirectionsRenderer,
 } from "@react-google-maps/api";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 
-let center = { lat: 3.5675618, lng: 98.6465939 };
+// let center = { lat: 3.5675618, lng: 98.6465939 };
 
 const MapSubmitUCO = ({ children }: { children?: React.ReactNode }) => {
+  let userLocation = useContext(UserLocationContext);
+  // console.log(userLocation, "====dari map nihhh=====");
+
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: "AIzaSyCXK97myyLm_Wd3-arEaT39nPdjzCtOshU",
     libraries: ["places"],
   });
+
+  let center: google.maps.LatLngLiteral = userLocation as never;
 
   const [map, setMap] = useState<google.maps.Map | null>(null);
   const [directionsResponse, setDirectionsResponse] =
@@ -103,7 +109,7 @@ const MapSubmitUCO = ({ children }: { children?: React.ReactNode }) => {
           {/* Google Map Component */}
           <GoogleMap
             center={center}
-            zoom={15}
+            zoom={17}
             mapContainerStyle={{ width: "100%", height: "100%" }}
             options={{
               zoomControl: false,
