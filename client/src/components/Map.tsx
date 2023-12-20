@@ -1,4 +1,7 @@
 "use client";
+import { fetchData } from "@/app/(action)/fetchDataHome";
+import { UserLocationContext } from "@/context/GlobalContext";
+import { locationModel } from "@/db/models/location";
 import {
   useJsApiLoader,
   GoogleMap,
@@ -6,15 +9,40 @@ import {
   Autocomplete,
   DirectionsRenderer,
 } from "@react-google-maps/api";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
+import MarkerCollecting from "./MarkerCollecting";
+import { currencyFormatted } from "@/lib/ConstantFunction";
 
-let center = { lat: 3.5675618, lng: 98.6465939 };
+// let center = { lat: 3.5675618, lng: 98.6465939 };
 
 const MapSubmitUCO = ({ children }: { children?: React.ReactNode }) => {
+  let userLocation = useContext(UserLocationContext);
+  // console.log(userLocation, "====dari map nihhh=====");
+  const [collectingPoint, setCollectingPoint] = useState<
+    locationModel[] | undefined
+  >();
+
+  const location = async () => {
+    const data = await fetchData();
+    setCollectingPoint(data);
+    console.log(data, "====dari map===");
+  };
+
+  useEffect(() => {
+    location();
+  }, []);
+
+  fetchData();
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: "AIzaSyCXK97myyLm_Wd3-arEaT39nPdjzCtOshU",
     libraries: ["places"],
   });
+
+  let center: google.maps.LatLngLiteral = userLocation as never;
+
+  if (!center) {
+    center = { lat: 3.5675618, lng: 98.6465939 };
+  }
 
   const [map, setMap] = useState<google.maps.Map | null>(null);
   const [directionsResponse, setDirectionsResponse] =
@@ -34,6 +62,10 @@ const MapSubmitUCO = ({ children }: { children?: React.ReactNode }) => {
       return;
     }
 
+    // if (center) {
+    // originRef.current.value = `Latitude: ${center.lat}, Longitude: ${center.lng}`;
+    // }
+
     if (originRef.current && destinationRef.current) {
       // Check if the element has a 'value' property
       if ("value" in originRef.current && "value" in destinationRef.current) {
@@ -44,7 +76,7 @@ const MapSubmitUCO = ({ children }: { children?: React.ReactNode }) => {
         if (originValue === "" || destinationValue === "") {
           return;
         }
-        // eslint-disable-next-line no-undef
+
         const directionsService = new google.maps.DirectionsService();
 
         if (
@@ -78,6 +110,7 @@ const MapSubmitUCO = ({ children }: { children?: React.ReactNode }) => {
         }
       }
     }
+    // console.log(originRef, '============');
   };
 
   function clearRoute() {
@@ -103,7 +136,7 @@ const MapSubmitUCO = ({ children }: { children?: React.ReactNode }) => {
           {/* Google Map Component */}
           <GoogleMap
             center={center}
-            zoom={15}
+            zoom={17}
             mapContainerStyle={{ width: "100%", height: "100%" }}
             options={{
               zoomControl: false,
@@ -114,7 +147,23 @@ const MapSubmitUCO = ({ children }: { children?: React.ReactNode }) => {
             onLoad={(map) => setMap(map)}
           >
             {/* Marker and DirectionsRenderer components */}
-            <Marker position={center} />
+            <Marker
+              position={center}
+              // icon={{
+              //   url: "/EcoBucks_FavIcon.svg",
+              //   scaledSize: {
+              //     width: 50,
+              //     height: 50,
+              //   },
+              // }}
+            />
+            {collectingPoint?.map((el) => (
+              <MarkerCollecting
+                lat={el.lat}
+                lng={el.lng}
+                key={Number(el._id)}
+              />
+            ))}
             {directionsResponse && (
               <DirectionsRenderer directions={directionsResponse} />
             )}
@@ -125,14 +174,26 @@ const MapSubmitUCO = ({ children }: { children?: React.ReactNode }) => {
         <div className="absolute flex flex-col left-0 justify-start items-start space-x-2 h-[30%] w-[35%] m-[3%] gap-y-2">
           <div className="flex flex-col w-full gap-y-2 ml-2">
             {/* Origin Input */}
-            <Autocomplete>
-              <input
-                type="text"
-                placeholder="Origin"
-                ref={originRef}
-                className="w-full bg-white h-[35px] text-gray-900 rounded-lg px-4 text-[14px] focus:outline-none"
-              />
-            </Autocomplete>
+            {center ? (
+              <Autocomplete>
+                <input
+                  type="text"
+                  placeholder="Your Location"
+                  // disabled
+                  ref={originRef}
+                  className="w-full bg-white h-[35px] text-gray-900 rounded-lg px-4 text-[14px] focus:outline-none"
+                />
+              </Autocomplete>
+            ) : (
+              <Autocomplete>
+                <input
+                  type="text"
+                  placeholder="Origin"
+                  ref={originRef}
+                  className="w-full bg-white h-[35px] text-gray-900 rounded-lg px-4 text-[14px] focus:outline-none"
+                />
+              </Autocomplete>
+            )}
             {/* Destination Input */}
             <Autocomplete>
               <input
@@ -168,6 +229,7 @@ const MapSubmitUCO = ({ children }: { children?: React.ReactNode }) => {
         <div className="absolute flex flex-row items-center mt-4 space-x-4 bottom-0 w-full bg-eb-20 text-white px-[5%] h-[35px] transition-all">
           <p>Distance: {distance}</p>
           <p>Duration: {duration}</p>
+          <p>Prices: {currencyFormatted(+distance.split(" ")[0] * 500)}</p>
         </div>
 
         {/* Back Center */}

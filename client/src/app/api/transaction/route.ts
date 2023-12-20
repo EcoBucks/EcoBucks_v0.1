@@ -71,7 +71,7 @@ export const GET = async (request: NextRequest) => {
 
     if(query == "driver"){
         const data = await allTrans();
-        // console.log(data, '====route=====');
+        console.log(data, '====route=====');
         return NextResponse.json(data);
     }else if (query == "user") {
         const data = await getTransaction(userId);

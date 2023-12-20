@@ -29,7 +29,7 @@ export const POST = async (request: Request) => {
     if (!parsedData.success) {
       throw parsedData.error;
     }
-
+  
     const user = await createUser(data);
 
     return NextResponse.json(
@@ -52,7 +52,6 @@ export const GET = async (request: Request) => {
   const email: string | null = request.headers.get("x-user-email");
 
   const user = await getUserByEmail(email);
-
   return NextResponse.json({
     statusCode: 200,
     message: "succcessfully create user",

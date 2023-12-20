@@ -75,16 +75,14 @@ export const createUBallance = async (uco: ucoModel) => {
 export const getTransaction = async (userId: string | null) => {
   // console.log(userId, '=======model');
 
-  const db = await getDb();
-  let data;
-  if (userId) {
-    data = await db
-      .collection(COLLECTION_NAME)
-      .find({ userId: new ObjectId(userId) })
-      .toArray();
-  } else {
-    console.log("wtfff");
-  }
+    const db = await getDb()
+    let data
+    if(userId){
+         data = await db.collection(COLLECTION_NAME).find({userId: new ObjectId(userId)}).toArray() 
+    }else{
+        console.log("error data from getTransaction");
+    }
+
 
   // console.log(data);
 
@@ -93,11 +91,7 @@ export const getTransaction = async (userId: string | null) => {
 
 export const allTrans = async () => {
   const db = await getDb();
-
   const data = await db.collection(COLLECTION_NAME).find().toArray();
-
-  console.log(data);
-
   return data;
 };
 

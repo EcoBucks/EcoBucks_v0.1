@@ -20,7 +20,8 @@ export type locationModel = {
   lat: number;
   lng: number;
   picture: string;
-  coordinate: string;
+  lat: number
+  lng: number
   operationalHour: number;
   province: string;
   address: string;

@@ -3,24 +3,39 @@ import CardLocation from "@/components/CardLocation";
 import Footer from "@/components/Footer";
 import NavbarComponent from "@/components/Navbar";
 import { LocationType } from "@/types";
-import React from "react";
+// import React, { useContext } from "react";
 import MapSubmitUCO from "@/components/Map";
 import { addUco } from "@/app/(action)/addUcoBallance";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+import { getUco } from "@/app/(action)/actionUco";
 
-const fetchData = async () => {
-  try {
-    const response = await fetch("http://localhost:3001/location", {
-      cache: "no-store",
-    });
-    const responseJson: LocationType[] = await response.json();
-    return responseJson;
-  } catch (error) {
-    console.log(error);
+const SubmitUcoPage = async ({
+  params,
+  searchParams,
+}: {
+  params: { slug: string };
+  searchParams?: { [key: string]: string | string[] | undefined };
+}) => {
+  // console.log(searchParams?.sum, "======== =");
+
+  const sum = searchParams?.sum;
+
+  // console.log(sum, "====== query ====");
+
+  const cookie = cookies();
+  const token = cookie.get("token");
+
+  // const searchParams = props.searchParams;
+
+  // console.log(searchParams, "=====query====");
+
+  // const page = searchParams.page
+
+  //! kasih toast => login first
+  if (!token) {
+    redirect("http://localhost:3000/");
   }
-};
-
-const SubmitUcoPage = async () => {
-  const data = await fetchData();
 
   return (
     <>
@@ -64,6 +79,7 @@ const SubmitUcoPage = async () => {
                   <p className="text-[14px]">Your UCO Balance</p>
                   <input
                     name="ucoBallance"
+                    value={sum}
                     type="text"
                     className="w-full bg-gray-200 h-[50px] text-gray-800 rounded-lg px-4"
                   />
