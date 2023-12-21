@@ -147,10 +147,10 @@ export const ucoPay = async (url: string) => {
 
   transporter.sendMail(
     {
-      from: `EcoBucks user <${emailUser}>`,
+      from: `EcoUsers <${emailUser}>`,
       to: email.toString(),
-      subject: "bayar cokkk",
-      text: `nihlink: ${link} email: ${emailUser} `,
+      subject: "Payment Request to EcoUsers",
+      text: `Complete Payment To: ${link} With Email: ${emailUser} `,
       // html: htmlTemplate,
     },
     (error, info) => {
