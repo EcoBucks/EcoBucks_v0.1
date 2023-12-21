@@ -151,10 +151,10 @@ const SubmitUcoPage = async ({
                 {/* Button Submit */}
                 <button
                   type="submit"
-                  className="gap-x-2 flex flex-row justify-center items-center w-full py-3 bg-eb-30 text-white rounded-[10px] mt-[1%]"
+                  className="gap-x-2 flex flex-row justify-center items-center w-full py-3 bg-eb-30 text-white rounded-[10px] mt-[1%] group hover:bg-eb-10 transition-all"
                 >
                   Create Pickup
-                  <span className="material-symbols-outlined">
+                  <span className="material-symbols-outlined group-hover:animate-shake">
                     arrow_forward
                   </span>
                 </button>

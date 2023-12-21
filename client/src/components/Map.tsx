@@ -209,14 +209,14 @@ const MapSubmitUCO = ({ children }: { children?: React.ReactNode }) => {
 
           <div className="flex flex-row w-full gap-x-2">
             <button
-              className="px-5 text-white bg-eb-30 py-1 rounded-md text-[14px]"
+              className="px-5 text-white bg-eb-30 py-1 rounded-md text-[14px] hover:bg-eb-10 transition-all hover:scale-105"
               type="submit"
               onClick={calculateRoute}
             >
               See Prices
             </button>
             <button
-              className="bg-gray-300 text-gray-700 px-4 py-1 rounded-md text-[14px]"
+              className="bg-gray-300 text-gray-700 px-4 py-1 rounded-md text-[14px] hover:bg-eb-40 transition-all hover:scale-105 hover:text-white"
               onClick={clearRoute}
             >
               Clear
@@ -226,7 +226,7 @@ const MapSubmitUCO = ({ children }: { children?: React.ReactNode }) => {
 
         {/* Distance, Duration, and Center Back Button */}
 
-        <div className="absolute flex flex-row items-center mt-4 space-x-4 bottom-0 w-full bg-eb-20 text-white px-[5%] h-[35px] transition-all">
+        <div className="absolute flex flex-row items-center mt-4 space-x-4 bottom-0 w-full bg-eb-20 text-white px-[5%] h-[35px] transition-all ">
           <p>Distance: {distance}</p>
           <p>Duration: {duration}</p>
           <p>Prices: {currencyFormatted(+distance.split(" ")[0] * 500)}</p>
