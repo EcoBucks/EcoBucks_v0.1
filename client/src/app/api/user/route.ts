@@ -16,10 +16,7 @@ const userInput = z.object({
   role: z.string().optional().nullable(),
 });
 
-export const userLogin = z.object({
-  email: z.string(),
-  password: z.string(),
-});
+
 
 export const POST = async (request: Request) => {
   try {
