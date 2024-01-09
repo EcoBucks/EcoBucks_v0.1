@@ -5,7 +5,7 @@ import { redirect, useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
 import React, { useEffect } from "react";
 
-export default function page() {
+export default function Page() {
   const searchParams = useSearchParams();
   const status = searchParams.get("status");
   if (status === "berhasil") {
