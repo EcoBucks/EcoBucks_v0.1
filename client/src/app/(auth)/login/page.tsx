@@ -82,7 +82,7 @@ const LoginPage = () => {
             </form>
             <div className="pt-0">
               <p className="flex justify-center mt-6 font-sans text-sm antialiased leading-normal text-inherit">
-                Don't have an account?
+                Don&apos;t have an account?
                 <Link
                   href="/register"
                   className="block ml-1 font-sans text-sm antialiased font-bold leading-normal text-blue-gray-900 underline"

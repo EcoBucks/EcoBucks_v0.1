@@ -6,7 +6,6 @@ import { useSearchParams } from "next/navigation";
 import React, { useEffect } from "react";
 
 export default function page() {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const status = searchParams.get("status");
   if (status === "berhasil") {
