@@ -11,6 +11,7 @@ import { currencyFormatted } from "@/lib/ConstantFunction";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import { URL } from "@/db/config/url";
 
 const UserPage = () => {
   const [open, setOpen] = useState(false);
@@ -77,7 +78,7 @@ const UserPage = () => {
   const onLCickHandler = async (id: string) => {
     // console.log(id);
     try {
-      await fetch(`http://localhost:3000/api/transaction`, {
+      await fetch(`${URL}api/transaction`, {
         method: "PUT",
         body: JSON.stringify({
           id: id,
@@ -96,7 +97,7 @@ const UserPage = () => {
   const complete = async (id: string) => {
     // console.log(id);
     try {
-      await fetch("http://localhost:3000/api/pay", {
+      await fetch(`${URL}api/pay`, {
         method: "PUT",
         body: JSON.stringify({
           id: id,

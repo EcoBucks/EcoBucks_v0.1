@@ -9,9 +9,10 @@ export const fetchData = async () => {
    
 
 const data = await getLocation()
+const data2 = data.map(el => JSON.parse(JSON.stringify(el)))
 
       // revalidatePath("/")
-      return data;
+      return data2;
     } catch (error) {
       console.log(error);
     }

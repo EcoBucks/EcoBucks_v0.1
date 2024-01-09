@@ -5,15 +5,16 @@ import { redirect } from "next/navigation";
 import React from "react";
 import { cookies } from "next/headers";
 import { handleLogin } from "@/app/(action)/action";
+import { URL } from "@/db/config/url";
 
 const LoginPage = () => {
   const cookie = cookies();
   const token = cookie.get("token");
 
   console.log(token);
-
+  const url: string = URL as any;
   if (token) {
-    redirect("http://localhost:3000/");
+    redirect(url);
   }
   return (
     <>

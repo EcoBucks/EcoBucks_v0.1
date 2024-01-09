@@ -1,5 +1,6 @@
 "use client";
 import { ClearWallet } from "@/app/(action)/clearWallet";
+import { URL } from "@/db/config/url";
 import { redirect, useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
 import React, { useEffect } from "react";
@@ -43,6 +44,6 @@ export default function page() {
       </div>
     );
   } else {
-    return redirect("http://localhost:3000/");
+    return redirect(`${URL}`);
   }
 }

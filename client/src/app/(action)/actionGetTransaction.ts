@@ -1,12 +1,13 @@
 "use server"
 
+import { URL } from "@/db/config/url";
 import { allTrans } from "@/db/models/uco"
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
 
 export const Transaction = async (props: string) => {
     try {
-      const response = await fetch(`http://localhost:3000/api/transaction?role=${props}`, {
+      const response = await fetch(`${URL}api/transaction?role=${props}`, {
         method: "GET",
         cache: "no-cache",
         headers: {

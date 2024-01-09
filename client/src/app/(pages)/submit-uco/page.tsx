@@ -9,6 +9,7 @@ import { addUco } from "@/app/(action)/addUcoBallance";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { getUco } from "@/app/(action)/actionUco";
+import { URL } from "@/db/config/url";
 
 const SubmitUcoPage = async ({
   params,
@@ -34,7 +35,7 @@ const SubmitUcoPage = async ({
 
   //! kasih toast => login first
   if (!token) {
-    redirect("http://localhost:3000/");
+    redirect(`${URL}`);
   }
 
   return (

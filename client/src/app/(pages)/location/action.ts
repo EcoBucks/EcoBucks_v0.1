@@ -4,13 +4,15 @@ import { getVideos } from "@/db/models/videos";
 
 export async function Locations(search?: string) {
   const allLocations = await getLocation(search);
-  return allLocations;
+  const locations = allLocations.map(el => JSON.parse(JSON.stringify(el)))
+  return locations;
 }
 
 export async function Videos() {
   const allVideos = await getVideos();
-  const randomizedVideos = await allVideos
+  const randomizedVideos = allVideos
     .sort(() => Math.random() - Math.random())
     .slice(0, 3);
-  return randomizedVideos;
+  const random = randomizedVideos.map(el => JSON.parse(JSON.stringify(el)) )
+  return random
 }

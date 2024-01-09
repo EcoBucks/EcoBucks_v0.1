@@ -14,6 +14,7 @@ export type ucoModels = {
   locationDetails: string;
   pickUpDate: string;
   pickUpTime: string;
+  pickupVoucher: number
 };
 export type ucoModel = {
   userId: string;
@@ -147,14 +148,19 @@ export const updateUWallet = async (id: string, driverId: string) => {
   
   // console.log(user.email, "+++++ sumUco +++++");
 
-
+const pick = uco.pickupVoucher
 
   
   await db
     .collection(COLLECTION_NAME)
     .updateOne(
         { _id: new ObjectId(uco._id), driverId: new ObjectId(driverId) },
-        { $set: { status: "complete" } }
+        { 
+          $set: {
+            status: "complete",
+            pickupVoucher: pick-1
+          }
+        }
       );
     await db
       .collection(COLLECTION_USER)

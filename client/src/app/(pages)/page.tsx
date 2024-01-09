@@ -8,6 +8,7 @@ import { fetchProvince } from "../(action)/fetchProvince";
 import UcoForm from "@/components/UcoForm";
 import { getVideos } from "@/db/models/videos";
 import Link from "next/link";
+import { Videos } from "./education/action";
 
 export default async function Home() {
   const slides = [
@@ -17,7 +18,7 @@ export default async function Home() {
   ];
 
   const data: LocationType[] = (await fetchData()) as any;
-  const videos = await getVideos();
+  const videos = await Videos();
 
   const randomizedVideos = videos
     .sort(() => Math.random() - Math.random())

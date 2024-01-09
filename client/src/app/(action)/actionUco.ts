@@ -2,6 +2,7 @@
 
 import { redirect } from "next/navigation";
 import SubmitUcoPage from "../(pages)/submit-uco/page";
+import { URL } from "@/db/config/url";
 
 export const getUco = async (formData: FormData) => {
     console.log(formData.get("sum"));
@@ -18,5 +19,5 @@ export const getUco = async (formData: FormData) => {
 
     // await SubmitUcoPage(sum)
 
-    return redirect(`http://localhost:3000/submit-uco?sum=${sum}`) 
+    return redirect(`${URL}/submit-uco?sum=${sum}`) 
   };

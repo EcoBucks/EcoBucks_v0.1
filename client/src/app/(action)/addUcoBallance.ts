@@ -1,5 +1,6 @@
 "use server"
 
+import { URL } from "@/db/config/url"
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
 
@@ -22,7 +23,7 @@ export const addUco = async (formData: FormData) => {
         throw new Error("Unauthorized")
       }
 
-    await fetch("http://localhost:3000/api/transaction", {
+    await fetch(`${URL}api/transaction`, {
         method: "POST",
         headers:{
             Cookie: cookies().toString()
@@ -36,6 +37,6 @@ export const addUco = async (formData: FormData) => {
           })
     })
 
-    return redirect("http://localhost:3000/")
+    return redirect(`${URL}`)
 
 }

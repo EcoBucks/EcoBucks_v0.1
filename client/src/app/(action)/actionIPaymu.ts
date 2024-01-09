@@ -2,6 +2,7 @@
 import CryptoJS from "crypto-js";
 import { getUser } from "./actionGetUser";
 import { userModel } from "@/db/models/user";
+import { URL } from "@/db/config/url";
 export const handleClick = async () => {
   type dataUser = {
     statusCode: string;
@@ -27,9 +28,9 @@ export const handleClick = async () => {
     qty: ["1"],
     price: [price],
     amount: "10000",
-    returnUrl: "http://localhost:3000/thankyu", // your thank you page url
-    cancelUrl: "http://localhost:3000/cancel", // your cancel page url
-    notifyUrl: "http://localhost:3000/", // your callback url
+    returnUrl: `${URL}thankyu`, // your thank you page url
+    cancelUrl: `${URL}cancel`, // your cancel page url
+    notifyUrl: `${URL}`, // your callback url
     referenceId: "1234", // your reference id or transaction id
     buyerName: name, // optional
     buyerPhone: "08123456789", // optional

@@ -1,18 +1,18 @@
 "use server";
 
+import { URL } from "@/db/config/url";
 import { createUser, userModel, userType } from "@/db/models/user";
 import { MyResponse } from "@/types";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 
-const url = "http://localhost:3000/";
 export const onSubmitRegister = async (formData: FormData) => {
   const userInput = z.object({
-    name: z.string(),
-    password: z.string(),
-    email: z.string().email(),
-    job: z.string(),
-    dateOfBirth: z.string(),
+    name: z.string().nonempty(),
+    password: z.string().nonempty().min(5),
+    email: z.string().email().nonempty(),
+    job: z.string().nonempty(),
+    dateOfBirth: z.string().nonempty(),
     walletBalance: z.number().optional().nullable(),
     profilePicture: z.string().optional().nullable(),
     role: z.string().optional().nullable(),
@@ -31,11 +31,15 @@ export const onSubmitRegister = async (formData: FormData) => {
     job,
     dateOfBirth,
   });
+
+  console.log(parsedData, '<<<<  ini parsed data ');
+
   if (!parsedData.success) {
     const errorPath = parsedData.error.issues[0].path[0];
     const errorMessage = parsedData.error.issues[0].message;
     const errorFinal = `${errorPath} - ${errorMessage}`;
-    return redirect(`http://localhost:3000/login?error=${errorFinal}`);
+
+    return redirect(`${URL}register?error=${errorFinal}`);
   }
 
   const userData: userType | any = {
@@ -53,5 +57,5 @@ export const onSubmitRegister = async (formData: FormData) => {
 
   await createUser(userData);
 
-  return redirect("http://localhost:3000/login");
+  return redirect(`${URL}login`);
 };

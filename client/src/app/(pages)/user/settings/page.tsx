@@ -7,6 +7,7 @@ import React, { useEffect, useState } from "react";
 import { updatePicture, userModel } from "@/db/models/user";
 import { getUser } from "@/app/(action)/actionGetUser";
 import { useRouter } from "next/navigation";
+import { URL } from "@/db/config/url";
 
 const SettingsPage = () => {
   const router = useRouter();
@@ -35,7 +36,7 @@ const SettingsPage = () => {
     try {
       const data = formData.get("picture");
 
-      await fetch("http://localhost:3000/api/picture", {
+      await fetch(`${URL}api/picture`, {
         method: "PUT",
         body: JSON.stringify({
           email: user?.data?.email,

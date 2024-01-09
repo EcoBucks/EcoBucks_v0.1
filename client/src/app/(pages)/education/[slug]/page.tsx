@@ -4,6 +4,7 @@ import Card from "@/components/Card";
 import CopyButton from "@/components/CopyButton";
 import Footer from "@/components/Footer";
 import ShareWhatsapp from "@/components/ShareWhatsapp";
+import { URL } from "@/db/config/url";
 import { getVideoBySlug } from "@/db/models/videos";
 import { LocationType } from "@/types";
 import Link from "next/link";
@@ -15,7 +16,7 @@ const EducationDetail = async ({ params }: { params: { slug: string } }) => {
   const data: LocationType[] = (await fetchData()) as any;
 
   if (!data) {
-    redirect("http://localhost:3000/login");
+    redirect(`${URL}login`);
   }
   const provinces = await fetchProvince();
 
@@ -123,9 +124,9 @@ const EducationDetail = async ({ params }: { params: { slug: string } }) => {
         <div className="flex flex-col w-screen items-center h-[450px] px-[8%]">
           {/* Card Bar */}
           <div className="overflow-x-auto flex flex-row w-full h-full items-start justify-start pl-1 py-5 gap-x-5">
-            {data?.slice(1, 6).map((location) => (
+            {/* {data?.slice(1, 6).map((location) => (
               <Card key={location + "id"} location={location} />
-            ))}
+            ))} */}
           </div>
         </div>
       </div>

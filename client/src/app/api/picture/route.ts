@@ -1,4 +1,5 @@
 import { updatePicture } from "@/db/models/user";
+import { NextResponse } from "next/server";
 
 export const PUT = async (request: Request) => {
   const res = await request.json();
@@ -6,5 +7,7 @@ export const PUT = async (request: Request) => {
   const picture = res.picture;
   await updatePicture(email, picture);
 
-  return "haloo";
+  return NextResponse.json({
+    message: "hahaha"
+  })
 };

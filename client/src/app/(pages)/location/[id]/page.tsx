@@ -5,6 +5,7 @@ import MapDetails from "@/components/MapDetails";
 import { getVideos } from "@/db/models/videos";
 import Link from "next/link";
 import React from "react";
+import { Videos } from "../action";
 
 const LocationDetailPage = async ({ params }: { params: { id: string } }) => {
   const data = await fetchDataId(params.id);
@@ -14,7 +15,7 @@ const LocationDetailPage = async ({ params }: { params: { id: string } }) => {
     lng: data?.lng || 0,
   };
 
-  const videos = await getVideos();
+  const videos = await Videos();
   const randomizedVideos = videos
     .sort(() => Math.random() - Math.random())
     .slice(0, 3);

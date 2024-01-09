@@ -1,10 +1,11 @@
 "use server"
+import { URL } from "@/db/config/url"
 import { cookies } from "next/headers"
 
 
 export const getUser = async () => {
 
-    const response = await fetch("http://localhost:3000/api/user", {
+    const response = await fetch(`${URL}api/user`, {
         method: "GET",
         cache: "no-store",
         headers:{
